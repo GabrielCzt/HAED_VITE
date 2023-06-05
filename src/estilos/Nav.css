@@ -1,0 +1,34 @@
+@import url(./Constantes.css);
+
+/*Estilos generales*/
+._navbar .nav{
+  background-color: var(--white);  
+}
+
+
+
+/*Imagenes*/
+._navbar .imagen{
+  max-width: 100px;
+}
+/*Links*/
+
+
+  #links{
+    text-align: left;
+    color:var(--black);
+    font-weight: lighter;
+    padding-left: 30pt;
+    font-family: 'Montserrat';
+    padding-bottom: 5pt;
+    text-decoration: none;
+  }
+
+  #links:hover{
+    text-decoration:underline;
+  }
+  #collapse{
+    text-align: right;
+    align-items:end;
+  }
+  

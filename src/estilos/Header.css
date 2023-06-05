@@ -1,0 +1,51 @@
+@import url(./Constantes.css);
+
+
+/*Estilos generales*/
+.cab p{
+  font-weight: bolder;
+  font-family: 'Montserrat';
+  color:var(--white);
+}
+
+.cab header{
+    padding-top: 10pt;
+    background-color: var(--haed);  
+ 
+}
+
+/*Estilos de la primera columna*/
+.cab #reloj{
+    color:yellow;
+    text-align: right;
+    display: inline;
+    margin-right: 6pt;
+    padding-top: 5pt;
+  }
+  .cab #date{
+    text-align: start;
+    color: var(--white);
+    padding-top: 5pt;
+  }
+  
+
+  /*Estilos de la segunda columna*/
+  .cab #Title{
+    padding-top: 5pt;
+    font-weight: bold;
+  }
+/*Estilos de la tercera columna*/
+  .cab #dropdown-basic{
+    background-color: var(--haed);
+    margin: var(--haed);  
+    border-color: var(--white);
+    margin-bottom: 10pt;
+    color: var(--white);
+  }
+  
+  .cab #links-header{
+    color: var(--black);
+    padding-left: 0px;
+    margin: 0px;
+  }
+  

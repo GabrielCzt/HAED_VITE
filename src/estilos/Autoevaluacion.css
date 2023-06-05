@@ -1,0 +1,62 @@
+@import url(./Constantes.css);
+
+/*Estilos de preguntas*/
+.questions li{
+    list-style: none;
+}
+
+.questions .numero{
+    padding: 20pt;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
+    background-color: var(--light-b-haed);
+    color:white;
+    border-radius: 5pt;
+    align-items: center;
+    align-content: center;
+   text-align: left;
+   margin-bottom: 5pt;
+   text-align: center;
+   vertical-align:middle;
+}
+
+.questions .selected{
+    border: solid 1pt var(--light-b-haed);
+    color:var(--black);
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.questions .question{
+    padding: 20pt;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
+    background-color: var(--non-white-haed);
+    border-radius: 5pt;;
+    align-items: start;
+   text-align: left;
+   margin-bottom: 5pt;
+}
+
+.questions #pregunta{
+    color:var(--black);
+}
+
+/*Estilos del botón*/
+
+#contestar{
+    padding:10pt;
+    margin-top:50pt;
+    margin-left: 0;
+    padding-left: 15pt;
+    padding-right: 15pt;
+    background-color: var(--light-haed);
+    color:var(--white);
+    border: none;
+    font-weight:bolder;
+    font-family: 'Montserrat';
+    height: 50px;
+    width: 50%;
+    border-radius: 5pt;
+
+}
+#contestar:hover{
+    background-color:var(--titulos);
+    color:var(--white);
+}

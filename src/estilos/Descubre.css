@@ -1,0 +1,120 @@
+@import url(./Constantes.css);
+
+
+.desc *{
+    box-sizing: border-box;
+}
+/* Estilos de imagen Herramienta de autoevaluacion */
+.desc .slider-area2 {
+    background-color: var(--cabecera);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.desc .slider-height2 {
+    height: 26.5rem;
+    background-size: cover;
+}
+
+.desc .slider-area2 .hero-cap h2 {
+    color: var(--white);
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+@media (max-width: 575px){
+.slider-area2 .hero-cap h2 {
+    font-size: 35px;
+}
+}
+
+/* FIN Estilos de imagen Herramienta de autoevaluacion */
+
+
+
+/*Section*/
+.desc .title1 {
+    color: #104141;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    
+}
+
+.desc .title3 {
+    color: #50CB93;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
+.desc .texto  {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-family: "Montserrat", sans-serif;
+    color: var(--black);
+    font-size: 1.2rem;
+    line-height: 30px;
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+
+.desc center{
+    margin-bottom: 3.5rem;
+}
+
+
+.desc .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.desc  .col-md-6 {
+    padding-bottom: 0.5rem;
+}
+
+.desc .blog_post img {
+    max-width: 100%;
+}
+
+.desc .blog_post .blog_details h2 {
+    color: #006D77;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+.desc .desc .tabla-responsiva{
+overflow-x: auto;
+}
+
+
+
+.desc .button-blog{
+    padding: 5px 31px;
+    font-size: 14px;
+    background: var(--main-haed);
+    border-color: var(--non-white-haed);
+    color: var(--non-black-haed);
+    font-weight: bolder;
+    transition: all 0.4s ease;
+}
+
+.desc .button-blog:hover{
+    padding: 5px 31px;
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--main-haed);
+    color: var(--white);
+   transition: all 0.4s ease;
+    text-decoration: none;
+}
+
+.desc .cabecera-tabla{
+    background-color: var(--haed);
+    color: white;
+    font-size: 1.2rem;
+}
+/*Fin Section*/

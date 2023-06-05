@@ -1,0 +1,18 @@
+0.El sitio está programando en React, usando Vite, por lo que el comando para ejecución fue reemplazado por 
+npm run dev
+
+1. Las etiquetas "separadoras de estilos" colocadas al principio de cada componente,
+ son indispensables para evitar que los estilos se "crucen" al ejecutar la aplicación, ya que a pesar de
+ no estar importados algunos estilos, al renderizar, el navegador carga todas las hojas, por lo que al final, 
+ podría provocar que se aplique alguna clase o estilo en general, que no esté pensado para ese componente en 
+ especifico
+
+2. El atributo "class" puede ocuparse programando con React, pero NO ES CORRECTO, esto puede provocar que algunas
+clases no se carguen correctamente, es necesario usar "className" en su lugar.
+
+3. Los colores deben ocuparse directamente de las variables establecidas en el CSS "Constantes", esto facilitará cambios en el diseño
+para hacer uso de dichas variables, se debe importar la hoja de estilos apropiadamente 
+@import url(./Constantes.css);
+
+
+

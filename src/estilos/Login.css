@@ -1,0 +1,118 @@
+/*!Configuraciones generales de bootstrap*/
+@import url(./Constantes.css);
+
+
+.log div.row{
+    margin-right: 0;
+}
+ 
+.log div.container-fluid{
+    padding-right: 0px;
+}
+
+.log #log_sign{
+    margin-bottom: 50pt;
+}
+
+/*Estilos del recuadro izquierdo de la página*/
+.log .sign{
+    background: linear-gradient(90deg, #8eb0ae , #006D77);
+    align-items: center;
+    padding: 60pt;
+    padding-top: 150pt;
+    padding-bottom: 150pt;
+    text-align: center;
+}
+.log .sign p{
+    color: var(--white);
+}
+.log .sign h2{
+    color:var(--white);
+    font-family: sans-serif;
+    font-weight: bolder;
+    margin-bottom: 20pt;
+}
+.log .sign #button{
+    background-color:transparent;
+    padding: 10pt;
+    padding-left: 20pt;
+    padding-right: 20pt;
+    margin:30pt;
+    color:var(--white);
+    border-radius: 5pt;
+    border: solid 1px white;
+    text-decoration: none;
+}
+.log .sign #button:hover{
+    background-color: var(white);
+    color:var(--light-b-haed);
+    border: solid 2px var(--light-b-haed);
+
+}
+
+/*Estilos del formulario de Inicio de Sesión*/
+.log .login{
+    padding: 50pt;
+    align-items: center;
+    padding-top: 100pt;
+    text-align: center;
+}
+.log .login h2{
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size: 30pt;
+    color:var(--light-b-haed);
+}
+.log .login h3{
+    margin-bottom: 20pt;
+}
+.log .login input{
+    width: 90%;
+    height: 30pt;
+    margin-top: 10pt;
+    margin-bottom: 20pt;
+    border:none;
+    border-bottom: solid 1pt var(--gray-haed);
+    
+}
+
+.log .login #myPassword{
+    width: 80%;
+    height: 30pt;
+    margin-top: 10pt;
+    margin-bottom: 20pt;
+    border:none;
+    border-bottom: solid 1pt var(--gray-haed);
+    display: inline;
+}
+
+.log .login #ingresar{
+    margin: top 20pt;
+    width: 100%;
+    height: 50pt;
+    background-color: transparent;
+    border:solid var(--light-b-haed) 1pt;
+    color:var(--light-b-haed);
+    font-weight: bolder;
+    margin-top: 20pt;
+    border-radius: 5pt;
+}
+.log .login #ingresar:hover{
+    background-color: var(--light-b-haed);
+    color:var(--white);
+
+}
+.log .login #button{
+    color:#808080;
+    background-color: transparent;
+    border: none;
+    outline: none;    
+}
+
+
+.log .login button:hover{
+    color:var(--black);
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
