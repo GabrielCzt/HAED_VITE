@@ -51,6 +51,11 @@
 }
 
 /*Estilos del formulario de Inicio de Sesión*/
+.log #error{
+    color:red;
+    font-size: small;
+
+}
 .log .login{
     padding: 50pt;
     align-items: center;

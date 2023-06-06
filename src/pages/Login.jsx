@@ -6,22 +6,49 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 
 function Login(){
-    const [ojos,setOjos]=useState(faEye)
-    const SeePassword=()=>{
-        let pass = document.getElementById("myPassword");
-        if(pass.type==="password"){
-            pass.type="text";
-            setOjos(faEyeSlash);        
-        }
-        else if(pass.type==="text"){
-            pass.type="password";
-            setOjos(faEye);
-        }
-        
+    const [_nombre, setNombre] = useState('');
+    const [_password, setPassword]=useState('');  
+    const handleChangeName = (event) =>{
+        setNombre(event.target.value)
     }
+    const handleChangePassword = (event) =>{
+        setPassword(event.target.value)
+    }
+    const [_error, setError] = useState("");
+    const imprimir = ()=>{console.log(_nombre); console.log(_password)};
+    const handleSubmit = (event) =>{
+        event.preventDefault();
+        const params ={
+            email: _nombre,
+            password: _password
+        }
+
+        axios.post('http://api-haed.danielreyesepitacio.cloud/api/auth/login', params)
+            .then(response =>{
+                if(response.params == "" || response.params == null){
+                    console.log("Sin coincidencias");
+                }
+                else{
+                    console.log(response.params);
+                }                
+            })
+            .catch(error => {
+
+               if(error.response && error.response.status === 404){
+                    console.log("Algo salió mal");
+                    setError("Nombre o usuario incorrectos 😢");
+                }
+                else{
+                    console.log("Algo salió muy mal")
+                    setError("Algo salió mal");
+                }
+                
+            })
+    }
+
     return(        
         
         <>
@@ -46,11 +73,13 @@ function Login(){
 
                     <h2>Bienvenido</h2>
                     <h3>Inicie sesión ahora</h3>
-                    <form>
-                        <input  type={"text"} required placeholder="Ingrese su Correo Electrónico"></input><br/>
-                        <input type={"password"} required placeholder="Ingrese su contraseña"></input>                      
-                        <button id="ingresar">INGRESAR</button>
+                    <p id="error">{_error}</p>
+                    <form onSubmit={handleSubmit}>
+                        <input required value={_nombre} onChange={handleChangeName} name="nombre" type={"email"} required placeholder="Ingrese su Correo Electrónico"></input><br/>
+                        <input required value={_password} onChange={handleChangePassword} name="password" type={"password"} required placeholder="Ingrese su contraseña"></input>                                          
+                        <button type="submit" id="ingresar">INGRESAR</button>
                     </form>    
+                   
                 </div>
             </div>
         </div>
