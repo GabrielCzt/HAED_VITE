@@ -47,5 +47,13 @@
     color: var(--black);
     padding-left: 0px;
     margin: 0px;
+    text-decoration: none;
+    font-weight: 300;
+    font-family: 'Montserrat';
+  }
+
+  .cab #links-header:hover{
+    text-decoration: underline;
+    cursor: pointer;
   }
   

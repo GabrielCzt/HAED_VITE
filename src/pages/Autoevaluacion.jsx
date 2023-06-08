@@ -1,12 +1,18 @@
 import React, {useEffect, useState} from "react";
 import "../estilos/Autoevaluacion.css";
+import "../estilos/Pages.css";
+import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
 
+
+const cookie = new Cookies();
 
 
 function Cuestionario(){
 
+    const navigate = new useNavigate();
     {/**Obteniendo el formulario de la API */}
-    const url = "http://54.172.252.109/api/evaluaciones/4/all";
+    const url = "http://api-haed.danielreyesepitacio.cloud/api/evaluaciones/"+cookie.get('cuest')+"/all";
     const [cuest, setCuest] = useState();
 
     const fetchApi = async ()=>{
@@ -19,11 +25,15 @@ function Cuestionario(){
     },[])
    
     const [retro, setRetro] = useState([]);
+
+
     const Add = () =>{
         const seleccion = document.querySelectorAll('input[type="radio"]:checked');
         const retroalimentacion = Array.from(seleccion).map((elemento)=>elemento.value);
-        setRetro(retroalimentacion);
-        console.log(retro);
+        //setRetro(retroalimentacion )
+        cookie.set('retroalimentacion', retroalimentacion , {path:"/"})
+        //console.log(retroalimentacion);
+        navigate("/Retroalimentacion");
 
     }
     return(
@@ -34,14 +44,18 @@ function Cuestionario(){
                 <span className="display-3"><b>Autoevaluación</b></span>                
             </div>
         </div>
+        
         {/**Etiqueta separadora de estilos */}
         <div className="questions">
             <div className="container">
                 <div className="row">
+                {!cuest ? "" :
+                        <><h1>Está contestando {cuest.titulo}</h1></>
+                    }
                     {/**Separando cada pregunta como un elemento de lista */}
                     <ul>
                         {/**Se deben mapear las preguntas */}
-                        {!cuest ? 'Sin respuesta...': cuest.preguntas.map((num, index)=>{
+                        {!cuest ? 'Algo salió mal, asegurese de tener conexión a internet o intente más tarde': cuest.preguntas.map((num, index)=>{
                             const _id = num.id;
                                                
                             return( 
@@ -58,7 +72,7 @@ function Cuestionario(){
                                                 {num.opciones.map((opt,index)=>{
                                                     let valor;                                                
                                                     try{
-                                                        valor = opt.feedback.feedback
+                                                        valor = opt.id;
                                                     }
                                                     catch{
                                                         valor="Sin retroalimentacion"
@@ -72,13 +86,17 @@ function Cuestionario(){
                                             </div>    
                                         </div>
                                     </div>                                                            
-                                </li>                            
+                                </li>   
+                                                      
                             </>
                             
                             );
                         })}
                     </ul>
-                    <button id="contestar" onClick={Add}>Registrar</button>
+                    {!cuest ? "" :
+                        <button id="contestar" onClick={Add}>Registrar</button>   
+                    }
+                    
                 </div>            
             </div>
             

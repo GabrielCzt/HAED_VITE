@@ -1,11 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "../estilos/Login.css"; //Se reciclaron los estilos de la página Login, pues son exactamente los mismos
 import "../estilos/Pages.css";
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from 'universal-cookie'
+
+
+const cookie = new Cookies();
+
+
 
 function Sign(){
     
+    const navigate = new useNavigate();
+    useEffect(() => {
+        if(cookie.get('nombres')){
+          navigate('/Perfil')
+        }
+    }, []);
+
     return(        
         <>
         {/**Barra de titulo */}

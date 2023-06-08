@@ -21,6 +21,8 @@ import CanalYT3 from './pages/canalYoutube/CanalYoutube_3';
 import Contacto from './pages/Contacto';
 import Login from './pages/Login';
 import Sign from './pages/SignIn';
+import Perfil from './pages/Perfil';
+import Retroalimentacion from './pages/Retroalimentacion';
 
 //Sirve para que al cargar una página diferente se dirija al usuario a la parte superior
 const ScrollToTop=()=>{
@@ -52,6 +54,8 @@ function App() {
             <Route path="/Contacto" Component={Contacto}/>
             <Route path="/Iniciar-sesion" Component={Login}/>
             <Route path="/Registrarse" Component={Sign}/>
+            <Route path="/Perfil" Component={Perfil}/>
+            <Route path="/Retroalimentacion" Component={Retroalimentacion}/>
         </Routes>
         <Footer/>
       </Router>
