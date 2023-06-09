@@ -57,17 +57,13 @@ function Footer(){
                 {/**Fondo del footer, queda fuera del renglón anterior */}
                 <div id="footer-bottom">
                     <div className="row d-flex justify-content-between align-items-center">
-                        <div className="col-xl-9 col-lg-8">
+                        <div className="col-xl-9 col-lg-8 ">
                             <p>        
-                                Universidad Tecnológica de Puebla &copy;  {year } Todos los derechos reservados | <a href="creditos.html">Créditos</a> &nbsp;
-                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                Universidad Tecnológica de Puebla &copy;  {year } Todos los derechos reservados | <a href="creditos.html">Créditos</a> &nbsp;                                
+                                <a href="https://www.facebook.com/OficialUTP" target="_blank"><FontAwesomeIcon className="icon" icon={faFacebook} />&nbsp;</a>
+                                <a href="https://www.instagram.com/utpueblaoficial/?hl=es" target="_blank"><FontAwesomeIcon className="icon" icon={faInstagram} />&nbsp;</a>
+                                <a href="https://twitter.com/OficialUTP"  target="_blank"><FontAwesomeIcon className="icon" icon={faTwitter} />&nbsp;</a>
                             </p>
-                        </div>
-                        {/**Redes sociales */}
-                        <div className="col-xl-3 col-lg-4">
-                            <FontAwesomeIcon className="icon" icon={faFacebook} />&nbsp;
-                            <FontAwesomeIcon className="icon" icon={faTwitter} />&nbsp;
-                            <FontAwesomeIcon className="icon" icon={faInstagram} />&nbsp;
                         </div>
                     </div>
                 </div>

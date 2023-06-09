@@ -20,13 +20,13 @@ function Login(){
     }, []);
     
     {/**Almacenaremos los datos del formulario con estados */}
-    const [_nombre, setNombre] = useState('');
+    const [_email, setEmail] = useState('');
     const [_password, setPassword]=useState('');  
 
     /**Las siguientes funciones se encargan de 
     guardar todas las claves conforme las escribe el usuario */
-    const handleChangeName = (event) =>{
-        setNombre(event.target.value)
+    const handleChangeEmail = (event) =>{
+        setEmail(event.target.value)
     }
     const handleChangePassword = (event) =>{
         setPassword(event.target.value)
@@ -42,7 +42,7 @@ function Login(){
 
         //Variables de ingreso en un solo objeto
         const params ={
-            email: _nombre,
+            email: _email,
             password: _password
         }
         //Usamos axios y pasamos el link y los parametros
@@ -109,7 +109,7 @@ function Login(){
                     <h3>Inicie sesión ahora</h3>
                     <p id="error">{_error}</p>
                     <form onSubmit={handleSubmit}>
-                        <input required value={_nombre} onChange={handleChangeName} name="nombre" type={"email"} placeholder="Ingrese su Correo Electrónico"></input><br/>
+                        <input required value={_email} onChange={handleChangeEmail} name="nombre" type={"email"} placeholder="Ingrese su Correo Electrónico"></input><br/>
                         <input required value={_password} onChange={handleChangePassword} name="password" type={"password"}placeholder="Ingrese su contraseña"></input>                                          
                         <button type="submit" id="ingresar">INGRESAR</button>
                     </form>    

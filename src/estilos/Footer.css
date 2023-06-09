@@ -81,4 +81,13 @@
 
 .foot .icon{
     color:var(--white);
+    margin-left: 1%;
+}
+
+
+.foot .icon:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: yellow;
+
 }
