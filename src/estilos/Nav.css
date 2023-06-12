@@ -18,17 +18,27 @@
     text-align: left;
     color:var(--black);
     font-weight: lighter;
-    padding-left: 30pt;
     font-family: 'Montserrat';
-    padding-bottom: 5pt;
     text-decoration: none;
+    padding:8pt;
+    padding-top: 4px;
+    padding-bottom: 5px;
+    border-radius: 20px;
   }
 
-  #links:hover{
-    text-decoration:underline;
-  }
+
   #collapse{
     text-align: right;
     align-items:end;
   }
+
+    /*Estilos NavLink Acitvo */
+  #links.active{
+     color: var(--non-white-haed);
+     background: var(--haed);
+  }
+  .me-auto.navbar-nav{
+    margin: auto;
+  }
+
   
