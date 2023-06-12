@@ -9,9 +9,6 @@ import axios from "axios";
 
 
 const cookie = new Cookies();
-
-
-
 function Sign(){
     //Código para la redirección validada por sesión
     const navigate = new useNavigate();
@@ -20,7 +17,6 @@ function Sign(){
           navigate('/Perfil')
         }
     }, []);
-
     //Código para el registro
     const [_nombres, set_Nombres] = useState("");
     const [_apellidos, set_Apellidos] = useState("");
@@ -28,7 +24,6 @@ function Sign(){
     const [_email, set_Email] = useState("");
     const [_password, set_Password] = useState("");
     const [_confirmation, set_Confirmation] = useState("");
-
     const changeNombres = (event) =>{
         set_Nombres(event.target.value)
     }
@@ -44,16 +39,12 @@ function Sign(){
     const changePassword = (event)=>{
         set_Password(event.target.value)
     }
-
     const changeConfirmation =(event)=>{
         set_Confirmation(event.target.value)
     }
     const [_error, set_Error] = useState("");
-
-
     const handleSign =(event)=>{
         event.preventDefault();
-
         if(_password === _confirmation){
             const params = {
                 "nombres": _nombres  ,
@@ -62,8 +53,7 @@ function Sign(){
                 "email":_email,
                 "password":_password,
                 "password_confirmation":_confirmation
-            }
-    
+            }    
             axios.post("http://api-haed.danielreyesepitacio.cloud/api/auth/register", params)
             .then(response =>{
                 console.log(response.data)
@@ -77,18 +67,16 @@ function Sign(){
                     return response.data;                 
                     })
                     .then(response =>{
-                            let respuesta = response.data;
-                            cookie.set('administrador', respuesta.administrador, {path:"/"})
-                            cookie.set('apellidos', respuesta.apellidos, {path:"/"})
-                            cookie.set('centro_trabajo', respuesta.centro_trabajo, {path:"/"})
-                            cookie.set('id', respuesta.id, {path:"/"})
-                            cookie.set('email', respuesta.email, {path:"/"})                    
-                            cookie.set('matricula', respuesta.matricula, {path:"/"})
-                            cookie.set('nombres', respuesta.nombres, {path:"/"})
-                            navigate("/Perfil");
-
-                    })
-            
+                        let respuesta = response.data;
+                        cookie.set('administrador', respuesta.administrador, {path:"/"})
+                        cookie.set('apellidos', respuesta.apellidos, {path:"/"})
+                        cookie.set('centro_trabajo', respuesta.centro_trabajo, {path:"/"})
+                        cookie.set('id', respuesta.id, {path:"/"})
+                        cookie.set('email', respuesta.email, {path:"/"})                    
+                        cookie.set('matricula', respuesta.matricula, {path:"/"})
+                        cookie.set('nombres', respuesta.nombres, {path:"/"})
+                        navigate("/Perfil");
+                    })            
              })
             .catch(error =>{
                 if(error.response && error.response.status === 422){
@@ -103,16 +91,8 @@ function Sign(){
         }
         else{
             set_Error("Las contraseñas no coinciden")
-        }
-        
+        }        
     }
-
-    
-
-
-
-
-
     return(        
         <>
         {/**Barra de titulo */}

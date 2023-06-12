@@ -56,4 +56,10 @@
     text-decoration: underline;
     cursor: pointer;
   }
+
+  .cab .desplegable{
+    align-items: end;
+    text-align: right;
+    justify-content: end;
+  }
   

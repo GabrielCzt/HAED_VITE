@@ -21,23 +21,20 @@ function Header() {
 const [matricula,setMatricula] = useState("");
   
   const EstableceOp = () =>{
-  if(cookie.get('nombres')){
-    setMatricula(cookie.get('nombres'))
-    setOp1('Perfil')
-    setOp2('Cerrar Sesión')
-    setRoute1('/Perfil')
+    if(cookie.get('nombres')){
+      setMatricula(cookie.get('nombres'))
+      setOp1('Perfil')
+      setOp2('Cerrar Sesión')
+      setRoute1('/Perfil')
+    }
+    else{
+      setMatricula("")
+      setOp1('Iniciar Sesión')
+      setOp2('Registrarse')
+      setRoute1('/Iniciar-sesion')
 
+    }
   }
-  else{
-    setMatricula("")
-    setOp1('Iniciar Sesión')
-    setOp2('Registrarse')
-    setRoute1('/Iniciar-sesion')
-
-  }
- 
-
-}
   //Para obtener los elementos de la fecha
   const year = new Date().getFullYear();
   const month = new Date().getMonth()+1;
@@ -67,7 +64,7 @@ const [matricula,setMatricula] = useState("");
     }
     setOp1('Iniciar Sesión')
     setOp2('Registrarse')
-    setUser("")
+    setMatricula("")
    }
 
   return (         
@@ -85,11 +82,11 @@ const [matricula,setMatricula] = useState("");
           {/**Segunda columna, se reserva para el titulo y ayuda a posicionar el siguiente elemento, además de permitir un mejor control
            * de responsividad
            */}
-          <div className="col-sm-7 col-md-9" id="Title">
+          <div className="col-sm-7 col-md-8" id="Title">
             <p>Herramienta de Autoevaluacion HAED</p>
           </div>
           {/**Tercera columna, contiene el botón de menú, es necesario usar etiquetas de React-Bootstrap para evitar problemas de compatibilidad */}
-          <div className="col-sm-2 col-md-1">
+          <div className="col-sm-2 col-md-2 desplegable">
             <Dropdown >
               <Dropdown.Toggle id="dropdown-basic" >
                 <FontAwesomeIcon icon={faCircleUser}/>&nbsp; {matricula}

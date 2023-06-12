@@ -50,7 +50,7 @@ function Cuestionario(){
             <div className="container">
                 <div className="row">
                 {!cuest ? "" :
-                        <><h1>Está contestando {cuest.titulo}</h1></>
+                        <h1>Está contestando {cuest.titulo}</h1>
                     }
                     {/**Separando cada pregunta como un elemento de lista */}
                     <ul>
