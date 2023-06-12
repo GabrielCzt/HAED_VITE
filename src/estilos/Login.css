@@ -121,3 +121,31 @@
     border: none;
     outline: none;
 }
+
+/*Estilos de mensaje cargando credenciales*/
+.align-items-center{
+    height: 4rem;
+    width: 16.8rem;
+    padding: 10px;
+    margin: auto;
+}
+
+.d-flex{
+    justify-content: space-between;
+}
+
+p.text-credentials{
+    margin: auto;
+    color: var(--non-black-haed);
+}
+
+#p-sign{
+    margin: auto;
+    float: left;
+    color: var(--light-b-haed);
+
+}
+
+.Spin{
+    margin-top: 5px;
+}

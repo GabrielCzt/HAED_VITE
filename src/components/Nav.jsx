@@ -5,7 +5,7 @@ import TICS from '../imagenes/logo_TICeducativa_normal.png'
 import Calidad from '../imagenes/CalidadyCompetividad.jpg'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 function Navv()
@@ -26,11 +26,11 @@ return (
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>  
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto" >                    
-                    <Link id="links" to="/">Inicio</Link>
-                    <Link id="links" to="/Descubre">Descubre</Link>
-                    <Link id="links" to="/Seleccionar-cuestionario">Autoevaluación</Link>
-                    <Link id="links" to="/CanalYoutube">Canal Youtube</Link>                    
-                    <Link id="links" to="/Contacto">Contacto</Link>
+                    <NavLink id="links" to="/">Inicio</NavLink>
+                    <NavLink id="links" to="/Descubre">Descubre</NavLink>
+                    <NavLink id="links" to="/Seleccionar-cuestionario">Autoevaluación</NavLink>
+                    <NavLink id="links" to="/CanalYoutube">Canal Youtube</NavLink>                    
+                    <NavLink id="links" to="/Contacto">Contacto</NavLink>
               
                 </Nav>
             </Navbar.Collapse>  
