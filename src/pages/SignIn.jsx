@@ -49,69 +49,88 @@ function Sign(){
     }
     const [_error, set_Error] = useState("");
 
-
-    const handleSign =(event)=>{
-        event.preventDefault();
-
-        if(_password === _confirmation){
-            const params = {
-                "nombres": _nombres  ,
-                "apellidos":  _apellidos ,
-                "matricula":_matricula,
-                "email":_email,
-                "password":_password,
-                "password_confirmation":_confirmation
-            }
-    
-            axios.post("http://api-haed.danielreyesepitacio.cloud/api/auth/register", params)
-            .then(response =>{
-                console.log(response.data)
-                const logParams ={
-                    email: _email,
-                    password: _password
-                }
-                axios.post('http://api-haed.danielreyesepitacio.cloud/api/auth/login', logParams)
-                    .then(response =>{   
-                        //console.log(response.data)
-                    return response.data;                 
-                    })
-                    .then(response =>{
-                            let respuesta = response.data;
-                            cookie.set('administrador', respuesta.administrador, {path:"/"})
-                            cookie.set('apellidos', respuesta.apellidos, {path:"/"})
-                            cookie.set('centro_trabajo', respuesta.centro_trabajo, {path:"/"})
-                            cookie.set('id', respuesta.id, {path:"/"})
-                            cookie.set('email', respuesta.email, {path:"/"})                    
-                            cookie.set('matricula', respuesta.matricula, {path:"/"})
-                            cookie.set('nombres', respuesta.nombres, {path:"/"})
-                            cookie.set('token', response.token, {path:"/"})
-                            setTimeout(() => navigate("/Perfil"), 1000)
-                    })
-            
-             })
-            .catch(error =>{
-                if(error.response && error.response.status === 422){
-                    console.log(error);
-                    set_Error("Ese usuario ya fue registrado");
-                }
-                else{
-                    console.log(error)
-                    set_Error("Algo salió mal, vuelva a intentarlo");
-                }
-            })
-        }
-        else {
-            set_Error("Las contraseñas no coinciden")
-        }
-        
+    const validarCadenas = (cadena) =>{
+        const regex = /^[a-zA-Z\sáéíóúñÁÉÍÓÚ]+$/;
+        return regex.test(cadena);
     }
 
-    
-
-
-
-
-
+    const validarMatricula =(cadena)=>{
+        const regex = /^utp/i;
+        return regex.test(cadena)
+    }
+    const handleSign =(event)=>{
+        event.preventDefault();
+        if(validarCadenas(_nombres)){
+            if(validarCadenas(_apellidos)){
+                if(validarMatricula(_matricula)){
+                    if(_password === _confirmation){
+                        const params = {
+                            "nombres": _nombres  ,
+                            "apellidos":  _apellidos ,
+                            "matricula":_matricula.toUpperCase(),
+                            "email":_email,
+                            "password":_password,
+                            "password_confirmation":_confirmation
+                        }
+                
+                        axios.post("http://api-haed.danielreyesepitacio.cloud/api/auth/register", params)
+                        .then(response =>{
+                            console.log(response.data)
+                            const logParams ={
+                                email: _email,
+                                password: _password
+                            }
+                            axios.post('http://api-haed.danielreyesepitacio.cloud/api/auth/login', logParams)
+                                .then(response =>{   
+                                    //console.log(response.data)
+                                return response.data;                 
+                                })
+                                .then(response =>{
+                                        let respuesta = response.data;
+                                        cookie.set('administrador', respuesta.administrador, {path:"/"})
+                                        cookie.set('apellidos', respuesta.apellidos, {path:"/"})
+                                        cookie.set('centro_trabajo', respuesta.centro_trabajo, {path:"/"})
+                                        cookie.set('id', respuesta.id, {path:"/"})
+                                        cookie.set('email', respuesta.email, {path:"/"})                    
+                                        cookie.set('matricula', respuesta.matricula, {path:"/"})
+                                        cookie.set('nombres', respuesta.nombres, {path:"/"})
+                                        cookie.set('token', response.token, {path:"/"})
+                                        setTimeout(() => navigate("/Perfil"), 1000)
+                                })
+                        
+                         })
+                        .catch(error =>{
+                            if(error.response && error.response.status === 422){
+                                console.log(error);
+                                set_Error("Ese usuario ya fue registrado");
+                            }
+                            else{
+                                console.log(error)
+                                set_Error("Algo salió mal, vuelva a intentarlo");
+                            }
+                        })
+                    }
+                    else {
+                        set_Error("Las contraseñas no coinciden")
+                        document.getElementById("confirmation").focus()
+                    }
+                }
+                else{
+                    set_Error("Ingrese una matricula valida")
+            document.getElementById("matricula").focus()
+                }
+            }
+            else{
+                set_Error("Los apellidos no pueden tener números ni caracteres especiales")
+                document.getElementById('apellidos').focus()
+            }
+        }
+        else{
+            
+            set_Error("EL nombre no puede tener números ni caracteres especiales")
+                    document.getElementById('nombres').focus()
+        }  
+    }
     return(        
         <>
             {/**Barra de titulo */}
@@ -136,12 +155,12 @@ function Sign(){
                             <h3>Vamos a crear una nueva cuenta</h3>
                             <p id="error">{_error}</p>
                             <form onSubmit={handleSign}>
-                                <input required value={_nombres} onChange={changeNombres} type={"text"}  placeholder="Ingrese sus Nombres" ></input>
-                                <input required value={_apellidos} type={"text"} onChange={changeApellidos} placeholder="Ingrese sus Apellidos"></input>
-                                <input required value={_matricula} type={"text"} onChange={changeMatricula} placeholder="Coloque aquí su Matricula"></input>
-                                <input required value={_email} type={"email"} onChange={changeEmail} placeholder="Ingrese su Correo Electrónico"></input>
-                                <input required value={_password} type={"password"} onChange={changePassword} placeholder="Contraseña"></input>
-                                <input required value={_confirmation} type={"password"} onChange={changeConfirmation} placeholder="Repita su contraseña"></input>
+                                <input id="nombres" required value={_nombres} onChange={changeNombres} type={"text"}  placeholder="Ingrese sus Nombres" ></input>
+                                <input id="apellidos" required value={_apellidos} type={"text"} onChange={changeApellidos} placeholder="Ingrese sus Apellidos"></input>
+                                <input id="matricula" required value={_matricula} type={"text"} onChange={changeMatricula} placeholder="Coloque aquí su Matricula"></input>
+                                <input id="email" required value={_email} type={"email"} onChange={changeEmail} placeholder="Ingrese su Correo Electrónico"></input>
+                                <input id="password" required value={_password} type={"password"} onChange={changePassword} placeholder="Contraseña"></input>
+                                <input id="confirmation" required value={_confirmation} type={"password"} onChange={changeConfirmation} placeholder="Repita su contraseña"></input>
                                 <button type="submit" id="ingresar">CLICK AQUÍ PARA CREAR SU CUENTA</button>
                             </form>
                         </div>

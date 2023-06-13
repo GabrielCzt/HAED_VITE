@@ -3,22 +3,21 @@
 body{
 
         overflow-x: hidden;
-        
-      
-      
+
 }
-.fa:hover{
+
+.profile .fa:hover{
     color:var(--light-haed);
 }
-.icon{
+.profile .icon{
 color:white;
 }
 
-.icon:hover{
+.profile .icon:hover{
     color:var(--light-haed);
 }
 
-.cont{
+.profile .cont{
     margin:10pt;
     box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
     width: 100%;
@@ -26,3 +25,76 @@ color:white;
     border-radius: 5pt;
     padding: 10pt;
 }
+/* 
+.profile  #opcion{
+
+    display: block;
+    padding: 6%;
+    background-color: var(--light-haed);
+    color:var(--white);
+    border: none;
+    font-weight:bolder;
+    font-size: x-large;
+    font-family: 'Montserrat';
+    height:max-content;
+    border-radius: 5pt;
+    margin-bottom: 5%;
+    text-decoration: none;
+}
+
+.profile #opcion:hover{
+    background-color:var(--titulos);
+    color:var(--white);
+} */
+
+
+.profile  #opcion{
+    display: block;
+    margin-bottom: 5%;
+    border-radius: 5pt;
+    background-color: var(--light-b-haed);
+    color: white; 
+    border-bottom: 2px solid var(--titulos); 
+    padding: 6%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    text-decoration: none;
+    font-size:x-large;
+    font-family: 'Montserrat';
+    justify-content: space-between;
+
+  }
+  .profile  #opcion:hover {
+    color: #fff; 
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .profile  #opcion::after {
+    content: "";
+    background-color:var(--haed);
+    
+    background-blend-mode: multiply;
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: 0;
+    right: 0;    
+    bottom: -100%;
+    top: 100%;
+    -webkit-transition: all .1s;
+    transition: all .1s;
+
+  }
+  .profile  #opcion:hover::after {
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-transition: all .1s;
+    transition: all .1s;
+    cursor: pointer;
+  }

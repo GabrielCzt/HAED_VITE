@@ -26,6 +26,9 @@ function Cuestionario(){
         setCuest(apiResponse);
     }
     useEffect(()=>{
+        if(!cookie.get('nombres')){
+            navigate('/Seleccionar-cuestionario')
+          }
         fetchApi();
     },[])
    
