@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect} from "react";
 import "../estilos/Login.css"; //Se reciclaron los estilos de la página Login, pues son exactamente los mismos
 import "../estilos/Pages.css";
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -137,7 +137,7 @@ function Sign(){
                             <h3>Vamos a crear una nueva cuenta</h3>
                             <p id="error">{_error}</p>
                             <form onSubmit={handleSign}>
-                                <input required value={_nombres} onChange={changeNombres} type={"text"} ref={nameRef} placeholder="Ingrese sus Nombres" ></input>
+                                <input required value={_nombres} onChange={changeNombres} type={"text"}  placeholder="Ingrese sus Nombres" ></input>
                                 <input required value={_apellidos} type={"text"} onChange={changeApellidos} placeholder="Ingrese sus Apellidos"></input>
                                 <input required value={_matricula} type={"text"} onChange={changeMatricula} placeholder="Coloque aquí su Matricula"></input>
                                 <input required value={_email} type={"email"} onChange={changeEmail} placeholder="Ingrese su Correo Electrónico"></input>

@@ -12,56 +12,57 @@ const cookie = new Cookies();
 function Retroalimentacion(){
 
     const navigate = new useNavigate();
+   
+    const [toPrintR, setToPrintR] = useState(null);
+   
 
-    useEffect(()=>{
-        if(!cookie.get('nombres') ){
+    useEffect(() => {
+        if(!cookie.get('nombres')){
             navigate('/Iniciar-sesion')
         }
-        if(!cookie.get('retroalimentacion')){
-            navigate('/Seleccionar-cuestionario')
-        }
-    },[])
+        const fetchData = async () => {
+          try {
+            const token = cookie.get('token');
+            console.log(cookie.get('intento'))
+            let intento = parseInt(cookie.get('intento'))
+            const url = 'http://api-haed.danielreyesepitacio.cloud/api/users/evaluaciones/respuestas/' + intento
+            const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+              }
+            });
+    
+            if (response.ok) {
+              const jsonData = await response.json();
+              if(!toPrintR){
+                setToPrintR(jsonData);
+              }
 
-    const retro = cookie.get('retroalimentacion')
-    const [toPrintR, setToPrintR] = useState([]);
 
-    const handle = (event) =>{        
-        //Variables de ingreso en un solo objeto
-        try{
-            const params = {
-                opciones: retro.map((num) => {
-                  return num;
-                }),
-            };        
-        
-        console.log(params)
-        //Usamos axios y pasamos el link y los parametros
-        axios.post('http://api-haed.danielreyesepitacio.cloud/api/feedbacks/opcion/all', params)
-            .then(response =>{   
-                console.log(response.data)
-                setToPrintR(response.data)
-               //return response.data;                 
-            })
-            .catch(error => {
-               if(error.response && error.response.status === 404){
-                    console.log(error);
-                }
-                else{
-                    console.log(error)
-                }                
-            })
+            } else {
+              console.error('Error en la solicitud:', response.status);
+            }
+          } catch (error) {
+            console.error('Error en la solicitud:', error);
+          }
+        };
+    
+        fetchData();
+        console.log(toPrintR)
+      }, []);
+      useEffect(()=>{
+        if(toPrintR){
+            console.log(toPrintR)
         }
-        catch{
-            console.log("Error, sin retroalimentacion")
-        }            
-    }       
-    useEffect(()=>{
-        handle();
-        
-    },[])
+      })
+
+ 
 
     return(        
         <>
+
      <div className="barContains">
             <div className="bar">               
                 <span className="display-3"><b>Retroalimentación</b></span>                
@@ -69,21 +70,22 @@ function Retroalimentacion(){
         </div> 
         {/* Etiqueta separadora de estilos */}
         <div className="retrA">
-            <div className="container">
+            <div className="container">                
                 <h5>Estas son algunas recomendaciones a tomar en cuenta</h5>
-                {!toPrintR.map ? "" : toPrintR.map((num, index) => {
-                return (<>
-                <div className="row">
-                    <div className="col-1 hand">
-                            <FontAwesomeIcon icon={faHandPointRight}/>
-                    </div>
-                    <div className="col">
-                    <li key={index}>{num.feedback}</li>
-                    </div>
-                </div>
-                
-                </>)
-                })} 
+                {!toPrintR ? <><p>Espere</p><br/></> : toPrintR.preguntas.map((num, index) => {                                                                     
+                        return (
+                            <>
+                            <div className="row">
+                                <div className="col-1 hand">
+                                    <FontAwesomeIcon icon={faHandPointRight} />
+                                </div>
+                                <div className="col">
+                                    <li>{num.respuestas[0].feedback}</li>
+                                </div>
+                            </div>                            
+                            </>
+                        );
+                })}
                 <Link to="/Seleccionar-cuestionario"><button id="end">Volver al menú de selección</button></Link>
                 <Link to="/"><button id="end">Ir al Inicio</button></Link>
             </div>

@@ -60,6 +60,11 @@ const [matricula,setMatricula] = useState("");
      cookie.remove('nombres', {path:"/"})
      cookie.remove('retroalimentacion', {path:"/"})
      cookie.remove('cuest', {path:"/"})
+     cookie.remove('token',{path:"/"})
+     cookie.remove('intento',{path:"/"})
+
+
+
      navigate("/Iniciar-sesion");
     }
     setOp1('Iniciar Sesión')

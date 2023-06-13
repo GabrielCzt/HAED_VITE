@@ -2,10 +2,10 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../estilos/Perfil.css";
 import "../estilos/Pages.css";
-import PerfilSideBar from "./PerfilSideBar";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const cookie = new Cookies();
 
@@ -19,7 +19,7 @@ function Perfil() {
   }, []);
     
   
-  let matricula = cookie.get('nombres');
+  let nombres = cookie.get('nombres');
   return (
     <>
     
@@ -29,19 +29,18 @@ function Perfil() {
                 <span className="display-3"><b>Perfil de Usuario</b></span>                
             </div>
         </div>
-       
-        <div className="row">
-          <div className="col-1">
-            <PerfilSideBar/>
+        <div className="container">
+            <div className="row">
+            <h4 className="display-6">Bienvenido {nombres}</h4>        
           </div>
-          <div className="col">
-            <p className="display-6">Bienvenido {matricula}</p>
+          <div className="row">
+            <div className="col">
+              <Link to="/Seleccionar-cuestionario">Contestar Autoevaluacion</Link>
+            </div>
           </div>
-        
-        
         </div>
-        
-          
+       
+       
 
     </>
   );

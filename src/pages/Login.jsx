@@ -63,7 +63,7 @@ function Login() {
         axios.post('http://api-haed.danielreyesepitacio.cloud/api/auth/login', params)
             .then(response => {
                 setLoading(true)
-                //console.log(response.data)
+                console.log(response.data)
                 return response.data;
             })
             .then(response => {
@@ -76,6 +76,7 @@ function Login() {
                     cookie.set('email', respuesta.email, { path: "/" })
                     cookie.set('matricula', respuesta.matricula, { path: "/" })
                     cookie.set('nombres', respuesta.nombres, { path: "/" })
+                    cookie.set('token', response.token, {path:"/"})
                     setTimeout(() => navigate("/Perfil"), 1000)
                 }
                 else {

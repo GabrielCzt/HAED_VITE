@@ -56,8 +56,8 @@ function Footer(){
                 <hr/>
                 {/**Fondo del footer, queda fuera del renglón anterior */}
                 <div id="footer-bottom">
-                    <div className="row d-flex justify-content-between align-items-center">
-                        <div className="col-xl-9 col-lg-8 ">
+                    <div >
+                        <div >
                             <p>        
                                 Universidad Tecnológica de Puebla &copy;  {year } Todos los derechos reservados | <a href="creditos.html">Créditos</a> &nbsp;                                
                                 <a href="https://www.facebook.com/OficialUTP" target="_blank"><FontAwesomeIcon className="icon" icon={faFacebook} />&nbsp;</a>

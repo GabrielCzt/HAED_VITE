@@ -45,6 +45,9 @@ function Menu(){
         cookie.set('cuest', _cuest, {path:"/"})
         navigate("/Autoevaluacion");
     }
+    const reload =()=>{
+        window.location.reload();
+    }
 
     return(
     <>
@@ -60,7 +63,10 @@ function Menu(){
                 <div className="container">
                     <h5 className="display-5">Seleccione un cuestionario para continuar</h5><hr/>
                     {/* Se mapea la cantidad de cuestionarios para generar tantos botones como sea neceario */}
-                    {!name? "Algo salió mal" : name.map((num, index) => {    
+                    {!name? <><p>Algo salió mal</p>
+                    <button onClick={reload}>Click aquí para reintentar</button>
+                    </>
+                    : name.map((num, index) => {    
                                                                  
                         return (
                             // No se usa la etiqueta Link para evitar conflictos al usar onCLick, en cambio

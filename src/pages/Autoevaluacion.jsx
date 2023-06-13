@@ -3,12 +3,14 @@ import "../estilos/Autoevaluacion.css";
 import "../estilos/Pages.css";
 import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const cookie = new Cookies();
 
 
 function Cuestionario(){
+    const [espera,setEspera] = useState("Registrar respuestas")
 
     const navigate = new useNavigate();
     {/**Obteniendo el formulario de la API */}
@@ -25,16 +27,45 @@ function Cuestionario(){
     },[])
    
     const [retro, setRetro] = useState([]);
+    
 
 
     const Add = () =>{
+        setEspera("Espere, enviando ...")
         const seleccion = document.querySelectorAll('input[type="radio"]:checked');
-        const retroalimentacion = Array.from(seleccion).map((elemento)=>elemento.value);
-        //setRetro(retroalimentacion )
-        cookie.set('retroalimentacion', retroalimentacion , {path:"/"})
-        //console.log(retroalimentacion);
-        navigate("/Retroalimentacion");
-
+        const retroalimentacion = Array.from(seleccion).map((elemento)=> {return {pregunta_id: elemento.name, respuesta: elemento.value}});
+        try{
+            const params = {
+                evaluacion_id: cookie.get('cuest'),
+                respuestas: retroalimentacion.map((num) => {
+                  return num;
+                }),
+            };                
+            console.log(params)
+            const headers = {
+            headers: {
+              'Authorization': `Bearer ${cookie.get('token')}`,
+              'Content-Type': 'application/json'
+            }
+          };
+            //Usamos axios y pasamos el link y los parametros
+            axios.post('http://api-haed.danielreyesepitacio.cloud/api/respuestas/all', params, headers)
+            .then(response =>{  
+               console.log(response.data) 
+               cookie.set('intento', response.data[0].intento_id,{path:"/"})
+    
+            })
+            .catch(error => {
+               console.log(error)               
+            })
+        }
+        catch{
+            console.log("Error, sin retroalimentacion")
+        }   
+        setTimeout(() => {
+            navigate("/Retroalimentacion")
+        }, 5000);
+       
     }
     return(
         <>
@@ -70,16 +101,16 @@ function Cuestionario(){
                                                 <p id="pregunta">{num.pregunta}</p>
                                                 {/**Mapeamos las opciones de cada pregunta */}
                                                 {num.opciones.map((opt,index)=>{
-                                                    let valor;                                                
+                                                    let valor;                                                                                                
                                                     try{
-                                                        valor = opt.id;
+                                                        valor = opt.opcion;
                                                     }
                                                     catch{
                                                         valor="Sin retroalimentacion"
                                                     }
                                                     return(
                                                         <>
-                                                            <input  type="radio" name={_id} value={valor} id="hola"/>&nbsp;<label className={num.node_id} id={num.node_id} for="hola">{opt.descripcion}</label><br/>                                                
+                                                            <input  type="radio" name={opt.pregunta_id} value={valor} id="hola"/>&nbsp;<label   for="hola">{opt.opcion}</label><br/>                                                
                                                         </>
                                                     );
                                                 })}                                        
@@ -94,7 +125,10 @@ function Cuestionario(){
                         })}
                     </ul>
                     {!cuest ? "" :
-                        <button id="contestar" onClick={Add}>Registrar</button>   
+                        <button id="contestar" onClick={(event) => {
+                            event.stopPropagation();
+                            Add();
+                          }}>{espera}</button>
                     }
                     
                 </div>            
