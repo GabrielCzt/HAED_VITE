@@ -7,7 +7,6 @@ import Cookies from 'universal-cookie'
 import { useState } from "react";
 import axios from "axios";
 
-
 const cookie = new Cookies();
 
 
@@ -85,8 +84,8 @@ function Sign(){
                             cookie.set('email', respuesta.email, {path:"/"})                    
                             cookie.set('matricula', respuesta.matricula, {path:"/"})
                             cookie.set('nombres', respuesta.nombres, {path:"/"})
-                            navigate("/Perfil");
-
+                            cookie.set('token', response.token, {path:"/"})
+                            setTimeout(() => navigate("/Perfil"), 1000)
                     })
             
              })

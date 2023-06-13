@@ -4,6 +4,9 @@ import "../estilos/Pages.css";
 import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { faArrowRight, faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 
 const cookie = new Cookies();
@@ -11,7 +14,7 @@ const cookie = new Cookies();
 
 function Cuestionario(){
     const [espera,setEspera] = useState("Registrar respuestas")
-
+    const [icon, setIcon] = useState(faArrowRight)
     const navigate = new useNavigate();
     {/**Obteniendo el formulario de la API */}
     const url = "http://api-haed.danielreyesepitacio.cloud/api/evaluaciones/"+cookie.get('cuest')+"/all";
@@ -31,7 +34,8 @@ function Cuestionario(){
 
 
     const Add = () =>{
-        setEspera("Espere, enviando ...")
+        setEspera("Espere, enviando ")
+        setIcon(faArrowsRotate);
         const seleccion = document.querySelectorAll('input[type="radio"]:checked');
         const retroalimentacion = Array.from(seleccion).map((elemento)=> {return {pregunta_id: elemento.name, respuesta: elemento.value}});
         try{
@@ -94,7 +98,7 @@ function Cuestionario(){
                                 <li>
                                     <div className="row">
                                         <div className="col-1 numero">
-                                            <h5>{num.id}</h5>
+                                            <h5>{index+1}</h5>
                                         </div>
                                         <div className="col">
                                             <div className="question">                                    
@@ -128,7 +132,7 @@ function Cuestionario(){
                         <button id="contestar" onClick={(event) => {
                             event.stopPropagation();
                             Add();
-                          }}>{espera}</button>
+                          }}>{espera}&nbsp;&nbsp;<FontAwesomeIcon icon={icon}/></button>
                     }
                     
                 </div>            
