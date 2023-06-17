@@ -35,19 +35,19 @@ function Perfil() {
               <h4 className="display-6">Bienvenido {nombres}</h4>    <hr/>    
             </div>
             <div className="row">
-              <div className="col-6">
-                <Link id="opcion" to="/Seleccionar-cuestionario">Contestar Autoevaluación</Link>
+              <div className="col-sm-12 col-md-6 btnContainer">
+                <Link  to="/Seleccionar-cuestionario"><button id="opcion">Contestar Autoevaluación</button></Link>
               </div>
-              <div className="col-6">
-                <Link id="opcion" to="/Informacion-perfil">Ver información del perfil</Link>
+              <div className="col-sm-12 col-md-6 btnContainer">
+                <Link   to="/Informacion-perfil"><button id="opcion">Ver información del perfil</button></Link>
               </div>
             </div>
             <div className="row">
-              <div className="col-6">
-                <Link id="opcion" to="/Comparativa-de-retroalimentaciones">Comparar retroalimentaciones</Link>
+              <div className="col-sm-12 col-md-6 btnContainer">
+                <Link  to="/Comparativa-de-retroalimentaciones"><button id="opcion">Comparar retroalimentaciones</button></Link>
               </div>
-              <div className="col-6">
-                <Link id="opcion" to="/Seleccionar-cuestionario">Configurar perfil</Link>
+              <div className="col-sm-12 col-md-6 btnContainer">
+                <Link to="/Seleccionar-cuestionario"><button id="opcion">Editar Información</button></Link>
               </div>
             </div>
           </div>       

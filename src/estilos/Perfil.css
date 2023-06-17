@@ -49,19 +49,19 @@ color:white;
 
 
 .profile  #opcion{
-    display: block;
-    margin-bottom: 5%;
+    display: inline-block;
+    height: 100%;
+    font-size: 3vh;
+    border: none;
     border-radius: 5pt;
     background-color: var(--light-b-haed);
     color: white; 
-    border-bottom: 2px solid var(--titulos); 
     padding: 6%;
     position: relative;
     z-index: 1;
     overflow: hidden;
-    width: 100%;
+    width: 90%;
     text-decoration: none;
-    font-size:x-large;
     font-family: 'Montserrat';
     justify-content: space-between;
 
@@ -97,4 +97,9 @@ color:white;
     -webkit-transition: all .1s;
     transition: all .1s;
     cursor: pointer;
+  }
+
+  .profile .btnContainer{
+    margin-bottom: 2%;
+    text-align: center;
   }

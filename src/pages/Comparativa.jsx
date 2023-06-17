@@ -113,7 +113,7 @@ function Intentos(){
             <h1 className="display-6">Seleccione una fecha para ver sus retroalimentaciones</h1>
             <div className="row">
                 {/* Primera columna */}
-                <div className="col">
+                <div className="col" id="leftColumn">
                     <div className="row selection">
                     <select name="fecha" id="leftRetro" onChange={fetchRetro}>
                         <option value="">Seleccione una fecha</option>
@@ -132,7 +132,7 @@ function Intentos(){
                     </div>
                     <div className="row">
                       <h5>{!retro?"" : retro.titulo}</h5>
-                    {!retro ? <><p>Seleccione una fecha</p><br/></> : retro.preguntas.map((num, index) => {                                                                     
+                    {!retro ? <><p>Seleccione una fecha de la lista desplegable</p><br/></> : retro.preguntas.map((num, index) => {                                                                     
                         return (
                             <>
                                 <li>{num.respuestas[0].feedback}</li>                        
@@ -142,7 +142,7 @@ function Intentos(){
                     </div>
                 </div>
                 {/* segunda columna, intentar mostrar la ultima respuesta */}
-                <div className="col">
+                <div className="col" id="rightColumn">
                     <div className="row selection">                               
                         <h5>Retroalimentación más reciente: {!lastRetro ? "" : lastRetro.titulo}</h5>
                     </div>
