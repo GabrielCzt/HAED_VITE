@@ -22,6 +22,7 @@ import Contacto from './pages/Contacto';
 import Login from './pages/Login';
 import Sign from './pages/SignIn';
 import Perfil from './pages/Perfil';
+import InfoPerfil from './pages/InfoPerfil';
 import Retroalimentacion from './pages/Retroalimentacion';
 
 //Sirve para que al cargar una página diferente se dirija al usuario a la parte superior
@@ -55,6 +56,7 @@ function App() {
             <Route path="/Iniciar-sesion" Component={Login}/>
             <Route path="/Registrarse" Component={Sign}/>
             <Route path="/Perfil" Component={Perfil}/>
+            <Route path="/Informacion-Perfil" Component={InfoPerfil}/>
             <Route path="/Retroalimentacion" Component={Retroalimentacion}/>
         </Routes>
         <Footer/>
