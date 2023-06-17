@@ -22,6 +22,7 @@ import Contacto from './pages/Contacto';
 import Login from './pages/Login';
 import Sign from './pages/SignIn';
 import Perfil from './pages/Perfil';
+import InfoPerfil from './pages/InfoPerfil';
 import Retroalimentacion from './pages/Retroalimentacion';
 import Intentos from './pages/Comparativa';
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="/Iniciar-sesion" Component={Login}/>
             <Route path="/Registrarse" Component={Sign}/>
             <Route path="/Perfil" Component={Perfil}/>
+            <Route path="/Informacion-Perfil" Component={InfoPerfil}/>
             <Route path="/Retroalimentacion" Component={Retroalimentacion}/>
             <Route path="/Comparativa-de-retroalimentaciones" Component={Intentos}/>
         </Routes>

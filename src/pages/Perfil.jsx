@@ -39,7 +39,7 @@ function Perfil() {
                 <Link id="opcion" to="/Seleccionar-cuestionario">Contestar Autoevaluación</Link>
               </div>
               <div className="col-6">
-                <Link id="opcion" to="/Seleccionar-cuestionario">Ver información del perfil</Link>
+                <Link id="opcion" to="/Informacion-perfil">Ver información del perfil</Link>
               </div>
             </div>
             <div className="row">
