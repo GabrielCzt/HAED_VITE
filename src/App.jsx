@@ -23,6 +23,7 @@ import Login from './pages/Login';
 import Sign from './pages/SignIn';
 import Perfil from './pages/Perfil';
 import Retroalimentacion from './pages/Retroalimentacion';
+import Intentos from './pages/Comparativa';
 
 //Sirve para que al cargar una página diferente se dirija al usuario a la parte superior
 const ScrollToTop=()=>{
@@ -56,6 +57,7 @@ function App() {
             <Route path="/Registrarse" Component={Sign}/>
             <Route path="/Perfil" Component={Perfil}/>
             <Route path="/Retroalimentacion" Component={Retroalimentacion}/>
+            <Route path="/Comparativa-de-retroalimentaciones" Component={Intentos}/>
         </Routes>
         <Footer/>
       </Router>

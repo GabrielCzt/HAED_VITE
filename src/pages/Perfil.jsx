@@ -44,7 +44,7 @@ function Perfil() {
             </div>
             <div className="row">
               <div className="col-6">
-                <Link id="opcion" to="/Seleccionar-cuestionario">Comparar retroalimentaciones</Link>
+                <Link id="opcion" to="/Comparativa-de-retroalimentaciones">Comparar retroalimentaciones</Link>
               </div>
               <div className="col-6">
                 <Link id="opcion" to="/Seleccionar-cuestionario">Configurar perfil</Link>

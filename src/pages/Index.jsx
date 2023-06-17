@@ -73,7 +73,7 @@ function Index(){
                 <div className="row">
                     <div className="col-sm-12 col-md-6" data-aos="fade-up">
                         <h1>HAED: Herramienta de Autoevaluación Docente</h1><br/>
-                        <Link to="/Seleccionar-cuestionario" ><button id="i_contestar">Click aquí para contestar Autoevaluación</button></Link>
+                        <Link to="/Seleccionar-cuestionario" ><button id="i_contestar">Clic aquí para contestar Autoevaluación</button></Link>
                     </div>
                     <div className="col-sm-12 col-md-6" data-aos="zoom-in">
                     <img className="img-fluid" src={HERO} alt="Hero"/>

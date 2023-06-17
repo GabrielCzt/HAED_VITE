@@ -64,7 +64,7 @@ function Menu(){
                     <h5 className="display-5">Seleccione un cuestionario para continuar</h5><hr/>
                     {/* Se mapea la cantidad de cuestionarios para generar tantos botones como sea neceario */}
                     {!name? <><p>Algo salió mal</p>
-                    <button id="toLogIn"onClick={reload}>Click aquí para reintentar</button>
+                    <button id="toLogIn"onClick={reload}>Clic aquí para reintentar</button>
                     </>
                     : name.map((num, index) => {    
                                                                  

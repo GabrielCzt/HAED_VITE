@@ -71,7 +71,7 @@ function Cuestionario(){
         }   
         setTimeout(() => {
             navigate("/Retroalimentacion")
-        }, 5000);
+        }, 4000);
        
     }
     return(

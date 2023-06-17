@@ -1,0 +1,13 @@
+@import url(./Constantes.css);
+
+.compara select{
+    border-top-left-radius: 5pt;
+    border-top-right-radius: 5pt;
+    background-color: var(--light-haed);
+    color:white;
+    height: 5%;
+    width: max-content;    
+    font-size: large;
+    font-family: 'Montserrat';
+    margin-bottom: 2%;
+}
