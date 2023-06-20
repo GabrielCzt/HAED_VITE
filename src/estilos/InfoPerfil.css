@@ -1,5 +1,6 @@
 
-.user-box img {
+ /* Contenedor de imagen del usuario  */ 
+ .user-box img {
     border-radius: 50%;
 	padding: 3px;
 	background: #fff;
@@ -9,10 +10,16 @@
     box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
 }
 
+.card:hover  .img {
+    transform: scale(1.5);
+}
 
 
+.img {
+    transition: all 0.5s;
+}
 
-
+/* Caja del usuario */
 .profile-card-4 .user-box {
     width:-webkit-fill-available;
     margin: auto;
@@ -20,6 +27,7 @@
     margin-top: 15px;
 }
 
+/* Tarjeta de datos del usuario con imagen */
 .profile-card-4 .list-icon {
     display: table-cell;
     font-size: 30px;
@@ -45,10 +53,15 @@
     color: #808080;
 }
 
-/*Nav Tabs & Pills */
 
+/* Contenedor principal */
 
+    /* Expansion del contendor principal */
+.row{
+    margin-bottom: 2%;
+}
 
+/* Barra personalizada de apartado */
 
 .nav-tabs-success.nav-tabs{
 	border-bottom: 1px solid #15ca20;
@@ -61,9 +74,14 @@
     border-top: 3px solid #15ca20;
 }
 
+.nav-link.active.show{
+    width: 50%;
+    float: right;
+}
 
 
 
+/* Pestaña personalizada  */
 
 .tabs-vertical .nav-tabs .nav-link {
     color: #223035;
@@ -81,17 +99,19 @@
     border-bottom-left-radius: .25rem;
 }
 
+
 .tabs-vertical .nav-tabs{
 	border:0;
 	border-right: 1px solid #dee2e6;
 }
 
-
+/* Pestaña succes personalizada */
 
 .tabs-vertical-success.tabs-vertical .nav-tabs{
 	border:0;
 	border-right: 1px solid #15ca20;
 }
+
 
 .tabs-vertical-success.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-success.tabs-vertical .nav-tabs .nav-link.active {
     color: #15ca20;
@@ -117,7 +137,7 @@
 
 
 }
-
+/* Sombra de las tarjetas  */
 
 .nav-pills-success .nav-link.active, .nav-pills-success .show>.nav-link {
     color: #fff;
@@ -125,7 +145,7 @@
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(21, 202, 32, .5);
 }
 
-
+/* Sombra de contenedor  */
 .z-depth-3 {
     -webkit-box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
     box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
@@ -133,18 +153,14 @@
 
 
 
-.card:hover  .img {
-    transform: scale(1.5);
+/* Estilos de formulario */
+
+.form-control{
+    display: -webkit-inline-box;
+    width: 75%;
 }
 
-.img {
-    transition: all 0.5s;
-}
-
-.nav-link.active.show{
-    width: 50%;
-    float: right;
-}
-.row{
-    margin-bottom: 2%;
-}
+/* Estilos del ojo (oculta y muestra contraseña) */
+#eye {
+    margin-left: 10px;
+    }
