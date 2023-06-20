@@ -93,8 +93,7 @@ function Sign() {
         if (validarCadenas(_nombres)) {
             if (validarCadenas(_apellidos)) {
                 if (validarMatricula(_matricula)) {
-                    if (_password === _confirmation) {
-                        setLoading(true)
+                    if (_password === _confirmation) {                    
                         const params = {
                             "nombres": _nombres,
                             "apellidos": _apellidos,
@@ -106,6 +105,7 @@ function Sign() {
 
                         axios.post("http://api-haed.danielreyesepitacio.cloud/api/auth/register", params)
                             .then(response => {
+                                setLoading(true)
                                 console.log(response.data)
                                 const logParams = {
                                     email: _email,
