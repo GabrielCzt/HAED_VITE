@@ -62,7 +62,7 @@
     justify-content: center;
     text-align: center;
     padding-top: 100pt;
-
+    text-align: center;
 }
 .log .login h2{
     font-family: 'Montserrat';
@@ -119,7 +119,9 @@
     border: none;
     outline: none;    
 }
-
+ #password{
+    width: 85%;
+ }
 
 .log .login button:hover{
     color:var(--black);
