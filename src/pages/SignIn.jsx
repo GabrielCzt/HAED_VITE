@@ -126,7 +126,6 @@ function Sign() {
                                         cookie.set('matricula', respuesta.matricula, { path: "/" })
                                         cookie.set('nombres', respuesta.nombres, { path: "/" })
                                         cookie.set('token', response.token, { path: "/" })
-                                        cookie.set('Verified', ('verificado'), { path: "/" })
                                         setTimeout(() => navigate("/Perfil"), 1000)
                                     })
 
