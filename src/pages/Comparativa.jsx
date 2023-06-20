@@ -1,7 +1,8 @@
-import React,{useEffect, useState} from "react";
+import React,{useContext, useEffect, useState} from "react";
 import Cookies from "universal-cookie";
 import "../estilos/Comparativa.css"
 import "../estilos/Pages.css"
+import SessionContext from "../Context/SessionContext";
 
 const cookie = new Cookies();
 
@@ -16,7 +17,7 @@ function Intentos(){
         console.log(intento)
 
             try {
-                const token = cookie.get('token');          
+                const {token} = useContext(SessionContext);          
                 const url = 'http://api-haed.danielreyesepitacio.cloud/api/users/evaluaciones/respuestas/'  + intento
                 const response = await fetch(url, {
                   method: 'GET',
@@ -147,7 +148,7 @@ function Intentos(){
                         <h5>Retroalimentación más reciente: {!lastRetro ? "" : lastRetro.titulo}</h5>
                     </div>
                     <div className="row">
-                    {!lastRetro ? <><p>Seleccione una fecha</p><br/></> : lastRetro.preguntas.map((num, index) => {                                                                     
+                    {!lastRetro ? <><p>No se encontró ninguna retroalimentación</p><br/></> : lastRetro.preguntas.map((num, index) => {                                                                     
                         return (
                             <>
                                     <li>{num.respuestas[0].feedback}</li>                        

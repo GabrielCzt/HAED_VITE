@@ -59,6 +59,8 @@
 .log .login{
     padding: 50pt;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     padding-top: 100pt;
 
 }
@@ -82,13 +84,17 @@
 }
 
 .log .login #myPassword{
-    width: 80%;
+    width: 83%;
     height: 30pt;
     margin-top: 10pt;
     margin-bottom: 20pt;
     border:none;
     border-bottom: solid 1pt var(--gray-haed);
     display: inline;
+}
+
+.log .login #password{
+    width: 83%;
 }
 
 .log .login #ingresar{

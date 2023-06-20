@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../estilos/Perfil.css";
 import "../estilos/Pages.css";
@@ -6,19 +6,23 @@ import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import SessionContext from "../Context/SessionContext";
 
 const cookie = new Cookies();
 
 
 function Perfil() {
+  
   const navigate = new useNavigate();
   useEffect(() => {
     if(!cookie.get('nombres')){
       navigate('/Iniciar-sesion')
     }
+    
   }, []);
     
-  
+
+
   let nombres = cookie.get('nombres');
   return (
     <>

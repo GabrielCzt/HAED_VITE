@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Cookies from 'universal-cookie';
 import "../estilos/Pages.css"
 import "../estilos/Retroalimentacion.css"
@@ -6,6 +6,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointRight } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate} from "react-router-dom";
+import SessionContext from "../Context/SessionContext";
 
 const cookie = new Cookies();
 
@@ -22,7 +23,7 @@ function Retroalimentacion(){
         }
         const fetchData = async () => {
           try {
-            const token = cookie.get('token');
+            const token = useContext(SessionContext);
             console.log(cookie.get('intento'))
             let intento = parseInt(cookie.get('intento'))
             const url = 'http://api-haed.danielreyesepitacio.cloud/api/users/evaluaciones/respuestas/' + intento

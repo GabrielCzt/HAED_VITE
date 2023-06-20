@@ -59,14 +59,10 @@ function Index(){
     //*Se encarga de los efectos en scroll
     useEffect(()=>{
         AOS.init({duration:2000})
-    },[]);
-    
-    
+    },[]);    
     return(
         <>
-        <div className="idx">
-
-        
+        <div className="idx">        
         {/* Primera parte del index */} 
         <div className="index-dark">
             <div className="container mt-5">

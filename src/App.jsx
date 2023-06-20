@@ -4,7 +4,7 @@ import React from 'react';
 import {HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import { SessionProvider } from './Context/SessionContext';
 
 //IMPORTANCIONES DE LAS PÁGINAS Y COMPONENTES
 
@@ -25,6 +25,7 @@ import Perfil from './pages/Perfil';
 import InfoPerfil from './pages/InfoPerfil';
 import Retroalimentacion from './pages/Retroalimentacion';
 import Intentos from './pages/Comparativa';
+import PerfilAdministrador from './pages/PerfilAdministrador';
 
 //Sirve para que al cargar una página diferente se dirija al usuario a la parte superior
 const ScrollToTop=()=>{
@@ -43,6 +44,7 @@ function App() {
        */}
       <Router>
         <ScrollToTop/>
+        <SessionProvider>
         <Header />
         <Navv/>
         <Routes>
@@ -60,8 +62,10 @@ function App() {
             <Route path="/Informacion-Perfil" Component={InfoPerfil}/>
             <Route path="/Retroalimentacion" Component={Retroalimentacion}/>
             <Route path="/Comparativa-de-retroalimentaciones" Component={Intentos}/>
+            <Route path="/Opciones-administrador" Component={PerfilAdministrador}/>
         </Routes>
         <Footer/>
+        </SessionProvider>        
       </Router>
       
     </>

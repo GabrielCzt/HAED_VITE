@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "../estilos/Autoevaluacion.css";
 import "../estilos/Pages.css";
 import Cookies from 'universal-cookie';
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { faArrowRight, faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SessionContext from "../Context/SessionContext";
 
 
 
@@ -49,9 +50,10 @@ function Cuestionario(){
                 }),
             };                
             console.log(params)
+            const {token} = useContext(SessionContext)
             const headers = {
             headers: {
-              'Authorization': `Bearer ${cookie.get('token')}`,
+              'Authorization': `Bearer ${token}`,
               'Content-Type': 'application/json'
             }
           };
