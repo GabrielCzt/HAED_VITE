@@ -5,8 +5,7 @@ const SessionContext = createContext();
 import { useNavigate } from "react-router-dom";
 
 const SessionProvider= ({children})=>{
-    const [administrador,setAdministrador]=useState(0)
-    const [token,setToken] = useState("soy un token")
+
     const navigate = new useNavigate()
     const cookie = new Cookies();
     const [loading, setLoading] = useState('')
@@ -48,11 +47,13 @@ const SessionProvider= ({children})=>{
                     let respuesta = response.data;
                     console.log(respuesta)
                     cookie.set('token', response.token, {path:"/"})
-                    if(token=="")setToken(response.token)
                     setTimeout(() => {
-                        if(respuesta.rol_id!==3){navigate("/Perfil")}
+                        if(respuesta.rol_id!==3){
+                            navigate("/Perfil")
+                        }
                         else{navigate("/Opciones-administrador")}
-                         setLoading(false)                        
+                         setLoading(false) 
+                         setError("")                          
                         }, 2000)
                 }
                 else {
@@ -62,9 +63,13 @@ const SessionProvider= ({children})=>{
 
             .catch(error => {
 
-                if (error.response && error.response.status === 404) {
+                if (error.response.status === 404) {
                     console.log(error);
-                    setError("Nombre o usuario incorrectos 😢");
+                    setError("Usuario o contraseña incorrectos 😢");
+                }
+                else if (error.response.status === 406) {
+                    console.log(error);
+                    setError("Usuario o contraseña incorrectos 😢");
                 }
                 else {
                     console.log(error)
@@ -73,7 +78,11 @@ const SessionProvider= ({children})=>{
 
             })
     }
+
+
     // Código para el registro
+
+
     const [_nombres, set_Nombres] = useState("");
     const [_apellidos, set_Apellidos] = useState("");
     const [_matricula, set_Matricula] = useState("");
@@ -140,11 +149,13 @@ const SessionProvider= ({children})=>{
                                         let respuesta = response.data;
                                         console.log(respuesta)
                                         cookie.set('token', response.token, {path:"/"})
-                                        if(token=="")setToken(response.token)
                                         setTimeout(() => {
-                                            if(respuesta.rol_id!==3){navigate("/Perfil")}
+                                            if(respuesta.rol_id!==3){
+                                                navigate("/Perfil")
+                                            }
                                             else{navigate("/Opciones-administrador")}
-                                             setLoading(false)                        
+                                             setLoading(false)
+                                             setError("")                        
                                             }, 2000)
                                     })
 

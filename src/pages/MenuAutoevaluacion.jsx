@@ -32,7 +32,7 @@ function Menu(){
         document.getElementById('visible').style.display="unset";
         document.getElementById('redirect').style.visibility="hidden";
         document.getElementById('redirect').style.display="none";
-        if(!cookie.get('nombres')){
+        if(!cookie.get('token')){
             document.getElementById('visible').style.visibility="hidden";
             document.getElementById('visible').style.display="none";
             document.getElementById('redirect').style.visibility="visible";
@@ -41,10 +41,7 @@ function Menu(){
     },[]);
     const navigate = new useNavigate();
     
-    const seleccion = () =>{        
-        cookie.set('cuest', _cuest, {path:"/"})
-        navigate("/Autoevaluacion");
-    }
+
     const reload =()=>{
         window.location.reload();
     }

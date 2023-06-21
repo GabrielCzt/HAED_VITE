@@ -4,12 +4,15 @@ import "../estilos/Comparativa.css"
 import "../estilos/Pages.css"
 import SessionContext from "../Context/SessionContext";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 const cookie = new Cookies();
 
 
 
+
 function Intentos(){
-  
+  const navigate = new useNavigate();
+  if(!cookie.get('token')) navigate("./Iniciar-sesion")
     // funcion para obtener las retroalimentaciones seleccionadas
     const fetchRetro = async () => {
         let select = document.getElementById('leftRetro')
@@ -101,6 +104,7 @@ function Intentos(){
             }
           };
           fetchData();
+    
       },[])
 
     return(
@@ -112,63 +116,58 @@ function Intentos(){
             </div>
             </div>
             <div className="compara">
-            <div className="container">
-            <h1 className="display-6">Seleccione una fecha para ver sus retroalimentaciones</h1>
-            <div className="row">
-                {/* Primera columna */}
-                <div className="col" id="leftColumn">
+              <div className="container">
+                <h1 className="display-6">Seleccione una fecha para ver sus retroalimentaciones</h1><br/>
+                <div className="row">
+                    {/* Primera columna */}
+                  <div className="col-sm-12 col-md-6" id="leftColumn">
                     <div className="row selection">
-                    <select name="fecha" id="leftRetro" onChange={fetchRetro}>
-                        <option value="">Seleccione una fecha</option>
-                          {!data ? (
-                            <p>Algo salió mal</p>
-                          ) : (
-                            data.slice(0, -1).map((num, index) => {
-                              const fecha = num.fecha;
-                              const fechaFormateada = moment(fecha).format('DD-MM-YYYY');
-                              return (
-                                <>
-                                  <option value={num.id}>{fechaFormateada}</option>
-                                </>
-                              );
-                            })
-                          )}
-                      </select>
+                      <select name="fecha" id="leftRetro" onChange={fetchRetro}>
+                          <option value="">Seleccione una fecha</option>
+                            {!data ? (
+                              <p>Algo salió mal</p>
+                            ) : (
+                              data.slice(0, -1).map((num, index) => {
+                                const fecha = num.fecha;
+                                const fechaFormateada = moment(fecha).format('DD-MM-YYYY');
+                                return (
+                                  <>
+                                    <option value={num.id}>{fechaFormateada}</option>
+                                  </>
+                                );
+                              })
+                            )}
+                        </select>
+                      </div>
+                      <div className="row">
+                        <h5>{!retro?"" : retro.titulo}</h5>
+                      {!retro ? <><p>Seleccione una fecha de la lista desplegable</p><br/></> : retro.preguntas.map((num, index) => {                                                                                            
+                          return (
+                              <>
+                                  <li>{num.respuestas[0].feedback}</li>                        
+                              </>
+                          );
+                        })}
+                      </div>
                     </div>
-                    <div className="row">
-                      <h5>{!retro?"" : retro.titulo}</h5>
-                    {!retro ? <><p>Seleccione una fecha de la lista desplegable</p><br/></> : retro.preguntas.map((num, index) => {    
-                                                                                       
-                        return (
-                            <>
-                                <li>{num.respuestas[0].feedback}</li>                        
-                            </>
-                        );
-                })}
-                    </div>
+                  {/* segunda columna, intentar mostrar la ultima respuesta */}
+                  <div className="col-sm-12 col-md-6" id="rightColumn">
+                      <div className="row selection">                               
+                          <h5>Retroalimentación más reciente: {!lastRetro ? "" : lastRetro.titulo}</h5>
+                      </div>
+                      <div className="row">
+                      {!lastRetro ? <><p>No se encontró ninguna retroalimentación</p><br/></> : lastRetro.preguntas.map((num, index) => {                                                                     
+                          return (
+                              <>
+                                      <li>{num.respuestas[0].feedback}</li>                        
+                              </>
+                          );
+                  })}
+                      </div>
                 </div>
-                {/* segunda columna, intentar mostrar la ultima respuesta */}
-                <div className="col" id="rightColumn">
-                    <div className="row selection">                               
-                        <h5>Retroalimentación más reciente: {!lastRetro ? "" : lastRetro.titulo}</h5>
-                    </div>
-                    <div className="row">
-                    {!lastRetro ? <><p>No se encontró ninguna retroalimentación</p><br/></> : lastRetro.preguntas.map((num, index) => {                                                                     
-                        return (
-                            <>
-                                    <li>{num.respuestas[0].feedback}</li>                        
-                            </>
-                        );
-                })}
-                    </div>
-                </div>
             </div>
             </div>
             </div>
-           
-
-            
-            
         </>
     )
 }
