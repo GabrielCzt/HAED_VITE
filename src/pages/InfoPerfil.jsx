@@ -8,29 +8,46 @@ import '../estilos/InfoPerfil.css'
 
 const cookie = new Cookies();
 
-function InfoPerfil() {
+function InfoPerfil() { 
     const navigate = useNavigate();
+    const [info, setInfo] = useState([])
+  const fetchData = async () => {
+    try {
+      const token = cookie.get('token')
+      const url = 'http://api-haed.danielreyesepitacio.cloud/api/users/info'
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        const jsonData = await response.json();
+        console.log(jsonData)
+        setInfo(jsonData)
+
+
+      } else {
+        console.error('Error en la solicitud:', response.status);
+      }
+    } catch (error) {
+      console.error('Error en la solicitud:', error);
+    }
+  };
 
     {/*//Estado para mostrar contraseña*/ }
     const [ojos, setOjos] = useState(faEye)
 
-    const data = {
-        nombre: cookie.get('nombres'),
-        apellido: cookie.get('apellidos'),
-        correo: cookie.get('email'),
-        mat: cookie.get('matricula')
-    }
 
-    const nombre = data.nombre.toUpperCase()
-    const apellidos = data.apellido.toUpperCase()
-    const matricula = data.mat
-    const email = data.correo
+
 
 
     useEffect(() => {
-        if (!nombre || !apellidos || !matricula || !email) {
-            navigate('/Iniciar-sesion')
-
+        fetchData();
+        if(!cookie.get('token')){
+            navigate('./Iniciar-sesion')
         }
     }, [])
 
@@ -87,7 +104,7 @@ function InfoPerfil() {
                                                 <i class="fa fa-envelope"></i>
                                             </div>
                                             <div class="list-details">
-                                                <span>{nombre} {apellidos} </span>
+                                                <span>{info.nombres}{info.apellidos} </span>
                                                 <small>Nombre</small>
                                             </div>
                                         </li>
@@ -97,7 +114,7 @@ function InfoPerfil() {
                                                 <i class="fa fa-globe"></i>
                                             </div>
                                             <div class="list-details">
-                                                <span>{matricula}</span>
+                                                <span>{info.matricula}</span>
                                                 <small>Matricula</small>
                                             </div>
                                         </li>
@@ -129,21 +146,21 @@ function InfoPerfil() {
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label">Nombre(s)</label>
                                                 <div class="col-lg-9">
-                                                    <input class="form-control" type="text" onChange={''} defaultValue={data.nombre} />
+                                                    <input class="form-control" type="text" onChange={''} defaultValue={info.nombres} />
                                                 </div>
                                             </div>
                                              {/* Separador de input  */ }
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label">Apellido(s)</label>
                                                 <div class="col-lg-9">
-                                                    <input class="form-control" type="text" onChange={''} defaultValue={data.apellido} />
+                                                    <input class="form-control" type="text" onChange={''} defaultValue={info.apellidos} />
                                                 </div>
                                             </div>
                                              {/* Separador de input  */ }
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label">Correo Electronico</label>
                                                 <div class="col-lg-9">
-                                                    <input class="form-control" type="email" onChange={''} defaultValue={data.correo} />
+                                                    <input class="form-control" type="email" onChange={''} defaultValue={info.email} />
                                                 </div>
                                             </div>
                                              {/* Separador de input  */ }

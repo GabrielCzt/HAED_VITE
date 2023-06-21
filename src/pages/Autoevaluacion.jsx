@@ -27,7 +27,7 @@ function Cuestionario(){
         setCuest(apiResponse);
     }
     useEffect(()=>{
-        if(!cookie.get('nombres')){
+        if(!cookie.get('token')){
             navigate('/Seleccionar-cuestionario')
           }
         fetchApi();
@@ -48,9 +48,10 @@ function Cuestionario(){
                 respuestas: retroalimentacion.map((num) => {
                   return num;
                 }),
-            };                
+            };          
+
             console.log(params)
-            const {token} = useContext(SessionContext)
+           const token = cookie.get('token')
             const headers = {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -61,6 +62,7 @@ function Cuestionario(){
             axios.post('http://api-haed.danielreyesepitacio.cloud/api/respuestas/all', params, headers)
             .then(response =>{  
                console.log(response.data) 
+               console.log(response.data[0].intento_id)
                cookie.set('intento', response.data[0].intento_id,{path:"/"})
     
             })

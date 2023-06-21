@@ -19,10 +19,35 @@ function Header() {
   const [route1, setRoute1] = useState('');
   const [op2,setOp2] = useState('');
 const [matricula,setMatricula] = useState("");
-  
+const [info, setInfo] = useState([])
+const fetchData = async () => {
+  try {
+    const token = cookie.get('token')
+    const url = 'http://api-haed.danielreyesepitacio.cloud/api/users/info'
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      const jsonData = await response.json();
+      console.log(jsonData)
+      setMatricula(jsonData.nombres)
+
+
+    } else {
+      console.error('Error en la solicitud:', response.status);
+    }
+  } catch (error) {
+    console.error('Error en la solicitud:', error);
+  }
+};
   const EstableceOp = () =>{
-    if(cookie.get('nombres')){
-      setMatricula(cookie.get('nombres'))
+    if(cookie.get('token')){
+      fetchData();
       setOp1('Perfil')
       setOp2('Cerrar Sesión')
       setRoute1('/Perfil')
@@ -51,20 +76,10 @@ const [matricula,setMatricula] = useState("");
     }
     else{
     setMatricula("")
-     cookie.remove('administrador', {path:"/"})
-     cookie.remove('apellidos',  {path:"/"})
-     cookie.remove('centro_trabajo',  {path:"/"})
-     cookie.remove('id',  {path:"/"})
-     cookie.remove('email', {path:"/"})                    
-     cookie.remove('matricula', {path:"/"})
-     cookie.remove('nombres', {path:"/"})
      cookie.remove('retroalimentacion', {path:"/"})
      cookie.remove('cuest', {path:"/"})
      cookie.remove('token',{path:"/"})
      cookie.remove('intento',{path:"/"})
-
-
-
      navigate("/Iniciar-sesion");
     }
     setOp1('Iniciar Sesión')

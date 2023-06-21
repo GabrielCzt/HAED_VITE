@@ -3,13 +3,13 @@ import Cookies from "universal-cookie";
 import "../estilos/Comparativa.css"
 import "../estilos/Pages.css"
 import SessionContext from "../Context/SessionContext";
-
+import moment from "moment";
 const cookie = new Cookies();
 
 
 
 function Intentos(){
-    
+  
     // funcion para obtener las retroalimentaciones seleccionadas
     const fetchRetro = async () => {
         let select = document.getElementById('leftRetro')
@@ -17,8 +17,9 @@ function Intentos(){
         console.log(intento)
 
             try {
-                const {token} = useContext(SessionContext);          
+                
                 const url = 'http://api-haed.danielreyesepitacio.cloud/api/users/evaluaciones/respuestas/'  + intento
+                const  token = cookie.get('token')
                 const response = await fetch(url, {
                   method: 'GET',
                   headers: {
@@ -48,16 +49,17 @@ function Intentos(){
     const [data, setData]=useState(null);
       const [lastRetro, setLastRetro] = useState(null);
 
+      
     
       useEffect(()=>{
-        console.log("hola")
+
 
         // Obteniendo el listado de resultados y fechas
         const fetchData = async () => {
             try {
-              const token = cookie.get('token');
-              console.log(token)
+
               const url = "http://api-haed.danielreyesepitacio.cloud/api/users/intentos"
+              const token = cookie.get('token')
               const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -122,9 +124,11 @@ function Intentos(){
                             <p>Algo salió mal</p>
                           ) : (
                             data.slice(0, -1).map((num, index) => {
+                              const fecha = num.fecha;
+                              const fechaFormateada = moment(fecha).format('DD-MM-YYYY');
                               return (
                                 <>
-                                  <option value={num.id}>{num.fecha}</option>
+                                  <option value={num.id}>{fechaFormateada}</option>
                                 </>
                               );
                             })
@@ -133,7 +137,8 @@ function Intentos(){
                     </div>
                     <div className="row">
                       <h5>{!retro?"" : retro.titulo}</h5>
-                    {!retro ? <><p>Seleccione una fecha de la lista desplegable</p><br/></> : retro.preguntas.map((num, index) => {                                                                     
+                    {!retro ? <><p>Seleccione una fecha de la lista desplegable</p><br/></> : retro.preguntas.map((num, index) => {    
+                                                                                       
                         return (
                             <>
                                 <li>{num.respuestas[0].feedback}</li>                        

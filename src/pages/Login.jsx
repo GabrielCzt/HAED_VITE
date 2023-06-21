@@ -30,7 +30,7 @@ function Login() {
     }, [])
 
     useEffect(() => {
-        if (cookie.get('nombres')) {
+        if (cookie.get('token')) {
             navigate('/Perfil')
         }
         document.getElementById("myPassword").value=""

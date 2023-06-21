@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const SessionProvider= ({children})=>{
     const [administrador,setAdministrador]=useState(0)
-    const [token,setToken] = useState("")
+    const [token,setToken] = useState("soy un token")
     const navigate = new useNavigate()
     const cookie = new Cookies();
     const [loading, setLoading] = useState('')
@@ -47,18 +47,8 @@ const SessionProvider= ({children})=>{
                 if (response) {
                     let respuesta = response.data;
                     console.log(respuesta)
-                    // Se eliminó el ROL ID de las cookies para seguridad del startTransition, al igual que 
-                    // el token, sin embargo, se deja como comentario en caso de ser necesario utilizarlo en el futuro
-                    // cookie.set('administrador', respuesta.rol_id, { path: "/" })
-                    setAdministrador(respuesta.rol_id)
-                    cookie.set('apellidos', respuesta.apellidos, { path: "/" })
-                    cookie.set('centro_trabajo', respuesta.centro_trabajo, { path: "/" })
-                    cookie.set('id', respuesta.id, { path: "/" })
-                    cookie.set('email', respuesta.email, { path: "/" })
-                    cookie.set('matricula', respuesta.matricula, { path: "/" })
-                    cookie.set('nombres', respuesta.nombres, { path: "/" })
-                    // cookie.set('token', response.token, {path:"/"})
-                    setToken(response.token)
+                    cookie.set('token', response.token, {path:"/"})
+                    if(token=="")setToken(response.token)
                     setTimeout(() => {
                         if(respuesta.rol_id!==3){navigate("/Perfil")}
                         else{navigate("/Opciones-administrador")}
@@ -201,12 +191,10 @@ const SessionProvider= ({children})=>{
     }
 
     const userData={_email,_password,handleChangeEmail,handleChangePassword,handleSubmit,
-        _error,loading,administrador,token,handleSign,changeNombres, changeApellidos,
+        _error,loading,handleSign,changeNombres, changeApellidos,
         changeEmail,changeMatricula,changePassword,changeConfirmation,
     _nombres, _apellidos,_matricula,_confirmation}
     return <SessionContext.Provider value={userData}>{children}</SessionContext.Provider>
-
-
 }
 
 export {SessionProvider}
