@@ -151,32 +151,37 @@ const SessionProvider= ({children})=>{
                             })
                             .catch(error => {
                                 if (error.response && error.response.status === 422) {
+                                    setLoading(false)   
                                     console.log(error);
                                     setError("Ese usuario ya fue registrado");
                                 }
                                 else {
+                                    setLoading(false)   
                                     console.log(error)
                                     setError("Algo salió mal, vuelva a intentarlo");
                                 }
                             })
                     }
                     else {
+                        setLoading(false)   
                         setError("Las contraseñas no coinciden")
                         document.getElementById("confirmation").focus()
                     }
                 }
                 else {
+                    setLoading(false)   
                     setError("Ingrese una matricula valida")
                     document.getElementById("matricula").focus()
                 }
             }
             else {
+                setLoading(false)   
                 setError("Los apellidos no pueden tener números ni caracteres especiales")
                 document.getElementById('apellidos').focus()
             }
         }
         else {
-
+            setLoading(false)   
             setError("EL nombre no puede tener números ni caracteres especiales")
             document.getElementById('nombres').focus()
         }
