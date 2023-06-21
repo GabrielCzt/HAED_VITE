@@ -139,19 +139,11 @@ const SessionProvider= ({children})=>{
                                     .then(response => {
                                         let respuesta = response.data;
                                         console.log(respuesta)
-                                        setAdministrador(respuesta.rol_id)
-                                        cookie.set('apellidos', respuesta.apellidos, { path: "/" })
-                                        cookie.set('centro_trabajo', respuesta.centro_trabajo, { path: "/" })
-                                        cookie.set('id', respuesta.id, { path: "/" })
-                                        cookie.set('email', respuesta.email, { path: "/" })
-                                        cookie.set('matricula', respuesta.matricula, { path: "/" })
-                                        cookie.set('nombres', respuesta.nombres, { path: "/" })
-                                        // cookie.set('token', response.token, {path:"/"})
-                                        setToken(response.token)
+                                        cookie.set('token', response.token, {path:"/"})
+                                        if(token=="")setToken(response.token)
                                         setTimeout(() => {
                                             if(respuesta.rol_id!==3){navigate("/Perfil")}
                                             else{navigate("/Opciones-administrador")}
-                                            
                                              setLoading(false)                        
                                             }, 2000)
                                     })
