@@ -1,0 +1,56 @@
+@import url("../estilos//Constantes.css");
+
+.infoUsers table th {
+  background-color: var(--haed);
+  color: white;
+  padding-left: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.infoUsers table td {
+  width: auto;
+  padding-left: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-bottom: 1px solid var(--non-black-haed);
+}
+.infoUsers table tr:hover {
+  width: auto;
+  background-color: lightblue;
+}
+.infoUsers table {
+  width: 80%;
+  justify-content: center;
+  align-self: center;
+}
+
+.infoUsers .tableContainer {
+  justify-content: center;
+  display: flex;
+}
+.infoUsers #delete {
+  background-color: red;
+  color: white;
+  border-radius: 5pt;
+  padding: 5pt;
+}
+.infoUsers #delete:hover {
+  cursor: pointer;
+  background-color: darkred;
+  transition: 0.15s;
+  transform: scale(1.2);
+}
+
+.infoUsers #edit {
+  background-color: orange;
+  color: white;
+  border-radius: 5pt;
+  padding: 5pt;
+}
+.infoUsers #edit:hover {
+  cursor: pointer;
+  background-color: darkgoldenrod;
+  transition: 0.15s;
+  transform: scale(1.2);
+}

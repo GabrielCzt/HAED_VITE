@@ -1,44 +1,38 @@
 @import url(./Constantes.css);
 
 /*Estilos generales*/
-._navbar .nav{
-  background-color: var(--white);  
+._navbar .nav {
+  background-color: var(--white);
 }
 
-
-
 /*Imagenes*/
-._navbar .imagen{
+._navbar .imagen {
   max-width: 100px;
 }
 /*Links*/
 
+#links {
+  text-align: left;
+  color: var(--black);
+  font-weight: lighter;
+  font-family: "Montserrat";
+  text-decoration: none;
+  padding: 8pt;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+}
 
-  #links{
-    text-align: left;
-    color:var(--black);
-    font-weight: lighter;
-    font-family: 'Montserrat';
-    text-decoration: none;
-    padding:8pt;
-    padding-top: 4px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-  }
+#collapse {
+  text-align: right;
+  align-items: end;
+}
 
-
-  #collapse{
-    text-align: right;
-    align-items:end;
-  }
-
-    /*Estilos NavLink Acitvo */
-  #links.active{
-     color: var(--non-white-haed);
-     background: var(--haed);
-  }
-  .me-auto.navbar-nav{
-    margin: auto;
-  }
-
-  
+/*Estilos NavLink Acitvo */
+#links.active {
+  color: var(--non-white-haed);
+  background: var(--haed);
+}
+.me-auto.navbar-nav {
+  margin: auto;
+}

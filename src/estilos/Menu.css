@@ -1,78 +1,77 @@
 @import url(./Constantes.css);
 
-
 .menu ._button {
-    background: #fff; 
-    color: var(--titulos); 
-    border-bottom: 2px solid var(--titulos); 
-    padding: 16px 20px;
-    padding-left: 11%;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    display: flex;
-    width: 100%;
-    text-decoration: none;
-    font-size:x-large;
-    font-family: 'Montserrat';
-    justify-content: space-between;
-    margin-bottom: 1%;
-  }
-  .menu ._button:hover {
-    color: #fff; 
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  .menu ._button::after {
-    content: "";
-    background: var(--light-haed);
-    background-image: url("https://i.pinimg.com/originals/f7/bc/10/f7bc1016a0a37843aa8fb14aab5f356f.jpg");
-    background-blend-mode: multiply;
-    position: absolute;
-    z-index: -1;
-    padding: 16px 20px;
-    display: block;
-    top: 0;
-    bottom: 0;    
-    left: -10%;
-    right: 90%;
-    -webkit-transition: all .5s;
-    transition: all .5s;
-    text-decoration: underline;
-  }
-  .menu ._button:hover::after {
-    text-decoration: underline;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    -webkit-transition: all .5s;
-    transition: all .5s;
-    cursor: pointer;
-  }
+  background: #fff;
+  color: var(--titulos);
+  border-bottom: 2px solid var(--titulos);
+  padding: 16px 20px;
+  padding-left: 11%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+  font-size: x-large;
+  font-family: "Montserrat";
+  justify-content: space-between;
+  margin-bottom: 1%;
+}
+.menu ._button:hover {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.menu ._button::after {
+  content: "";
+  background: var(--light-haed);
+  background-image: url("https://i.pinimg.com/originals/f7/bc/10/f7bc1016a0a37843aa8fb14aab5f356f.jpg");
+  background-blend-mode: multiply;
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: -10%;
+  right: 90%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  text-decoration: underline;
+}
+.menu ._button:hover::after {
+  text-decoration: underline;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+}
 
-  .menu #pen{
-    color:white;
-    align-items: right;
-  }
+.menu #pen {
+  color: white;
+  align-items: right;
+}
 
-  #toLogIn{
-    padding:10pt;
-    margin-top:50pt;
-    margin-left: 0;
-    padding-left: 15pt;
-    padding-right: 15pt;
-    background-color: var(--light-haed);
-    color:var(--white);
-    border: none;
-    font-weight:bolder;
-    font-family: 'Montserrat';
-    height:max-content;
-    border-radius: 5pt;
-    margin-bottom: 5%;
-  }
+#toLogIn {
+  padding: 10pt;
+  margin-top: 50pt;
+  margin-left: 0;
+  padding-left: 15pt;
+  padding-right: 15pt;
+  background-color: var(--light-haed);
+  color: var(--white);
+  border: none;
+  font-weight: bolder;
+  font-family: "Montserrat";
+  height: max-content;
+  border-radius: 5pt;
+  margin-bottom: 5%;
+}
 
-  #toLogIn:hover{
-    background-color:var(--titulos);
-    color:var(--white);
-  }
+#toLogIn:hover {
+  background-color: var(--titulos);
+  color: var(--white);
+}

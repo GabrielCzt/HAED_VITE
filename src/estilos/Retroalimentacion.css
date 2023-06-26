@@ -1,40 +1,40 @@
 @import url("../estilos//Constantes.css");
 
-.retrA li{
-    list-style: none;
-    border-radius: 5pt;
-    margin: 2%;
-    border-bottom: solid 2px var(--light-b-haed);
-    padding: 1%;
-    font-family: 'Montserrat';
-    text-align: justify;
+.retrA li {
+  list-style: none;
+  border-radius: 5pt;
+  margin: 2%;
+  border-bottom: solid 2px var(--light-b-haed);
+  padding: 1%;
+  font-family: "Montserrat";
+  text-align: justify;
 }
 
-.retrA .hand{
-    display: flex;
-    justify-content:end;
-    align-items: center;
-    font-size: xx-large;
-    color: var(--haed);
+.retrA .hand {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-size: xx-large;
+  color: var(--haed);
 }
 
-.retrA #end{
-    padding:10pt;
-    margin-top:50pt;
-    margin-right: 1%;
-    padding-left: 15pt;
-    padding-right: 15pt;
-    background-color: var(--light-haed);
-    color:var(--white);
-    border: none;
-    font-weight:bolder;
-    font-family: 'Montserrat';
-    height:max-content;
-    border-radius: 5pt;
-    margin-bottom: 5%;
+.retrA #end {
+  padding: 10pt;
+  margin-top: 50pt;
+  margin-right: 1%;
+  padding-left: 15pt;
+  padding-right: 15pt;
+  background-color: var(--light-haed);
+  color: var(--white);
+  border: none;
+  font-weight: bolder;
+  font-family: "Montserrat";
+  height: max-content;
+  border-radius: 5pt;
+  margin-bottom: 5%;
 }
 
-.retrA #end:hover{
-    background-color:var(--titulos);
-    color:var(--white);
+.retrA #end:hover {
+  background-color: var(--titulos);
+  color: var(--white);
 }

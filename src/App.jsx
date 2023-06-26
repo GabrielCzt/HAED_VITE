@@ -26,6 +26,9 @@ import InfoPerfil from './pages/InfoPerfil';
 import Retroalimentacion from './pages/Retroalimentacion';
 import Intentos from './pages/Comparativa';
 import PerfilAdministrador from './pages/PerfilAdministrador';
+import Usuarios from './pages/Usuarios';
+import ActualizarUsuario from './pages/ActualizarUsuario';
+
 
 //Sirve para que al cargar una página diferente se dirija al usuario a la parte superior
 const ScrollToTop=()=>{
@@ -63,6 +66,8 @@ function App() {
             <Route path="/Retroalimentacion" Component={Retroalimentacion}/>
             <Route path="/Comparativa-de-retroalimentaciones" Component={Intentos}/>
             <Route path="/Opciones-administrador" Component={PerfilAdministrador}/>
+            <Route path='/Informacion-de-usuarios' Component={Usuarios}/>
+            <Route path='/Actualizar-usuario/:id' Component={ActualizarUsuario}/>
         </Routes>
         <Footer/>
         </SessionProvider>        

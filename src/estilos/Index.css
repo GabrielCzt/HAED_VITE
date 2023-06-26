@@ -2,204 +2,195 @@
 @import url(./Constantes.css);
 
 /*Estilos generales*/
-.idx body{
-    background-color: var(--white);
+.idx body {
+  background-color: var(--white);
 }
-.idx  div.row{
-    margin-right: 0;
+.idx div.row {
+  margin-right: 0;
 }
- 
-.idx  div.container-fluid{
-    padding-right: 0px;
+
+.idx div.container-fluid {
+  padding-right: 0px;
 }
 /**Primera sección Index*/
-.idx  #hero{
-    max-width: 100%;
+.idx #hero {
+  max-width: 100%;
 }
-.idx  #img2p{
-    margin-bottom: 20pt;
+.idx #img2p {
+  margin-bottom: 20pt;
 }
-.idx  h1{
-    font-family: 'Montserrat';
-    color:var(--titulos);
-    font-weight:600;
-    font-size: 30pt;
-    
+.idx h1 {
+  font-family: "Montserrat";
+  color: var(--titulos);
+  font-weight: 600;
+  font-size: 30pt;
 }
-.idx #i_contestar{
-    padding:10pt;
-    margin-top:50pt;
-    margin-left: 0;
-    padding-left: 15pt;
-    padding-right: 15pt;
-    background-color: var(--light-haed);
-    color:var(--white);
-    border: none;
-    font-weight:bolder;
-    font-family: 'Montserrat';
-    height:max-content;
-    border-radius: 5pt;
+.idx #i_contestar {
+  padding: 10pt;
+  margin-top: 50pt;
+  margin-left: 0;
+  padding-left: 15pt;
+  padding-right: 15pt;
+  background-color: var(--light-haed);
+  color: var(--white);
+  border: none;
+  font-weight: bolder;
+  font-family: "Montserrat";
+  height: max-content;
+  border-radius: 5pt;
 }
-.idx #i_contestar:hover{
-    background-color:var(--titulos);
-    color:var(--white);
+.idx #i_contestar:hover {
+  background-color: var(--titulos);
+  color: var(--white);
 }
 
 /**TARJETA DE DEFINICION HAED*/
 
-.idx #definicion{
-    background-color:var(--non-white-haed);
-    padding: 40pt;
-    margin-bottom: 40pt;
+.idx #definicion {
+  background-color: var(--non-white-haed);
+  padding: 40pt;
+  margin-bottom: 40pt;
 }
-.idx .info p{
-    color:var(--black);
-    font-family: 'Montserrat';
-    font-weight: lighter;
+.idx .info p {
+  color: var(--black);
+  font-family: "Montserrat";
+  font-weight: lighter;
 }
-.idx h2{
-    font-weight: lighter;
-    font-family: 'Montserrat';
-    color:var(--light-b-haed);
+.idx h2 {
+  font-weight: lighter;
+  font-family: "Montserrat";
+  color: var(--light-b-haed);
 }
-.idx ol{
-    list-style: none;
+.idx ol {
+  list-style: none;
 }
-.idx li{
-    font-weight: bold;
-    padding-top: 5pt;
-    font-family: 'Montserrat';
-    color: var(--black);
-    
+.idx li {
+  font-weight: bold;
+  padding-top: 5pt;
+  font-family: "Montserrat";
+  color: var(--black);
 }
-.idx #cicleCheck{
-    color:green;
-    margin-right: 10pt;
+.idx #cicleCheck {
+  color: green;
+  margin-right: 10pt;
 }
 
 /* *CUERPOS ACADÉMICOS*/
 
-.idx .cuerpos h1{
-    font-size: 25pt;
-    font-weight: 400;
-    font-family: 'Montserrat';
+.idx .cuerpos h1 {
+  font-size: 25pt;
+  font-weight: 400;
+  font-family: "Montserrat";
 }
-.idx .cuerpos h2{
-    color:var(--titulos);
-    font-size:x-large;
-   font-weight: 600;   
-   font-family: "Montserrat", sans-serif;
+.idx .cuerpos h2 {
+  color: var(--titulos);
+  font-size: x-large;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
 }
-.idx .cuerpos h3{
-    color: var(--light-b-haed);
-    font-family: "Montserrat", sans-serif;
-    font-size: larger;
+.idx .cuerpos h3 {
+  color: var(--light-b-haed);
+  font-family: "Montserrat", sans-serif;
+  font-size: larger;
 }
-.idx .cuerpos p{
-    color:var(--black);
-    font-family: 'Montserrat';
-    font-weight: lighter;
+.idx .cuerpos p {
+  color: var(--black);
+  font-family: "Montserrat";
+  font-weight: lighter;
 }
 .idx .cuerpos #fichaTic {
-    margin-bottom: 20pt;
+  margin-bottom: 20pt;
 }
 
-.idx .cuerpos #fichaTic:hover{
-    cursor: pointer;
-    border-left: 5pt var(--gray-haed) solid;
-    
+.idx .cuerpos #fichaTic:hover {
+  cursor: pointer;
+  border-left: 5pt var(--gray-haed) solid;
 }
 .idx .cuerpos #fichaTicA {
-    margin-bottom: 20pt;
-    border-left: 5pt #808080 solid;
+  margin-bottom: 20pt;
+  border-left: 5pt #808080 solid;
 }
-.idx .cuerpos #fichaTicA h2{
-    color: var(--light-haed);
+.idx .cuerpos #fichaTicA h2 {
+  color: var(--light-haed);
 }
-.idx .cuerpos #fichaTicA:hover{
-    cursor: pointer;
+.idx .cuerpos #fichaTicA:hover {
+  cursor: pointer;
 }
 .idx .cuerpos #fichaCalidad {
-    margin-bottom: 20pt;
+  margin-bottom: 20pt;
 }
 
-.idx .cuerpos #fichaCalidad:hover{
-    cursor: pointer;
-    border-left: 5pt var(--gray-haed) solid;
-    
+.idx .cuerpos #fichaCalidad:hover {
+  cursor: pointer;
+  border-left: 5pt var(--gray-haed) solid;
 }
 .idx .cuerpos #fichaCalidadA {
-    margin-bottom: 20pt;
-    border-left: 5pt var(--gray-haed) solid;
+  margin-bottom: 20pt;
+  border-left: 5pt var(--gray-haed) solid;
 }
-.idx .cuerpos #fichaCalidadA h2{
-    color: var(--light-haed);
+.idx .cuerpos #fichaCalidadA h2 {
+  color: var(--light-haed);
 }
-.idx .cuerpos #fichaCalidadA:hover{
-    cursor: pointer;
+.idx .cuerpos #fichaCalidadA:hover {
+  cursor: pointer;
 }
 
-
-
-.idx #contenedorImagen{
-    visibility: visible;
-    display: block;
+.idx #contenedorImagen {
+  visibility: visible;
+  display: block;
 }
-.idx #contenedorTIC{
-    visibility: hidden;
-    display: none;
-    color: var(--black);
+.idx #contenedorTIC {
+  visibility: hidden;
+  display: none;
+  color: var(--black);
 }
-.idx #contenedorCalidad{
-    visibility: hidden;
-    display: none;
-    color: var(--black);
+.idx #contenedorCalidad {
+  visibility: hidden;
+  display: none;
+  color: var(--black);
 }
 /**Tarjetas*/
-.idx #tarjeta{
-    padding: 17pt;
-    margin-right: 5pt;
-    box-shadow: 7px 7px 12px 0 rgba(20, 20, 20, 0.3);
-    margin-bottom: 30pt;
-    margin-top: 30pt;    
-    height: 80%;
-    background-color: var(--white);
-    color: var(--black);
-
+.idx #tarjeta {
+  padding: 17pt;
+  margin-right: 5pt;
+  box-shadow: 7px 7px 12px 0 rgba(20, 20, 20, 0.3);
+  margin-bottom: 30pt;
+  margin-top: 30pt;
+  height: 80%;
+  background-color: var(--white);
+  color: var(--black);
 }
 
-
-
-.idx #tarjeta p{
-    color:var(--black);
-    font-weight: lighter;
+.idx #tarjeta p {
+  color: var(--black);
+  font-weight: lighter;
 }
-.idx #iconCard{
-    color: var(--light-b-haed);
-    font-size: 30pt;
+.idx #iconCard {
+  color: var(--light-b-haed);
+  font-size: 30pt;
 }
-.idx .cards h1{
-    color: var(--black);
-    font-size: 22pt;
-    font-weight: 400;
-    font-family: 'Montserrat';
+.idx .cards h1 {
+  color: var(--black);
+  font-size: 22pt;
+  font-weight: 400;
+  font-family: "Montserrat";
 }
-.idx .cards p{
-    color:var(--black);
-    font-family: 'Montserrat';
-    font-weight: lighter;
+.idx .cards p {
+  color: var(--black);
+  font-family: "Montserrat";
+  font-weight: lighter;
 }
 
 /**Portafolio de imagenes HAED*/
-.idx .portafolio{
-    margin-top: 20pt;
-    margin-bottom: 20pt;
+.idx .portafolio {
+  margin-top: 20pt;
+  margin-bottom: 20pt;
 }
-.idx .portafolio h1{
-    font-size: 25pt;
-    font-weight: 400;
-    font-family: 'Montserrat';
+.idx .portafolio h1 {
+  font-size: 25pt;
+  font-weight: 400;
+  font-family: "Montserrat";
 }
-.idx .portafolio img{
-    margin-bottom: 10pt;
+.idx .portafolio img {
+  margin-bottom: 10pt;
 }

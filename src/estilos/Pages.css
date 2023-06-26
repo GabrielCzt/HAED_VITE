@@ -1,30 +1,32 @@
 @import url(./Constantes.css);
 
-.barContains{
-    width: 100%;
-    align-items: center;
-    text-align: center;
-    display: flex;
+.barContains {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  display: flex;
   justify-content: center;
 }
 
-.bar{
-    padding:1rem;    
-    margin-top: 2%;
-    background-color: white;
-    color:var(--haed);
-    padding-left: 3%;
-    padding-right: 3%;
-    margin-bottom: 5%;
-    background: radial-gradient(at 50% 100%, var(--haed) 5%, rgba(170, 255, 222, 0.445)35%, white 50%);
-    border-radius: 30pt;
-    width: fit-content;
-    
-
+.bar {
+  padding: 1rem;
+  margin-top: 2%;
+  background-color: white;
+  color: var(--haed);
+  padding-left: 3%;
+  padding-right: 3%;
+  margin-bottom: 5%;
+  background: radial-gradient(
+    at 50% 100%,
+    var(--haed) 5%,
+    rgba(170, 255, 222, 0.445) 35%,
+    white 50%
+  );
+  border-radius: 30pt;
+  width: fit-content;
 }
 .bar .display-4 {
-    font-family: 'Montserrat';
-    
+  font-family: "Montserrat";
 }
 /*
 ._bar{

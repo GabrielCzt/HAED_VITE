@@ -2,92 +2,83 @@
 
 /*Estilos generales*/
 
-.foot div.row{
-    margin-right: 0px;
+.foot div.row {
+  margin-right: 0px;
 }
 
-
-
-.foot div.container-fluid{
-    padding-right: 0px;
+.foot div.container-fluid {
+  padding-right: 0px;
 }
 
-.foot footer{
-    background-color: var(--haed);
-    padding: 10pt;
+.foot footer {
+  background-color: var(--haed);
+  padding: 10pt;
 }
 
-.foot p{
-    font-family:'Montserrat', sans-serif;
-    color:var(--const-white);
-    line-height: 21pt;
-    font-weight:400;
-    
+.foot p {
+  font-family: "Montserrat", sans-serif;
+  color: var(--const-white);
+  line-height: 21pt;
+  font-weight: 400;
 }
-.foot a{
-    font-family:"Montserrat", sans-serif;
-    text-decoration: none;
-    color: var(--white);
+.foot a {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: var(--white);
+}
+.foot a:hover {
+  text-decoration: underline;
+  color: var(--white);
+}
+.foot h4 {
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  text-transform: uppercase;
 
-}
-.foot a:hover{
-    text-decoration:underline;
-    color:var(--white);
-}
-.foot h4{
-    font-family:"Montserrat", sans-serif;
-    color:#ffffff;
-    text-transform: uppercase;
-    
-    font-size: large;
-    padding-bottom: 10pt;
-    font-weight:bold;
-
+  font-size: large;
+  padding-bottom: 10pt;
+  font-weight: bold;
 }
 
 /*Apartado de links columna central izquierda*/
 /*Apartado de links columna central derecha*/
-.foot ul{
-    font-family:"Montserrat", sans-serif;
-    list-style-type: none;
-    padding-left: 0;
-    line-height: 30pt;
+.foot ul {
+  font-family: "Montserrat", sans-serif;
+  list-style-type: none;
+  padding-left: 0;
+  line-height: 30pt;
 }
 
 /*Contacto*/
-.foot #correos{
-    text-transform: capitalize;
-    color: #ffffff;
-    font-size: x-large;
-    font-weight: 500;
-    font-weight:bold;
+.foot #correos {
+  text-transform: capitalize;
+  color: #ffffff;
+  font-size: x-large;
+  font-weight: 500;
+  font-weight: bold;
 }
-.foot #electronicos{
-    color:var(--black);
-    text-transform: capitalize;
-    font-size: x-large;
-    font-weight:bold;
+.foot #electronicos {
+  color: var(--black);
+  text-transform: capitalize;
+  font-size: x-large;
+  font-weight: bold;
 }
 /*Parte inferior del footer*/
 
+.foot #footer-bottom {
+  border: 10pt;
+  border-color: var(--black);
 
-.foot #footer-bottom{
-    border:10pt;
-    border-color: var(--black);
-    
-    padding-top: 10pt;
-
+  padding-top: 10pt;
 }
 
-.foot .icon{
-    color:var(--white);
-    margin-left: 1%;
+.foot .icon {
+  color: var(--white);
+  margin-left: 1%;
 }
 
-
-.foot .icon:hover{
-    cursor: pointer;
-    text-decoration: none;
-    color: yellow;
-
+.foot .icon:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: yellow;
 }

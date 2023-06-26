@@ -1,0 +1,8 @@
+@import url(./Constantes.css);
+
+.adminProfile .menu {
+  background-color: var(--non-black-haed);
+  color: white;
+  text-align: center;
+  padding: 1%;
+}
