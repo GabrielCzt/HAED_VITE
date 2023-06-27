@@ -138,7 +138,7 @@ function Usuarios() {
                         <td>{rol}</td>
                         <td>
                           <FontAwesomeIcon onClick={()=>{
-                             navigate(`/Actualizar-usuario/${num.id}`) 
+                            navigate(`/Actualizar-usuario/${num.id}`) 
                           }
                           } id="edit" icon={faPencil} />
                         </td>
