@@ -197,7 +197,7 @@ function ActualizarUsuario() {
                   placeholder="Repetir contraseña"
                 />
                 <br />
-                <button type="submit">Actualizar</button>
+                <button id="enviar" type="submit">Actualizar</button>
               </form>
             </div>
           </div>

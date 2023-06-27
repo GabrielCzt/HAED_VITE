@@ -11,3 +11,23 @@
     width: 80%;
     height: 6vh;
 }
+.userupdate #enviar {
+    padding: 10pt;
+    margin-top: 50pt;
+    margin-right: 1%;
+    padding-left: 15pt;
+    padding-right: 15pt;
+    background-color: var(--light-haed);
+    color: var(--white);
+    border: none;
+    font-weight: bolder;
+    font-family: "Montserrat";
+    height: max-content;
+    border-radius: 5pt;
+    margin-bottom: 5%;
+  }
+  
+  .userupdate #enviar:hover {
+    background-color: var(--titulos);
+    color: var(--white);
+  }
