@@ -12,6 +12,7 @@
 /*Links*/
 
 #links {
+  height: fit-content;
   text-align: left;
   color: var(--black);
   font-weight: lighter;

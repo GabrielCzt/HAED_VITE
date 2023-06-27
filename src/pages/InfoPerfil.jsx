@@ -197,11 +197,11 @@ function InfoPerfil() {
                         <div className="profile-card-4 z-depth-3">
                             <div className="card">
                                 {/* Imagen de tarjeta */}
-                                <div className="card-body text-center bg-success rounded-top">
-                                    <div className="user-box">
-                                        <button className="btn " onClick={() => navigate("/")} > <img classNameName="img" src="https://pbs.twimg.com/profile_images/1609948030865743872/FXN0HLMz_400x400.jpg" height="100" width="100" /></button>
+                                <div class="card-body text-center bg-success rounded-top">
+                                    <div class="user-box">
+                                        <button class="btn " onClick={() => navigate("/")} > <img classNameName="img" src="https://pbs.twimg.com/profile_images/1609948030865743872/FXN0HLMz_400x400.jpg" height="100" width="100" /></button>
                                     </div>
-                                    <h5 className="mb-1 text-white">Universidad Tecnologica de Puebla</h5>
+                                    <h5 class="mb-1 text-white">Universidad Tecnologica de Puebla</h5>
 
                                 </div>
                                 {/* Cuerpo de la tarjeta  */}
