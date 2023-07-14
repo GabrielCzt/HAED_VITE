@@ -1,5 +1,14 @@
 @import url("../estilos//Constantes.css");
 
+.infoUsers{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: var(--white);
+}
+
+.infoUsers table{
+  background-color: var(--non-white-haed);  
+}
 .infoUsers table th {
   background-color: var(--haed);
   color: white;
@@ -14,10 +23,12 @@
   padding-top: 1%;
   padding-bottom: 1%;
   border-bottom: 1px solid var(--non-black-haed);
+  color: var(--black);
 }
 .infoUsers table tr:hover {
   width: auto;
-  background-color: lightblue;
+  background-color: var(--blue);
+  color: black;
 }
 .infoUsers table {
   width: 80%;
@@ -26,8 +37,10 @@
 }
 
 .infoUsers .tableContainer {
-  justify-content: center;
-  display: flex;
+  display: grid;
+  place-items: center;
+  max-width: 100%;
+  overflow-x: auto;
 }
 .infoUsers #delete {
   background-color: red;

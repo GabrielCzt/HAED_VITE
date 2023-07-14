@@ -6,7 +6,7 @@ import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import SessionContext from "../Context/SessionContext";
+import SessionContext from "../context/SessionContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileText,
@@ -15,7 +15,7 @@ import {
   faPencil,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import fetchData from "../Funciones/ObtenerInformación";
+import fetchData from "../funciones/ObtenerInformación";
 import Titulo from "../components/BarraDeTitulo";
 
 const cookie = new Cookies();
@@ -47,7 +47,7 @@ function Perfil() {
       <div className="profile">
         <div className="container">
           <div className="row">
-            <h4 className="display-6">Bienvenido {info.nombres}</h4> <hr />
+            <h3>Bienvenido {info.nombres}</h3> <hr />
           </div>
           <div className="row">
             <div className="col-sm-12 col-md-6 btnContainer">

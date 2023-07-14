@@ -1,64 +1,81 @@
 @import url(./Constantes.css);
 
-/*Estilos de portada "Contactanos"*/
-.slider-area2 .hero-cap h2 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+.ctc {
+  background-color: var(--white);
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
-/*Termina estilos*/
-
 /*Estilos en tarjetas de los iconos*/
-#correo {
+.ctc #correo {
   font-size: 50px;
 }
 
-#telefono {
+.ctc #telefono {
   font-size: 50px;
 }
 
-#ubicacion {
+.ctc #ubicacion {
   font-size: 50px;
 }
-.contact-block {
+.ctc .contact-block {
   text-align: center;
   font-family: "Montserrat", sans-serif;
   border: 5px solid var(--non-white-haed);
   padding: 50px 25px;
+  color: var(--non-black-haed);
+  -ms-word-break: break-all;
+  word-break: break-all;
+
+  word-break: break-word;
+  font-size: 100%;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  margin-bottom: 5%;
 }
 /*Terminan estilos en tarjetas de iconos*/
 
 /*Estilos del formulario*/
-.contact-form-wrap {
+.ctc .contact-form-wrap {
   font-family: "Montserrat", sans-serif;
+  margin-top: 5%;
 }
 
-.contact-form-wrap .form-group {
+.ctc .contact-form-wrap .form-group {
   margin-bottom: 20px;
 }
 
-.contact-form-wrap .form-group .form-control {
+.ctc .contact-form-wrap .form-group .form-control {
   height: 60px;
   border: 1px solid var(--non-white-haed);
   box-shadow: none;
   width: 100%;
   background: var(--non-white-haed);
+  color: var(--non-black-haed);
 }
-
-.contact-form-wrap .form-group-2 textarea {
+.ctc .contact-form-wrap .form-group .form-control::placeholder {
+  color: var(--non-black-haed);
+}
+.ctc .contact-form-wrap .form-group-2 textarea::placeholder {
+  color: var(--non-black-haed);
+}
+.ctc .contact-form-wrap .form-group-2 textarea {
   border: 1px solid var(--non-white-haed);
+  color: var(--non-black-haed);
   box-shadow: none;
   background: var(--non-white-haed);
   width: 100%;
 }
 
 /*Estilos del boton enviar*/
-.btn:not(:disabled):not(.disabled) {
+.ctc .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
 }
 
-.btn-main {
+.ctc .btn-main {
   background: var(--haed);
-  color: var(--white);
+  color: white;
   border-color: var(--haed);
   display: inline-block;
   font-weight: 400;
@@ -77,13 +94,13 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.btn-main:hover {
-  background: var(--gray-haed);
+.ctc .btn-main:hover {
+  background: var(--light-b-haed);
   border-color: var(--haed);
-  color: var(--white);
+  color: white;
 }
 
-.btn-round-full {
+.ctc .btn-round-full {
   border-radius: 50px !important;
 }
 /*Terminan estilos de boton*/
@@ -91,12 +108,12 @@
 /*Terminan estilos del formulario*/
 
 /*Estlos de Iframe (google maps)*/
-.google-map #map iframe {
+.ctc .google-map #map iframe {
   width: 100%;
   height: 400px;
 }
 
-.mt-5,
+.ctc .mt-5,
 .my-5 {
   margin-top: 3rem !important;
   margin-bottom: 3rem !important;

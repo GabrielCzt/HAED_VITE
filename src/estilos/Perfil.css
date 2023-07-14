@@ -3,7 +3,16 @@
 body {
   overflow-x: hidden;
 }
+.profile{
+  background-color: var(--white);
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
 
+.profile h3{
+  color: var(--black);
+  font-family: 'Montserrat';
+}
 .profile .fa:hover {
   color: var(--light-haed);
 }
@@ -29,7 +38,7 @@ body {
   height: 100%;
   font-size: 3vh;
   border: none;
-  border-radius: 1pt;
+  border-radius: 5pt;
   background: linear-gradient(180deg, #006d77, #02554f);
   color: white;
   padding: 6%;

@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { faContactCard } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
+import emailjs from "@emailjs/browser";
 
 import "../estilos/Contacto.css";
 import "../estilos/Pages.css";
 import Titulo from "../components/BarraDeTitulo";
 
 export default function Contacto() {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm("service_lx7oknf","template_52t1nsi",form.current,"X-K1g4Lg8jT07BK81")
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
   return (
     <>
-      <Titulo titulo="Contacto"/>
+      <Titulo titulo="Contacto" />
 
       {/**Etiqueta separadora de estilos */}
       <div className="ctc">
-        <section className="section contact-info mt-5 mb-5 pb-0">
+        <section className="section contact-info pb-0">
           <div className="container">
             {/**Cartas de contacto */}
             <div className="row">
@@ -62,12 +74,15 @@ export default function Contacto() {
         </section>
 
         {/**Formulario para enviar mensaje */}
+
         <section className="contact-form-wrap section">
           <div className="container">
             <div className="row justify-content-center">
               <div className="row">
                 <div className="col-lg-12 col-md-12 col-sm-12">
                   <form
+                    ref={form}
+                    onSubmit={sendEmail}
                     id="formContacto"
                     className="contact__form "
                     method="post"
@@ -76,7 +91,7 @@ export default function Contacto() {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <input
-                            name="nombreContacto"
+                            name="name"
                             id="nombreContacto"
                             required=""
                             type="text"
@@ -89,7 +104,7 @@ export default function Contacto() {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <input
-                            name="emailContacto"
+                            name="email"
                             id="emailContacto"
                             required=""
                             type="email"
@@ -101,7 +116,7 @@ export default function Contacto() {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <input
-                            name="asuntoContacto"
+                            name="head"
                             id="asuntoContacto"
                             required=""
                             type="text"
@@ -113,7 +128,7 @@ export default function Contacto() {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <input
-                            name="telefonoContacto"
+                            name="phone"
                             id="telefonoContacto"
                             required=""
                             type="text"
@@ -126,7 +141,7 @@ export default function Contacto() {
 
                     <div className="form-group-2 mb-4">
                       <textarea
-                        name="mensajeContacto"
+                        name="message"
                         id="mensajeContacto"
                         required=""
                         class="form-control"

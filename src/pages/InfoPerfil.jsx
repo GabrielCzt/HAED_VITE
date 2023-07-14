@@ -5,8 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import "../estilos/InfoPerfil.css";
-import fetchData from "../Funciones/ObtenerInformación";
+import fetchData from "../funciones/ObtenerInformación";
 import Titulo from "../components/BarraDeTitulo";
+import { Link } from "react-router-dom";
+
+import { faCircleArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 const cookie = new Cookies();
 
@@ -48,10 +51,11 @@ function InfoPerfil() {
 
   return (
     <>
-      <Titulo titulo="Perfil de usuario"/>
-
-      {/* Contenedor principal de contenido */}
-      <div class="container">
+      <Titulo titulo="Perfil de usuario" />
+    <div className="infoPerfil">
+{/* Contenedor principal de contenido */}
+<div class="container">
+<Link to="../Perfil"><button id="volver">Regresar al menú &nbsp;<FontAwesomeIcon icon={faCircleArrowLeft}/></button></Link>
         <div class="row">
           {/* Tarjeta de datos del usuario */}
           <div class="col-lg-4">
@@ -71,7 +75,7 @@ function InfoPerfil() {
                     </button>
                   </div>
                   <h5 class="mb-1 text-white">
-                    Universidad Tecnologica de Puebla
+                    Universidad Tecnológica de Puebla
                   </h5>
                 </div>
                 {/* Cuerpo de la tarjeta  */}
@@ -109,118 +113,42 @@ function InfoPerfil() {
           {/* Tarjeta de edicion para datos del usuario */}
           <div class="col-lg-8">
             <div class="card z-depth-3">
+             {/* Contenido de la tarjeta */}
               {/* Contenido de la tarjeta */}
-              <div class="card-body">
+              <div className="card-body">
                 {/* Indica el apartado de contenido  */}
-                <ul class="nav nav-pills nav-pills-success nav-justified">
-                  <li class="nav-item">
-                    <a
-                      data-target="#edit"
-                      data-toggle="pill"
-                      class="nav-link active show "
-                    >
-                      <i class="icon-note"></i>{" "}
-                      <span class="hidden-xs">Editar Perfil</span>
-                    </a>
-                  </li>
-                </ul>
 
                 {/* Cuerpo y Formulario de envio */}
-                <div class="tab-content p-3">
+                <div className="tab-content p-3">
                   {/* Panel de datos */}
-                  <div class="tab-pane active  show" id="edit">
+                  <div className="tab-pane active  show" id="edit">
                     {/* Input y evento de formulario */}
                     <form onSubmit={" "}>
                       {/* Separador de input  */}
-                      <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">
-                          Nombre(s)
+                      <div className="form-group row">
+                        <label className="col-lg-3 ">
+                          <b>Correo Electronico</b>
                         </label>
-                        <div class="col-lg-9">
-                          <input
-                            class="form-control"
-                            type="text"
-                            onChange={""}
-                            defaultValue={info.nombres}
-                          />
+                        <div className="col-lg-9">
+                          <p>{info.email}</p>
                         </div>
                       </div>
                       {/* Separador de input  */}
-                      <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">
-                          Apellido(s)
+                      <div className="form-group row">
+                        <label className="col-lg-3 ">
+                          <b>Centro de trabajo</b>
                         </label>
-                        <div class="col-lg-9">
-                          <input
-                            class="form-control"
-                            type="text"
-                            onChange={""}
-                            defaultValue={info.apellidos}
-                          />
+                        <div className="col-lg-9">
+                          <p>{info.centro_trabajo}</p>
                         </div>
                       </div>
                       {/* Separador de input  */}
-                      <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">
-                          Correo Electronico
+                      <div className="form-group row">
+                        <label className="col-lg-3 col-form-label form-control-label">
+                          <b>Edad</b>
                         </label>
-                        <div class="col-lg-9">
-                          <input
-                            class="form-control"
-                            type="email"
-                            onChange={""}
-                            defaultValue={info.email}
-                          />
-                        </div>
-                      </div>
-                      {/* Separador de input  */}
-                      <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">
-                          Contraseña nueva
-                        </label>
-                        <div class="col-lg-9">
-                          <input
-                            id="myPassword"
-                            class="form-control"
-                            type="password"
-                            onChange={""}
-                          />
-                        </div>
-                      </div>
-                      {/* Separador de input  */}
-                      <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">
-                          Confirmar contraseña
-                        </label>
-                        <div class="col-lg-9">
-                          <input
-                            id="myPassword2"
-                            class="form-control"
-                            type="password"
-                            onChange={""}
-                          />
-                          <FontAwesomeIcon
-                            id="eye"
-                            onClick={SeePassword}
-                            icon={ojos}
-                          />
-                        </div>
-                      </div>
-                      {/* Separador de input  */}
-                      <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label"></label>
-                        {/* Enviar o cancelar el envio de datos */}
-                        <div class="col-lg-9">
-                          <input
-                            type="reset"
-                            class="btn btn-secondary"
-                            value="Cancel"
-                          />
-                          <input
-                            type="button"
-                            class="btn btn-success"
-                            value="Save Changes"
-                          />
+                        <div className="col-lg-9">
+                          <p>{info.edad}</p>
                         </div>
                       </div>
                     </form>
@@ -231,6 +159,8 @@ function InfoPerfil() {
           </div>
         </div>
       </div>
+    </div>
+      
     </>
   );
 }

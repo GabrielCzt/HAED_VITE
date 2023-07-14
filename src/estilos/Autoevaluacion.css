@@ -1,6 +1,23 @@
 @import url(./Constantes.css);
 
 /*Estilos de preguntas*/
+.questions h1{
+  color: var(--black);
+  -ms-word-break: break-all;
+  word-break: break-all;
+
+  word-break: break-word;
+
+-webkit-hyphens: auto;
+-moz-hyphens: auto;
+ -ms-hyphens: auto;
+     hyphens: auto;
+}
+.questions{
+  background-color: var(--white);
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
 .questions li {
   list-style: none;
 }
@@ -38,6 +55,10 @@
   color: var(--black);
 }
 
+.questions label{
+  color: var(--black);
+}
+
 /*Estilos del botón*/
 
 #contestar {
@@ -47,7 +68,7 @@
   padding-left: 15pt;
   padding-right: 15pt;
   background-color: var(--light-haed);
-  color: var(--white);
+  color: white;
   border: none;
   font-weight: bolder;
   font-family: "Montserrat";
@@ -57,5 +78,5 @@
 }
 #contestar:hover {
   background-color: var(--titulos);
-  color: var(--white);
+
 }

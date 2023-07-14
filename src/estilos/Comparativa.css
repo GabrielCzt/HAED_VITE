@@ -1,17 +1,54 @@
 @import url(./Constantes.css);
+.compara{
+  background-color: var(--white);
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.compara #volver {
+  padding: 1%;
+  background-color: var(--light-haed);
+  color: white;
+  border: none;
+  font-weight: bolder;
+  font-family: "Montserrat";
+  height: max-content;
+  border-radius: 5pt;
+  margin-bottom: 1%;
+}
+
+.compara #volver:hover {
+  background-color: var(--titulos);  
+}
+
+.compara #goTo{
+  background-color: var(--light-b-haed);
+  border-radius: 5pt;
+  display: box;
+  border: 1px solid var(--haed);
+  margin-top: 1%;
+  margin-bottom: .5%;
+  color: white;
+  width: 30vw;
+  height: max-content;
+}
+.compara #goTo:hover{
+  background-color: var(--light-haed);
+}
 
 .compara select {
   border-top-left-radius: 5pt;
   border-top-right-radius: 5pt;
   background-color: var(--light-haed);
   color: white;
-  height: 5%;
+  height: max-content;
   width: max-content;
   font-size: large;
   font-family: "Montserrat";
   margin-bottom: 2%;
 }
-
+.compara h5{
+color: var(--non-black-haed);
+}
 .compara li {
   list-style: none;
   margin-bottom: 3%;
@@ -19,6 +56,13 @@
   text-align: justify;
   border-bottom: solid 1px var(--haed);
   padding: 1%;
+  color: var(--black);
+}
+.compara h3{
+  color: var(--black);
+}
+.compara p{
+  color: var(--black);
 }
 
 .compara #leftColumn {

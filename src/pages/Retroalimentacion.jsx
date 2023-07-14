@@ -5,7 +5,8 @@ import "../estilos/Retroalimentacion.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointRight } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-import SessionContext from "../Context/SessionContext";
+import SessionContext from "../context/SessionContext";
+import Titulo from "../components/BarraDeTitulo";
 
 const cookie = new Cookies();
 
@@ -36,6 +37,7 @@ function Retroalimentacion() {
 
         if (response.ok) {
           const jsonData = await response.json();
+          console.log(jsonData);
           if (!toPrintR) {
             setToPrintR(jsonData);
           }
@@ -57,7 +59,7 @@ function Retroalimentacion() {
 
   return (
     <>
-      <Titulo titulo="Retroalimentacion"/>
+      <Titulo titulo="Retroalimentacion" />
       {/* Etiqueta separadora de estilos */}
       <div className="retrA">
         <div className="container">
@@ -71,14 +73,40 @@ function Retroalimentacion() {
             toPrintR.preguntas.map((num, index) => {
               return (
                 <>
-                  <div className="row">
+                  {!num.respuestas[0] ? "" : <div className="row">
                     <div className="col-1 hand">
                       <FontAwesomeIcon icon={faHandPointRight} />
                     </div>
                     <div className="col">
-                      <li>{num.respuestas[0].feedback}</li>
+
+                      <li>
+                        {num.respuestas[0] ? num.respuestas[0].feedback : ""}
+                        {!num.respuestas[0]
+                          ? ""
+                          : num.respuestas[0].links.map((numb, indx) => {
+                            return (
+                              <>
+                                <div className="row">
+                                  <Link
+                                    to={
+                                      "../Material-de-apoyo/retroalimentacion/" +
+                                      index +
+                                      "/" +
+                                      indx
+                                    }
+                                  >
+                                    <button id="goTo">
+                                      Material de apoyo {indx + 1}
+                                    </button>
+                                  </Link>
+                                </div>
+                              </>
+                            );
+                          })}
+                      </li>
                     </div>
-                  </div>
+                  </div>}
+
                 </>
               );
             })

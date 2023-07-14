@@ -2,13 +2,13 @@ import React, { useContext, useEffect } from "react";
 import "../estilos/Pages.css";
 import "../estilos/PerfilAdministrador.css";
 import { Link, useNavigate } from "react-router-dom";
-import SessionContext from "../Context/SessionContext";
+import SessionContext from "../context/SessionContext";
 import Cookies from "universal-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import fetchData from "../Funciones/ObtenerInformación";
+import fetchData from "../funciones/ObtenerInformación";
 import Titulo from "../components/BarraDeTitulo";
 
 
@@ -36,16 +36,15 @@ function PerfilAdministrador() {
       <div className="adminProfile">
         <div className="container">
           <div className="row">
-            <Dropdown>
-              <Dropdown.Toggle>Opciones</Dropdown.Toggle>
-              <Dropdown.Menu>
+            <Dropdown id="menuOpciones">
+              <Dropdown.Toggle id="head">Opciones</Dropdown.Toggle>
+              <Dropdown.Menu id="menu">
                 {/**Usar ItemText en lugar de Item sirve para colocar la funcionalidad de Link */}
-                <Dropdown.ItemText>
-                  {" "}
-                  <Link to="/Informacion-de-usuarios">Usuarios</Link>{" "}
+                <Dropdown.ItemText >
+                  <Link id="item" to="/Informacion-de-usuarios">Usuarios</Link>{" "}
                 </Dropdown.ItemText>
-                <Dropdown.ItemText>
-                  <Link to="/Graficas">Gráficas</Link>
+                <Dropdown.ItemText id="item" >
+                  <Link id="item" to="/Graficas">Gráficas</Link>
                 </Dropdown.ItemText>
               </Dropdown.Menu>
             </Dropdown>
@@ -69,7 +68,7 @@ function PerfilAdministrador() {
                       </button>
                     </div>
                     <h5 className="mb-1 text-white">
-                      Universidad Tecnologica de Puebla
+                      Universidad Tecnológica de Puebla
                     </h5>
                   </div>
                   {/* Cuerpo de la tarjeta  */}

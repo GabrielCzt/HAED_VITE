@@ -4,11 +4,15 @@ import "../estilos/Descubre.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../estilos/Pages.css";
 import Titulo from "../components/BarraDeTitulo";
+import Miller from "../imagenes/piramide_miller.png";
+import Dimensiones from "../imagenes/dimensiones.jpeg";
+import Rasgos from "../imagenes/rasgos_practica_reflexiva.png";
+import Habilidades from "../imagenes/habilidades.jpeg";
 
 export default function Descubre() {
   return (
     <>
-      <Titulo titulo="Descubre"/>
+      <Titulo titulo="Descubre" />
       {/**Etiqueta separadora de estilos */}
       <div className="desc">
         <section>
@@ -16,7 +20,7 @@ export default function Descubre() {
             {/**Primer renglon de autoevaluación docente */}
             <div className="row">
               <div className="col-xl-12">
-                <h1 className="title1">Autoevaluación Docente</h1>
+                <h3 className="title1">Autoevaluación Docente</h3>
                 <p className="texto">
                   El proceso de autoevaluación es una parte fundamental de la
                   educación en nuestros días; esto también incluye al
@@ -33,7 +37,7 @@ export default function Descubre() {
                   <h5 className="title3">
                     Con esta herramienta, el docente podrá reflexionar en su
                     práctica diaria para gestionar su propio conocimiento y
-                    mejorar sus procesos de enseñanza con lo que contribuirá de
+                    mejorar sus procesos de enseñanza, con lo que contribuirá de
                     manera significativa a la formación de estudiantes
                     competentes, éticos y comprometidos con la sociedad.
                   </h5>
@@ -44,12 +48,12 @@ export default function Descubre() {
             <div className="row">
               <br />
               <div className="col-xl-12">
-                <h1 className="title1">Sustento teórico de HAED</h1>
+                <h3 className="title1">Sustento teórico de HAED</h3>
                 <p className="texto">
-                  El diseño del instrumento de autoevalución docente se
+                  El diseño del instrumento de autoevaluación docente se
                   fundamenta en una investigación hecha por los cuerpos docentes
                   "TIC Educativa" y "Calidad y Competitividad", la cual está
-                  basada al mismo timepo en las propuestas de la Pirámide de
+                  basada al mismo tiempo en las propuestas de la Pirámide de
                   Miller, los Rasgos de una Práctica Reflexiva de Perrenoud y
                   las Habilidades Informáticas de Greg Thompson.
                 </p>
@@ -62,12 +66,12 @@ export default function Descubre() {
                 <div className="blog_post">
                   <img
                     className="img-teoria"
-                    src="http://127.0.0.1/sistemaHaed/Assets/images/descubre/piramide_miller.png"
-                    alt=""
+                    src={Miller}
+                    alt="Piramide de Miller"
                   />
                   <div className="blog_details">
                     <a href="#">
-                      <h2>Pirámide de Miller</h2>
+                      <h4>Pirámide de Miller</h4>
                     </a>
                     <p className="texto">
                       Si se habla de una evaluación por competencias, significa
@@ -77,7 +81,7 @@ export default function Descubre() {
                       orienta al aprendizaje, en la participación del alumno,
                       dirigida a situaciones de naturaleza auténtica, cada vez
                       más cercanas a la vida real. La visión por competencias se
-                      ve enriquecida por la propuesta que desarrollo George A.
+                      ve enriquecida por la propuesta que desarrolló George A.
                       Miller (Miller, 1990), mejor conocida como la Pirámide de
                       Miller. Esta propuesta se compone de cuatro niveles, en la
                       base se señala el saber, en el segundo nivel el saber
@@ -99,12 +103,12 @@ export default function Descubre() {
                 <div className="blog_post">
                   <img
                     className="img-teoria"
-                    src="http://127.0.0.1/sistemaHaed/Assets/images/descubre/dimensiones.jpeg"
-                    alt=""
+                    src={Dimensiones}
+                    alt="Dimensiones para la autoevaluación"
                   />
                   <div className="blog_details">
                     <a href="#">
-                      <h2>Dimensiones para la autoevaluación</h2>
+                      <h4>Dimensiones para la autoevaluación</h4>
                     </a>
                     <p className="texto">
                       Cecilia Fierro en su libro “Transformando la Práctica
@@ -129,16 +133,16 @@ export default function Descubre() {
                 <div className="blog_post">
                   <img
                     className="img-teoria"
-                    src="http://127.0.0.1/sistemaHaed/Assets/images/descubre/rasgos_practica_reflexiva.png"
-                    alt=""
+                    src={Rasgos}
+                    alt="Rasgos de una práctica reflexiva"
                   />
                   <div className="blog_details">
                     <a href="#">
-                      <h2>Rasgos de una práctica reflexiva</h2>
+                      <h4>Rasgos de una práctica reflexiva</h4>
                     </a>
                     <p className="texto">
                       Perrenoud se enfoca en preguntas sobre las acciones
-                      tomadas dentro del aula integrando al docente como ser
+                      tomadas dentro del aula, integrando al docente como ser
                       humano, el dominio de su profesión, la didáctica y su
                       interacción con los estudiantes. Para reconocer, estudiar
                       y analizar los hechos de manera libre, se propone realizar
@@ -161,12 +165,12 @@ export default function Descubre() {
                 <div className="blog_post">
                   <img
                     className="img-teoria"
-                    src="http://127.0.0.1/sistemaHaed/Assets/images/descubre/habilidades.jpeg"
-                    alt=""
+                    src={Habilidades}
+                    alt="Habilidades Tecnológicas"
                   />
                   <div className="blog_details">
                     <a href="#">
-                      <h2>Habilidades Tecnológicas de Greg Thompson</h2>
+                      <h4>Habilidades Tecnológicas de Greg Thompson</h4>
                     </a>
                     <p className="texto">
                       Para realizar una evaluación integral es de vital
@@ -189,17 +193,17 @@ export default function Descubre() {
               {/**Tabla */}
               <div className="row">
                 <div className="col-xl-12">
-                  <h1 className="title1">Resumen</h1>
+                  <h3 className="title1">Resumen</h3>
                   <p className="texto">
                     Las propuestas de la Pirámide de Miller, los Rasgos de una
                     Práctica Reflexiva de Perrenoud y las Habilidades
-                    Informáticas de Greg Thompson se resumen en la siguente
+                    Informáticas de Greg Thompson se resumen en la siguiente
                     tabla:
                   </p>
                   <br />
                 </div>
                 <div className="tabla-responsiva">
-                  <Table striped bordered hover>
+                  <table striped bordered hover>
                     <thead className="cabecera-tabla">
                       <tr>
                         <th>Autor</th>
@@ -215,7 +219,7 @@ export default function Descubre() {
                         <td>
                           HACER (incluyendo el saber ser y saber estar)
                           <br />
-                          MOSTAR CÓMO
+                          MOSTRAR CÓMO
                           <br />
                           SABER CÓMO
                           <br />
@@ -306,7 +310,7 @@ export default function Descubre() {
                         </td>
                       </tr>
                     </tbody>
-                  </Table>
+                  </table>
                 </div>
               </div>
             </div>

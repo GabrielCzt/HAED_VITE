@@ -1,7 +1,30 @@
 @import url(./Constantes.css);
 
+.nonSession {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  background-color: var(--white);
+}
+.nonSession .display-6 {
+  color: var(--black);
+}
+.menu {
+  background-color: var(--white);
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.menu h4 {
+  color: var(--black);
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
 .menu ._button {
-  background: #fff;
+  background: var(--white);
   color: var(--titulos);
   border-bottom: 2px solid var(--titulos);
   padding: 16px 20px;
@@ -51,7 +74,7 @@
 }
 
 .menu #pen {
-  color: white;
+  color: var(--white);
   align-items: right;
 }
 
@@ -62,7 +85,7 @@
   padding-left: 15pt;
   padding-right: 15pt;
   background-color: var(--light-haed);
-  color: var(--white);
+  color: white;
   border: none;
   font-weight: bolder;
   font-family: "Montserrat";

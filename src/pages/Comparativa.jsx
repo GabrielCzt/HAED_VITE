@@ -3,9 +3,11 @@ import Cookies from "universal-cookie";
 import "../estilos/Comparativa.css";
 import "../estilos/Pages.css";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Titulo from "../components/BarraDeTitulo";
 const cookie = new Cookies();
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 function Intentos() {
   const navigate = new useNavigate();
@@ -96,36 +98,37 @@ function Intentos() {
 
   return (
     <>
-      <Titulo titulo="Comparar etroalimentaciones"/>
+      <Titulo titulo="Comparar Retroalimentaciones" />
       {/* Etiqueta separadora de estilos */}
       <div className="compara">
         <div className="container">
-          <h1 className="display-6">
+          <Link to="../Perfil"><button id="volver">Regresar al menú &nbsp;<FontAwesomeIcon icon={faCircleArrowLeft} /></button></Link>
+          <h3>
             Seleccione una fecha para ver sus retroalimentaciones
-          </h1>
+          </h3>
           <br />
           <div className="row">
             {/* Primera columna */}
+            <div className="row selection">
+              <select name="fecha" id="leftRetro" onChange={fetchRetro}>
+                <option value="">Seleccione una fecha</option>
+                {!data ? (
+                  <p>Algo salió mal</p>
+                ) : (
+                  data.slice(0, -1).map((num, index) => {
+                    const fecha = num.fecha;
+                    const fechaFormateada =
+                      moment(fecha).format("DD-MM-YYYY");
+                    return (
+                      <>
+                        <option value={num.id}>{fechaFormateada}</option>
+                      </>
+                    );
+                  })
+                )}
+              </select>
+            </div>
             <div className="col-sm-12 col-md-6" id="leftColumn">
-              <div className="row selection">
-                <select name="fecha" id="leftRetro" onChange={fetchRetro}>
-                  <option value="">Seleccione una fecha</option>
-                  {!data ? (
-                    <p>Algo salió mal</p>
-                  ) : (
-                    data.slice(0, -1).map((num, index) => {
-                      const fecha = num.fecha;
-                      const fechaFormateada =
-                        moment(fecha).format("DD-MM-YYYY");
-                      return (
-                        <>
-                          <option value={num.id}>{fechaFormateada}</option>
-                        </>
-                      );
-                    })
-                  )}
-                </select>
-              </div>
               <div className="row">
                 <h5>{!retro ? "" : retro.titulo}</h5>
                 {!retro ? (
@@ -137,7 +140,33 @@ function Intentos() {
                   retro.preguntas.map((num, index) => {
                     return (
                       <>
-                        <li>{num.respuestas[0].feedback}</li>
+                        {!num.respuestas[0] ? "" : <li>
+                          {num.respuestas[0].feedback}
+                          {!num.respuestas[0].links
+                            ? ""
+                            : num.respuestas[0].links.map((numb, indx) => {
+                              return (
+                                <>
+                                  <div className="row">
+                                    <Link
+                                      to={
+                                        "../Material-de-apoyo/comparativa/" +
+                                        index +
+                                        "/" +
+                                        indx
+                                      }
+                                    >
+                                      <button onClick={cookie.set("intento", num.respuestas[0].intento_id, { path: "" })} id="goTo">
+                                        Material de apoyo {indx + 1}
+                                      </button>
+                                    </Link>
+                                  </div>
+                                </>
+                              );
+                            })}
+                        </li>
+                        }
+
                       </>
                     );
                   })
@@ -162,7 +191,32 @@ function Intentos() {
                   lastRetro.preguntas.map((num, index) => {
                     return (
                       <>
-                        <li>{num.respuestas[0].feedback}</li>
+                      {!num.respuestas[0]?"": <li>
+                          {num.respuestas[0].feedback}
+                          {!num.respuestas[0].links
+                            ? ""
+                            : num.respuestas[0].links.map((numb, indx) => {
+                              return (
+                                <>
+                                  <div className="row">
+                                    <Link
+                                      to={
+                                        "../Material-de-apoyo/comparativa/" +
+                                        index +
+                                        "/" +
+                                        indx
+                                      }
+                                    >
+                                      <button onClick={cookie.set("intento", num.respuestas[0].intento_id, { path: "" })} id="goTo">
+                                        Material de apoyo {indx + 1}
+                                      </button>
+                                    </Link>
+                                  </div>
+                                </>
+                              );
+                            })}
+                        </li>}
+                        
                       </>
                     );
                   })

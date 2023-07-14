@@ -1,15 +1,37 @@
 @import url('./Constantes.css');
 
 .userupdate{
-    margin-bottom: 5%;
+  background-color: var(--white);
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
+.userupdate .instrucciones{
+  height: 50vh;
+  background: linear-gradient(90deg, #8eb0ae, #006d77);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+}
+.userupdate .instrucciones h5{
+  font-family: 'Montserrat';
+
+  color: white;
+  height: max-content;
+  font-weight: bold;
+}
 .userupdate input{
     margin: 2%;
     border:0;
     border-bottom: solid 1px black;
     width: 80%;
     height: 6vh;
+    background-color: var(--white);
+    color: var(--black);
+}
+.userupdate input::placeholder{
+  color: var(--gray-haed);
 }
 .userupdate #enviar {
     padding: 10pt;
@@ -18,7 +40,7 @@
     padding-left: 15pt;
     padding-right: 15pt;
     background-color: var(--light-haed);
-    color: var(--white);
+    color: white;
     border: none;
     font-weight: bolder;
     font-family: "Montserrat";
@@ -29,5 +51,4 @@
   
   .userupdate #enviar:hover {
     background-color: var(--titulos);
-    color: var(--white);
   }

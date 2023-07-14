@@ -10,7 +10,7 @@ import { Spinner } from "react-bootstrap";
 import "../estilos/Login.css";
 import "../estilos/Pages.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SessionContext from "../Context/SessionContext";
+import SessionContext from "../context/SessionContext";
 import Titulo from "../components/BarraDeTitulo";
 
 const cookie = new Cookies();
@@ -66,28 +66,30 @@ function Login() {
 
   return (
     <>
-      <Titulo titulo="Iniciar sesión"/>
+      <Titulo titulo="Iniciar sesión" />
       {/**Etiqueta separadora de estilos */}
       <div className="log">
         <div className="container" id="log_sign">
           <div className="row">
             {/**Cuadro izquierdo de registro */}
             <div className="col-sm-12 col-md-6 sign">
-              <h2>¿No tienes una cuenta?</h2>
-              <p>
-                Para poder contestar la Autoevaluación es necesario tener una
-                cuenta de usuario, si aún no la tiene, de clic en el botón de
-                Crear cuenta.
-              </p>
-              <br />
-              <Link to="/Registrarse">
-                <button id="button">REGISTRARSE</button>
-              </Link>
+              <div className="row">
+                <h4>¿No tienes una cuenta?</h4>
+                <p>
+                  Para poder contestar la Autoevaluación es necesario tener una
+                  cuenta de usuario, si aún no la tiene, de clic en el botón de
+                  Registrarse.
+                </p>
+                <br />
+                <Link to="/Registrarse">
+                  <button id="button">REGISTRARSE</button>
+                </Link>
+              </div>
             </div>
             {/**Formulario de inicio de sesión */}
             <div className="col-sm-12 col-md-6 login">
               <h2>Bienvenido</h2>
-              <h3>Inicie sesión ahora</h3>
+              <h4>Inicie sesión ahora</h4>
 
               {/**Indicador de exito en el inicio*/}
               {loading ? (

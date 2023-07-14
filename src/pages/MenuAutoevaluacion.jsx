@@ -11,6 +11,7 @@ import Titulo from "../components/BarraDeTitulo";
 const cookie = new Cookies();
 
 function Menu() {
+  // Obteniendo las autoevaluaciones disponibles
   const url = "http://api-haed.danielreyesepitacio.cloud/api/evaluaciones";
 
   const [name, setName] = useState();
@@ -22,7 +23,7 @@ function Menu() {
   useEffect(() => {
     fetchApi();
   }, []);
-
+  // Estableciendo la visibilidad del menú según la sesión
   useEffect(() => {
     document.getElementById("visible").style.visibility = "visible";
     document.getElementById("visible").style.display = "unset";
@@ -36,21 +37,20 @@ function Menu() {
     }
   }, []);
   const navigate = new useNavigate();
-
+  // Funcion para recargar la página
   const reload = () => {
     window.location.reload();
   };
-
   return (
     <>
-      <Titulo titulo="Seleccionar cuestionario"/>
+      <Titulo titulo="Seleccionar cuestionario" />
       {/**Etiqueta separadora de estilos */}
       <div id="visible">
         <div className="menu">
           <div className="container">
-            <h5 className="display-5">
+            <h4>
               Seleccione un cuestionario para continuar
-            </h5>
+            </h4>
             <hr />
             {/* Se mapea la cantidad de cuestionarios para generar tantos botones como sea neceario */}
             {!name ? (
@@ -64,8 +64,8 @@ function Menu() {
               name.map((num, index) => {
                 return (
                   // No se usa la etiqueta Link para evitar conflictos al usar onCLick, en cambio
-                  // se agrega una etiqueta p con funcionalidad onClick y useNavigate
-                  <p
+                  // se agrega una etiqueta h5 con funcionalidad onClick y useNavigate
+                  <h5
                     className="_button"
                     onClick={() => {
                       cookie.set("cuest", num.id, { path: "/" });
@@ -74,7 +74,7 @@ function Menu() {
                   >
                     Contestar {num.titulo}{" "}
                     <FontAwesomeIcon id="pen" icon={faPenToSquare} />{" "}
-                  </p>
+                  </h5>
                 );
               })
             )}
@@ -83,14 +83,16 @@ function Menu() {
           </div>
         </div>
       </div>
-      <div id="redirect">
-        <div className="container">
-          <p className="display-6">
-            Debe iniciar sesión para contestar la autoevaluación
-          </p>
-          <Link to="/Iniciar-sesion">
-            <button id="toLogIn">Haga click aquí para iniciar sesión</button>
-          </Link>
+      <div className="nonSession">
+        <div id="redirect">
+          <div className="container">
+            <p className="display-6">
+              Debe iniciar sesión para contestar la autoevaluación
+            </p>
+            <Link to="/Iniciar-sesion">
+              <button id="toLogIn">Haga clic aquí para iniciar sesión</button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

@@ -12,7 +12,7 @@ function Navv() {
     <>
       {/**Etiqueta separadora de estilos */}
       <div className="_navbar">
-        <Navbar expand="lg" className=" navbar-fixed-to nav">
+        <Navbar expand="lg" className="nav">
           <div className="container">
             {/**Imagenes del nav brand */}
             <div className="col-sm-8 col-md-5">
@@ -32,7 +32,7 @@ function Navv() {
                 <NavLink id="links" to="/Seleccionar-cuestionario">
                   Autoevaluación
                 </NavLink>
-                <NavLink id="links" to="/CanalYoutube">
+                <NavLink id="links" to="/CanalYoutube/1">
                   Recomendaciones Youtube
                 </NavLink>
                 <NavLink id="links" to="/Contacto">

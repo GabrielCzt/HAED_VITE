@@ -67,10 +67,10 @@ function Index() {
       <div className="idx">
         {/* Primera parte del index */}
         <div className="index-dark">
-          <div className="container mt-5">
+          <div className="container">
             <div className="row">
               <div className="col-sm-12 col-md-6" data-aos="fade-up">
-                <h1>HAED: Herramienta de Autoevaluación Docente</h1>
+                <h1 className="fs-1">HAED: Herramienta de Autoevaluación Docente</h1>
                 <br />
                 <Link to="/Seleccionar-cuestionario">
                   <button id="i_contestar">
@@ -95,10 +95,10 @@ function Index() {
                 />
               </div>
               <div className="col-sm-12 col-md-6 info" data-aos="zoom-in">
-                <h2>
+                <h4>
                   Herramienta enfocada al mejoramiento de la calidad educativa
                   universitaria
-                </h2>
+                </h4>
                 <p>
                   HAED es un herramienta alternativa de autoevaluación docente
                   propuesta por los cuerpos académicos:
@@ -127,7 +127,7 @@ function Index() {
             <div className="row cuerpos">
               <div className="col-sm-12 col-md-6" data-aos="fade-up">
                 <div className="row">
-                  <h1>Cuerpos académicos</h1>
+                  <h4>Cuerpos académicos</h4>
                   <p>
                     *Para más información da clic sobre el nombre del cuerpo
                     académico.
@@ -137,20 +137,20 @@ function Index() {
                 <div onClick={contenidoTIC}>
                   <div className="row" id="fichaTic">
                     <div className="row">
-                      <h2>
+                      <h5>
                         <b>TIC Educativa</b>
-                      </h2>
+                      </h5>
                     </div>
                     <div className="col">
-                      <h3>
+                      <h6>
                         <b>Clave</b>
-                      </h3>
+                      </h6>
                       <p>nUTPUE_CA-8</p>
                     </div>
                     <div className="col" id="grado">
-                      <h3>
+                      <h6>
                         <b>Grado</b>
-                      </h3>
+                      </h6>
                       <p>En formación</p>
                     </div>
                   </div>
@@ -159,20 +159,20 @@ function Index() {
                   <div className="row" id="fichaCalidad">
                     <div className="row">
                       {" "}
-                      <h2>
+                      <h5>
                         <b>Calidad y competitividad</b>
-                      </h2>
+                      </h5>
                     </div>
                     <div className="col">
-                      <h3>
+                      <h6>
                         <b>Clave</b>
-                      </h3>
+                      </h6>
                       <p>UTPUE_CA-6</p>
                     </div>
                     <div className="col" id="grado">
-                      <h3>
+                      <h6>
                         <b>Grado</b>
-                      </h3>
+                      </h6>
                       <p>Consolidado</p>
                     </div>
                   </div>
@@ -191,36 +191,36 @@ function Index() {
                   </p>
                 </div>
                 <div id="contenedorTIC">
-                  <h3>Objetivo:</h3>
+                  <h6>Objetivo:</h6>
                   Desarrollar propuestas de mejora, fundamentadas y relacionadas
                   con el estudio de diferentes ambientes de aprendizaje; de
                   igual manera, propiciar la colaboración y creación de
                   materiales educativos que apoyen distintos escenarios de
                   estudio para ser aprovechados por las futuras generaciones
                   elevando así el autoaprendizaje y la conciencia social.
-                  <h3>Líneas de investigación:</h3>
+                  <h6>Líneas de investigación:</h6>
                   Estudio de ambientes de aprendizaje y propuestas de mejora
                   Material Didáctico
-                  <h3>Integrantes:</h3>
+                  <h6>Integrantes:</h6>
                   Mtra. Verónica Lizardi Rojo Mtra. Norma Angélica Roldán
                   Oropeza Lic. Rosalba Bolaños Ortega
-                  <h3>Contacto:</h3>
+                  <h6>Contacto:</h6>
                   tic-educativa@utpuebla.edu.mx
                 </div>
                 <div id="contenedorCalidad">
-                  <h3>Objetivo:</h3>
+                  <h6>Objetivo:</h6>
                   Investigar y desarrollar propuestas de mejora enfocadas a la
                   mejora de la calidad y optimización de empresas, instituciones
                   y universidades, con el fin de mejorar sus procesos, productos
                   o servicios para que generen una ventaja competitiva.
-                  <h3>Líneas de investigación:</h3>
+                  <h6>Líneas de investigación:</h6>
                   Normalización de los Sistemas de Gestión de la Calidad ISO
                   9000 Automatización y robótica para optimizar los sistemas de
                   control
-                  <h3>Integrantes:</h3>
+                  <h6>Integrantes:</h6>
                   Mtro. Héctor De Sampedro Poblano Dra. Luz del Carmen Morán
                   Bravo Dr. Gustavo Herrera Sánchez Dr. Alejandro Silva Juárez
-                  <h3>Contacto:</h3>
+                  <h6>Contacto:</h6>
                   hector.desampedro@utpuebla.edu.mx
                 </div>
               </div>
@@ -230,10 +230,9 @@ function Index() {
 
             <div className="row cards">
               <div data-aos="fade-up">
-                <h1>Temas</h1>
+                <h3>Temas</h3>
                 <p>
-                  Los temas a tocar dentro del cuestionario de autoevalución son
-                  los siguientes:
+                Los temas a tocar dentro del cuestionario de autoevaluación son los siguientes:
                 </p>
               </div>
               {/**Los data-aos son en realidad clases, por lo que agregar una "class" a la etiqueta Card causa conflicto, por esta razón, 
@@ -246,7 +245,7 @@ function Index() {
                     <Card.Title>Práctica reflexiva</Card.Title>
                     <Card.Text>
                       Dirigido a que el participante reconozca y analice los
-                      hechso de manera libre mediante una observación científica
+                      hechos de manera libre mediante una observación científica
                       no estructurada.
                     </Card.Text>
                   </Card.Body>
@@ -289,7 +288,7 @@ function Index() {
             {/**Portafolio de imagenes */}
 
             <div className="row portafolio" data-aos="fade-up">
-              <h1>Portafolio de imágenes de HAED</h1>
+              <h3>Portafolio de imágenes de HAED</h3>
               <div className="col-sm-12 col-md-4">
                 <img
                   className="img-fluid"

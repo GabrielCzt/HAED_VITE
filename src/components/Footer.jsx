@@ -26,9 +26,9 @@ function Footer() {
                 <p className="info1">
                   “Proporcionar Educación Superior Tecnológica a través de
                   programas intensivos de estudio, pertinentes e integrales,
-                  acordes a los avances científicos y tecnológicos para formar
+                  acordes a los avances científicos y tecnológicos, para formar
                   profesionistas competitivos con sentido humano, que
-                  fortalezcan los procesos de los sectores productivo y de
+                  fortalezcan los procesos de los sectores productivos y de
                   servicios a nivel regional y nacional que coadyuven al
                   desarrollo social.”
                 </p>
@@ -36,7 +36,7 @@ function Footer() {
               {/**Apartado de links, columna central izquierda*/}
               <div className="col-xl-2 col-lg-2 col-md-3 col-sm-5">
                 <div className="footer-tittle">
-                  <h4>Páginas</h4>
+                  <h5>Páginas</h5>
                   <ul>
                     <li>
                       <Link to="/">Inicio</Link>
@@ -58,27 +58,27 @@ function Footer() {
               </div>
               {/**Apartado de links, columna central derecha */}
               <div className="col-xl-2 col-lg-2 col-md-3 col-sm-5">
-                <h4>Explorar</h4>
+                <h5>Explorar</h5>
                 <ul>
                   <li>
                     <a href="">Cookies</a>
                   </li>
                   <li>
-                    <a href="">Politicas de privacidad</a>
+                    <a href="">Políticas de privacidad</a>
                   </li>
                 </ul>
               </div>
               {/**Contacto */}
               <div className="col-xl-4 col-lg-4 col-md-6 col-sm-8">
-                <h4>Nosotros</h4>
+                <h5>Nosotros</h5>
                 <p>
                   Comunícate con los cuerpos académicos encargados para resolver
                   alguna situación.
                 </p>
-                <h4>
+                <h5>
                   <span id="correos">Correos</span>{" "}
                   <span id="electronicos">electrónicos</span>
-                </h4>
+                </h5>
                 <p>
                   cuestionario@utpuebla.edu.mx
                   <br />
@@ -97,21 +97,21 @@ function Footer() {
                     Universidad Tecnológica de Puebla &copy; {year} Todos los
                     derechos reservados | <a href="creditos.html">Créditos</a>{" "}
                     &nbsp;
-                    <a
+                    <a id="icon"
                       href="https://www.facebook.com/OficialUTP"
                       target="_blank"
                     >
                       <FontAwesomeIcon className="icon" icon={faFacebook} />
                       &nbsp;
                     </a>
-                    <a
+                    <a id="icon"
                       href="https://www.instagram.com/utpueblaoficial/?hl=es"
                       target="_blank"
                     >
                       <FontAwesomeIcon className="icon" icon={faInstagram} />
                       &nbsp;
                     </a>
-                    <a href="https://twitter.com/OficialUTP" target="_blank">
+                    <a id="icon" href="https://twitter.com/OficialUTP" target="_blank">
                       <FontAwesomeIcon className="icon" icon={faTwitter} />
                       &nbsp;
                     </a>

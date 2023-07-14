@@ -17,3 +17,32 @@
   font-style: normal;
   font-weight: normal;
 }
+
+h1 {
+  font-size: clamp(1.6em, 4vw, 6em) !important;
+  font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+}
+h2 {
+  font-size: clamp(1.5em, 3.7vw, 5.5em) !important;
+  font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+}
+h3 {
+  font-size: clamp(1.3em, 2.5vw, 4em) !important;
+  font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+}
+h4 {
+  font-size: clamp(1.2em, 1.8vw, 2.5em) !important;
+  font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+}
+h5 {
+  font-size: clamp(1em, 1.6vw, 1.5em) !important;
+  font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+}
+h6 {
+  font-size: clamp(1em, 1.3vw, 1.1em) !important;
+  font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+}
+p {
+  font-size: clamp(1em, 1.3vw, 1.1em) !important;
+  font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+}

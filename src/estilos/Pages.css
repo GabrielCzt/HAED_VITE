@@ -1,43 +1,21 @@
 @import url(./Constantes.css);
 
+.barContains div.row {
+  margin: 0;
+}
 .barContains {
-  width: 100%;
-  align-items: center;
-  text-align: center;
+  background-image: url("../imagenes/papel_arrugado.avif");
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: auto;
+  background-blend-mode: multiply;
+  background-color: var(--haed);
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
-
-.bar {
-  padding: 1rem;
-  margin-top: 2%;
-  background-color: white;
-  color: var(--haed);
-  padding-left: 3%;
-  padding-right: 3%;
-  margin-bottom: 5%;
-  background: radial-gradient(
-    at 50% 100%,
-    var(--haed) 5%,
-    rgba(170, 255, 222, 0.445) 35%,
-    white 50%
-  );
-  border-radius: 30pt;
-  width: fit-content;
-}
-.bar .display-4 {
+.barContains h2 {
+  color: white;
   font-family: "Montserrat";
+
 }
-/*
-._bar{
-    align-items: center;
-    text-align: center;
-    padding-top: 110pt;
-    padding-bottom: 110pt;
-    background-color: var(--cabecera);
-    color:var(--white);
-    margin-bottom: 0%;
-}
-._bar .display-4 {
-    font-family: 'Montserrat';
-}*/

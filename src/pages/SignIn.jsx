@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { useState } from "react";
-import SessionContext from "../Context/SessionContext";
+import SessionContext from "../context/SessionContext";
 import Titulo from "../components/BarraDeTitulo";
 
 const cookie = new Cookies();
@@ -73,27 +73,30 @@ function Sign() {
 
   return (
     <>
-      <Titulo titulo="Registrarse"/>
+      <Titulo titulo="Registrarse" />
       {/**Etiqueta separadora de estilos */}
       <div className="log">
         <div className="container" id="log_sign">
           <div className="row">
             {/**Cuadro de la izquierda para iniciar sesión */}
+
             <div className="col-sm-12 col-md-6 sign">
-              <h2>¿Ya tienes una cuenta?</h2>
-              <p>
-                Para contestar la autoevaluación debes iniciar sesión, si ya
-                tienes una cuenta da click en el botón Iniciar Sesión
-              </p>
-              <br />
-              <Link to="/Iniciar-sesion">
-                <button id="button">INICIAR SESIÓN</button>
-              </Link>
+              <div className="row">
+                <h4>¿Ya tienes una cuenta?</h4>
+                <p>
+                  Para contestar la autoevaluación debes iniciar sesión, si ya
+                  tienes una cuenta da clic en el botón Iniciar Sesión.
+                </p>
+                <br />
+                <Link to="/Iniciar-sesion">
+                  <button id="button">INICIAR SESIÓN</button>
+                </Link>
+              </div>
             </div>
             {/**Formulario para registro */}
             <div className="col-sm-12 col-md-6 login">
               <h2>Bienvenido</h2>
-              <h3>Vamos a crear una nueva cuenta</h3>
+              <h4>Vamos a crear una nueva cuenta</h4>
               {loading ? (
                 <div
                   className="alert alert-success d-flex align-items-center"
@@ -162,7 +165,7 @@ function Sign() {
                   placeholder="Repita su contraseña"
                 ></input>
                 <button type="submit" id="ingresar">
-                  CLICK AQUÍ PARA CREAR SU CUENTA
+                  CLIC AQUÍ PARA CREAR SU CUENTA
                 </button>
               </form>
             </div>

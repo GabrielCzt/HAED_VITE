@@ -2,14 +2,14 @@ import React, { useContext, useEffect } from "react";
 import "../estilos/Pages.css";
 import "../estilos/Usuarios.css";
 import { useNavigate } from "react-router-dom";
-import SessionContext from "../Context/SessionContext";
+import SessionContext from "../context/SessionContext";
 import Cookies from "universal-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
-import fetchData from "../Funciones/ObtenerInformación";
+import fetchData from "../funciones/ObtenerInformación";
 import Swal from "sweetalert2";
 import Titulo from "../components/BarraDeTitulo";
 

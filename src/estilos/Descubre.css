@@ -1,5 +1,13 @@
 @import url(./Constantes.css);
 
+.desc div.row{
+  margin: 0;
+}
+.desc{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: var(--white);
+}
 .desc * {
   box-sizing: border-box;
 }
@@ -15,18 +23,13 @@
   background-size: cover;
 }
 
-.desc .slider-area2 .hero-cap h2 {
+.desc .slider-area2 .hero-cap h4 {
   color: var(--white);
-  font-size: 60px;
   font-weight: 700;
   line-height: 1;
 }
 
-@media (max-width: 575px) {
-  .slider-area2 .hero-cap h2 {
-    font-size: 35px;
-  }
-}
+
 
 /* FIN Estilos de imagen Herramienta de autoevaluacion */
 
@@ -34,7 +37,7 @@
 .desc .title1 {
   color: #104141;
   font-family: "Montserrat", sans-serif;
-  font-size: 2.5rem;
+  font-size:clamp(1.6em,4vw,6em);
   font-weight: 600;
   line-height: 1.2;
 }
@@ -75,13 +78,15 @@
   max-width: 100%;
 }
 
-.desc .blog_post .blog_details h2 {
+.desc .blog_post .blog_details h4 {
   color: #006d77;
   font-family: "Montserrat", sans-serif;
 }
 
-.desc .desc .tabla-responsiva {
+.desc .tabla-responsiva {
+  max-width: 100%;
   overflow-x: auto;
+  background-color:var(--non-white-haed);
 }
 
 .desc .button-blog {
@@ -92,6 +97,10 @@
   color: var(--non-black-haed);
   font-weight: bolder;
   transition: all 0.4s ease;
+}
+.desc table{
+  background-color: var(--non-white-haed);
+  color:var(--non-black-haed);
 }
 
 .desc .button-blog:hover {

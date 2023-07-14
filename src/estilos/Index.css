@@ -2,11 +2,13 @@
 @import url(./Constantes.css);
 
 /*Estilos generales*/
-.idx body {
-  background-color: var(--white);
+.idx{
+
+  background-color:var(--non-white-haed);
+  padding-top: 3%;
 }
 .idx div.row {
-  margin-right: 0;
+  margin: 0;
 }
 
 .idx div.container-fluid {
@@ -22,8 +24,8 @@
 .idx h1 {
   font-family: "Montserrat";
   color: var(--titulos);
-  font-weight: 600;
-  font-size: 30pt;
+
+
 }
 .idx #i_contestar {
   padding: 10pt;
@@ -32,7 +34,7 @@
   padding-left: 15pt;
   padding-right: 15pt;
   background-color: var(--light-haed);
-  color: var(--white);
+  color: white;
   border: none;
   font-weight: bolder;
   font-family: "Montserrat";
@@ -47,16 +49,18 @@
 /**TARJETA DE DEFINICION HAED*/
 
 .idx #definicion {
-  background-color: var(--non-white-haed);
-  padding: 40pt;
-  margin-bottom: 40pt;
+  background-color: var(--white);
+  padding: 5%;
+ margin-bottom: 10%;
+  
 }
 .idx .info p {
   color: var(--black);
   font-family: "Montserrat";
   font-weight: lighter;
+  text-align: justify;
 }
-.idx h2 {
+.idx h4 {
   font-weight: lighter;
   font-family: "Montserrat";
   color: var(--light-b-haed);
@@ -76,19 +80,22 @@
 }
 
 /* *CUERPOS ACADÉMICOS*/
-
-.idx .cuerpos h1 {
+.idx .cuerpos{
+  margin-bottom: 5%;
+}
+.idx .cuerpos h4 {
   font-size: 25pt;
   font-weight: 400;
   font-family: "Montserrat";
+margin-bottom: 5%;
 }
-.idx .cuerpos h2 {
+.idx .cuerpos h5 {
   color: var(--titulos);
   font-size: x-large;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
 }
-.idx .cuerpos h3 {
+.idx .cuerpos h6 {
   color: var(--light-b-haed);
   font-family: "Montserrat", sans-serif;
   font-size: larger;
@@ -169,7 +176,7 @@
   color: var(--light-b-haed);
   font-size: 30pt;
 }
-.idx .cards h1 {
+.idx .cards h3 {
   color: var(--black);
   font-size: 22pt;
   font-weight: 400;
@@ -184,13 +191,14 @@
 /**Portafolio de imagenes HAED*/
 .idx .portafolio {
   margin-top: 20pt;
-  margin-bottom: 20pt;
+  padding-bottom: 10pt;
 }
-.idx .portafolio h1 {
+.idx .portafolio h3 {
   font-size: 25pt;
   font-weight: 400;
   font-family: "Montserrat";
+  color: var(--black);
 }
 .idx .portafolio img {
-  margin-bottom: 10pt;
+  padding-bottom: 10pt;
 }

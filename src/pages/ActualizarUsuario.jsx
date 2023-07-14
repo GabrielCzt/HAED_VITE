@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const cookie = new Cookies();
 
 function ActualizarUsuario() {
-    const navigate = new useNavigate();
+  const navigate = new useNavigate();
   let params = useParams();
   const [info, setInfo] = useState([]);
   const [nombre, setNombre] = useState("");
@@ -128,10 +128,10 @@ function ActualizarUsuario() {
       <div className="userupdate">
         <div className="container">
           <div className="row">
-            <div className="col">
-              <h6>Ingrese solamente los campos que desea actualizar</h6>
+            <div className="col-sm-12 col-md-6 instrucciones">
+              <h5>Ingrese solamente los campos que desea actualizar</h5>
             </div>
-            <div className="col-6">
+            <div className="col-sm-12 col-md-6">
               <form onSubmit={handleUpdate}>
                 <input
                   onChange={changeNombres}

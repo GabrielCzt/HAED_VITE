@@ -8,6 +8,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
+import cambio from "../funciones/DarkTheme";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
 
 const cookie = new Cookies();
 
@@ -18,7 +21,10 @@ function Header() {
   const [op2, setOp2] = useState("");
   const [matricula, setMatricula] = useState("");
   const [info, setInfo] = useState([]);
+  const [themeIcon,setThemeIcon]=useState(faSun)
+  const [themeID, setThemeId] = useState("themeSun")
 
+  
   const fetchData = async () => {
     try {
       const token = cookie.get("token");
@@ -64,7 +70,19 @@ function Header() {
   {
     /**Switch de menú */
   }
-  useEffect(() => {}, []);
+  useEffect(() => {
+  if(!cookie.get("theme")){
+    cookie.set("theme", "light", { path: "/" });
+    setThemeIcon(faSun)
+    setThemeId("themeSun")
+  }
+  else if(cookie.get("theme")==="dark"){
+    setThemeId("themeMoon")
+    setThemeIcon(faMoon)
+  }
+  
+  cambio("set")
+  }, []);
   const close = () => {
     if (op2 === "Registrarse") {
       navigate("/Registrarse");
@@ -80,7 +98,19 @@ function Header() {
     setOp2("Registrarse");
     setMatricula("");
   };
-
+  const setTheme =()=>{
+    cambio("switch");
+    if(themeIcon===faSun){
+      setThemeIcon(faMoon)
+      cambio
+      setThemeId("themeMoon")
+    }
+    else{
+      setThemeIcon(faSun)
+      cambio
+      setThemeId("themeSun")
+    }
+  }
   return (
     <>
       <EstableceOp />
@@ -90,15 +120,18 @@ function Header() {
           <div className="container">
             <div className="row">
               {/**Primera columna, contiene el icono de reloj y la fecha completa */}
-              <div className="col-sm-3 col-md-2" id="date">
+              <div className="col-sm-4 col-md-2" id="date">
+                <button id={themeID} onClick={setTheme}> <FontAwesomeIcon icon={themeIcon}/> </button>
+                &nbsp;
+                &nbsp;
                 <FontAwesomeIcon icon={faClock} id="reloj" />
                 {day}/{month}/{year}
               </div>
               {/**Segunda columna, se reserva para el titulo y ayuda a posicionar el siguiente elemento, además de permitir un mejor control
                * de responsividad
                */}
-              <div className="col-sm-7 col-md-8" id="Title">
-                <p>Herramienta de Autoevaluacion HAED</p>
+              <div className="col-sm-6 col-md-8" id="Title">
+                <p>Herramienta de Autoevaluación HAED</p>
               </div>
               {/**Tercera columna, contiene el botón de menú, es necesario usar etiquetas de React-Bootstrap para evitar problemas de compatibilidad */}
               <div className="col-sm-2 col-md-2 desplegable">
@@ -107,7 +140,7 @@ function Header() {
                     <FontAwesomeIcon icon={faCircleUser} />
                     &nbsp; {matricula}
                   </Dropdown.Toggle>
-                  <Dropdown.Menu>
+                  <Dropdown.Menu id="dropMenu">
                     {/**Usar ItemText en lugar de Item sirve para colocar la funcionalidad de Link */}
                     <Dropdown.ItemText>
                       <Link id="links-header" onClick={EstableceOp} to={route1}>

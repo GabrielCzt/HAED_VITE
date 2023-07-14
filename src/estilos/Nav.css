@@ -1,7 +1,17 @@
 @import url(./Constantes.css);
 
 /*Estilos generales*/
+._navbar div.row{
+margin: 0;
+}
+._navbar{
+  position: sticky;
+  top: 0;
+  z-index:999;
+}
 ._navbar .nav {
+  position: sticky;
+  top: 0;
   background-color: var(--white);
 }
 
@@ -30,7 +40,7 @@
 
 /*Estilos NavLink Acitvo */
 #links.active {
-  color: var(--non-white-haed);
+  color: white;
   background: var(--haed);
 }
 .me-auto.navbar-nav {

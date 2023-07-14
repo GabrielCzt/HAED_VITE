@@ -9,7 +9,7 @@ import {
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SessionContext from "../Context/SessionContext";
+import SessionContext from "../context/SessionContext";
 import Titulo from "../components/BarraDeTitulo";
 
 const cookie = new Cookies();
@@ -30,6 +30,7 @@ function Cuestionario() {
   const fetchApi = async () => {
     const response = await fetch(url);
     const apiResponse = await response.json();
+    console.log(apiResponse)
     setCuest(apiResponse);
   };
   useEffect(() => {
@@ -65,8 +66,7 @@ function Cuestionario() {
         },
       };
       //Usamos axios y pasamos el link y los parametros
-      axios
-        .post(
+      axios.post(
           "http://api-haed.danielreyesepitacio.cloud/api/respuestas/all",
           params,
           headers
@@ -94,7 +94,7 @@ function Cuestionario() {
       <div className="questions">
         <div className="container">
           <div className="row">
-            {!cuest ? "" : <h1>Está contestando {cuest.titulo}</h1>}
+            {!cuest ? "" : <h3>Está contestando {cuest.titulo}</h3>}
             {/**Separando cada pregunta como un elemento de lista */}
             <ul>
               {/**Se deben mapear las preguntas */}

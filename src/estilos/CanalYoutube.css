@@ -1,22 +1,32 @@
 @import url(./Constantes.css);
 
 /*Estilos generales*/
-.yt .content h2 {
-  font-size: 15pt;
+.yt{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: var(--white);
+}
+
+.yt .content h5 {
+
   color: var(--black);
   font-weight: 900;
   margin-bottom: 5pt;
   line-height: 25pt;
   font-family: "Montserrat";
 }
-.yt .content h3 {
-  font-size: 12pt;
+.yt .content h6 {
+
   font-weight: lighter;
   color: var(--black);
 }
 .yt .content p {
   color: var(--black);
   font-weight: 200;
+  
+}
+.yt iframe{
+  max-width: 100%;
 }
 
 /*Estilos de cuadro de busqueda*/
@@ -26,25 +36,66 @@
   border: solid 1pt;
   padding: 20pt;
   border-radius: 5pt;
+  display:flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
-.yt .searchBox #inputSearch {
-  border-radius: 5pt;
-  width: 100%;
+.yt .searchBox .boxInput{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.yt .searchBox #search {
+.yt .searchBox .boxBack{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.yt .searchBox .boxInput input{
+  background-color: var(--white);
+  max-width: 80%;
+  border-radius: 15pt 0pt 0pt 15pt;
+  height: 4.4vh;
+  border: 2px solid darkgray;
+  color: var(--black);
+}
+.yt .searchBox .boxInput input::placeholder{
+  color: var(--non-black-haed);
+}
+.yt .searchBox .boxInput #buttonSearch{
+  max-width: 10%;
+  border-radius: 0pt 15pt 15pt 0pt;
+  color: white;
   background-color: var(--haed);
-  width: 100%;
-  color: var(--white);
-  border-radius: 5pt;
-  margin-top: 5pt;
+  border: solid 2px var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4.4vh;
+  
+}
+.yt .searchBox .boxInput #buttonSearch:hover{
+  background-color: var(--light-haed);
 }
 
+.yt .searchBox .boxBack #back{
+  background-color:crimson;
+  color: white;
+  width: 90%;
+  left: 20%;
+  border-radius: 15pt;
+  border: 0;
+}
+
+.yt .searchBox .boxBack #back:hover{
+  background-color: darkred;
+}
 /*Estilos de botones de anterior/siguiente*/
 
 .yt #anterior {
   border-radius: 5pt;
   background-color: var(--haed);
-  color: var(--white);
+  color: white;
   margin-bottom: 30pt;
   width: 80pt;
   height: 30pt;
@@ -61,7 +112,7 @@
 .yt #siguiente {
   border-radius: 5pt;
   background-color: var(--haed);
-  color: var(--white);
+  color: white;
   margin: 10pt;
   width: 80pt;
   height: 30pt;

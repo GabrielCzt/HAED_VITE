@@ -1,8 +1,207 @@
 @import url(./Constantes.css);
 
-.adminProfile .menu {
-  background-color: var(--non-black-haed);
+.adminProfile {
+  background-color: var(--white);
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.adminProfile .card {
+  background-color: var(--non-white-haed);
+  color: var(--black);
+}
+
+.adminProfile .card .list-group-item {
+  background-color: var(--non-white-haed);
+  color: var(--black);
+}
+.adminProfile .card .list-group-item span {
+  color: var(--black);
+}
+
+.adminProfile #menuOpciones #head {
+  background-color: var(--light-b-haed);
+  border: solid 1px var(--haed);
+}
+.adminProfile #menuOpciones #menu {
+  background-color: var(--light-b-haed);
+  border: solid 1px var(--haed);
   color: white;
+}
+.adminProfile #menuOpciones #menu #item {
+  color: white;
+  text-decoration: none;
+}
+.adminProfile #menuOpciones #menu #item:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.adminProfile .card {
+  background-color: var(--non-white-haed);
+  color: var(--black);
+}
+
+.adminProfile .card .list-group-item {
+  background-color: var(--non-white-haed);
+  color: var(--black);
+}
+.adminProfile .card .list-group-item span {
+  color: var(--black);
+}
+
+.adminProfile .user-box img {
+  border-radius: 50%;
+  padding: 3px;
+  background: #fff;
+  -webkit-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+}
+
+.adminProfile .card:hover .img {
+  transform: scale(1.5);
+}
+
+.adminProfile  .img {
+  transition: all 0.5s;
+}
+
+/* Caja del usuario */
+.adminProfile  .profile-card-4 .user-box {
+  width: -webkit-fill-available;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+/* Tarjeta de datos del usuario con imagen */
+.adminProfile  .profile-card-4 .list-icon {
+  display: table-cell;
+  font-size: 30px;
+  padding-right: 20px;
+  vertical-align: middle;
+  color: #223035;
+}
+
+.adminProfile  .profile-card-4 .list-details {
+  display: table-cell;
+  vertical-align: middle;
+  font-weight: 600;
+  color: #223035;
+  font-size: 15px;
+  line-height: 15px;
+}
+
+.adminProfile  .profile-card-4 .list-details small {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 12px;
+  font-weight: 400;
+  color: #808080;
+}
+
+/* Contenedor principal */
+
+/* Expansion del contendor principal */
+.adminProfile  .row {
+  margin-bottom: 2%;
+}
+
+/* Barra personalizada de apartado */
+
+.adminProfile  .nav-tabs-success.nav-tabs {
+  border-bottom: 1px solid #15ca20;
+}
+
+.adminProfile  .nav-tabs-success .nav-link.active,
+.nav-tabs-success .nav-item.show > .nav-link {
+  color: #15ca20;
+  background-color: #fff;
+  border-color: #15ca20 #15ca20 #fff;
+  border-top: 3px solid #15ca20;
+}
+
+.adminProfile  .nav-link.active.show {
+  width: 50%;
+  float: right;
+}
+
+/* Pestaña personalizada  */
+
+.adminProfile  .tabs-vertical .nav-tabs .nav-link {
+  color: #223035;
+  font-size: 12px;
   text-align: center;
-  padding: 1%;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin: 2px;
+  margin-right: -1px;
+  padding: 12px 1px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.adminProfile  .tabs-vertical .nav-tabs {
+  border: 0;
+  border-right: 1px solid #dee2e6;
+}
+
+/* Pestaña succes personalizada */
+
+.adminProfile  .tabs-vertical-success.tabs-vertical .nav-tabs {
+  border: 0;
+  border-right: 1px solid #15ca20;
+}
+
+.adminProfile 
+  .tabs-vertical-success.tabs-vertical
+  .nav-tabs
+  .nav-item.show
+  .nav-link,
+.tabs-vertical-success.tabs-vertical .nav-tabs .nav-link.active {
+  color: #15ca20;
+  background-color: #fff;
+  border-color: #15ca20 #15ca20 #fff;
+  border-bottom: 1px solid #15ca20;
+  border-right: 0;
+  border-left: 3px solid #15ca20;
+}
+
+.adminProfile  .nav-pills .nav-link {
+  border-radius: 0.25rem;
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 3px;
+  padding: 12px 20px;
+}
+/* Sombra de las tarjetas  */
+
+.adminProfile  .nav-pills-success .nav-link.active,
+.nav-pills-success .show > .nav-link {
+  color: #fff;
+  background-color: #10a517;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(21, 202, 32, 0.5);
+}
+
+/* Sombra de contenedor  */
+.adminProfile  .z-depth-3 {
+  -webkit-box-shadow: 0 11px 7px 0 rgba(0, 0, 0, 0.19),
+    0 13px 25px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 11px 7px 0 rgba(0, 0, 0, 0.19), 0 13px 25px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos de formulario */
+
+.adminProfile  .form-control {
+  display: -webkit-inline-box;
+  width: 75%;
 }

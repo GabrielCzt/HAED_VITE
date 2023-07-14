@@ -1,8 +1,12 @@
 /*!Configuraciones generales de bootstrap*/
 @import url(./Constantes.css);
-
+.log{
+  background-color: var(--white);
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
 .log div.row {
-  margin-right: 0;
+  margin: 0;
 }
 
 .log div.container-fluid {
@@ -16,16 +20,19 @@
 /*Estilos del recuadro izquierdo de la página*/
 .log .sign {
   background: linear-gradient(90deg, #8eb0ae, #006d77);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  padding: 60pt;
-  padding-top: 150pt;
-  padding-bottom: 150pt;
+  padding: 10%;
+  padding-top: 15%;
+  padding-bottom: 15%;
   text-align: center;
 }
 .log .sign p {
   color: var(--white);
 }
-.log .sign h2 {
+.log .sign h4 {
   color: var(--white);
   font-family: sans-serif;
   font-weight: bolder;
@@ -39,7 +46,7 @@
   margin: 30pt;
   color: var(--white);
   border-radius: 5pt;
-  border: solid 1px white;
+  border: solid 1px var(--white);
   text-decoration: none;
 }
 .log .sign #button:hover {
@@ -54,12 +61,13 @@
   font-size: small;
 }
 .log .login {
-  padding: 50pt;
+  padding: 10%;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding-top: 100pt;
   text-align: center;
+  display: inline-block;
 }
 .log .login h2 {
   font-family: "Montserrat";
@@ -67,8 +75,9 @@
   font-size: 30pt;
   color: var(--light-b-haed);
 }
-.log .login h3 {
+.log .login h4 {
   margin-bottom: 20pt;
+  color: var(--black);
 }
 .log .login input {
   width: 90%;
@@ -77,6 +86,14 @@
   margin-bottom: 20pt;
   border: none;
   border-bottom: solid 1pt var(--gray-haed);
+  background-color: var(--white);
+  color:var(--black);
+}
+.log .login input::placeholder{
+  color: var(--black);
+}
+.log .login #eye{
+  color: var(--non-black-haed);
 }
 
 .log .login #myPassword {
@@ -139,7 +156,7 @@
 
 p.text-credentials {
   margin: auto;
-  color: var(--non-black-haed);
+  color: black;
 }
 
 #p-sign {
