@@ -83,12 +83,12 @@ font-size: 100%;
   padding-top: 10pt;
 }
 
-.foot #icon  {
+.foot .icon  {
   color: white;
   margin-left: 1%;
 }
 
-.foot #icon:hover {
+.foot .icon:hover {
   cursor: pointer;
   text-decoration: none;
   color: yellow;

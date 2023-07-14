@@ -121,7 +121,7 @@ function Header() {
             <div className="row">
               {/**Primera columna, contiene el icono de reloj y la fecha completa */}
               <div className="col-sm-4 col-md-2" id="date">
-                <button id={themeID} onClick={setTheme}> <FontAwesomeIcon icon={themeIcon}/> </button>
+                <button id={themeID} aria-label="switch-theme" onClick={setTheme}> <FontAwesomeIcon icon={themeIcon}/> </button>
                 &nbsp;
                 &nbsp;
                 <FontAwesomeIcon icon={faClock} id="reloj" />
@@ -136,7 +136,7 @@ function Header() {
               {/**Tercera columna, contiene el botón de menú, es necesario usar etiquetas de React-Bootstrap para evitar problemas de compatibilidad */}
               <div className="col-sm-2 col-md-2 desplegable">
                 <Dropdown>
-                  <Dropdown.Toggle id="dropdown-basic">
+                  <Dropdown.Toggle id="dropdown-basic" aria-label="Perfil Desplegable">
                     <FontAwesomeIcon icon={faCircleUser} />
                     &nbsp; {matricula}
                   </Dropdown.Toggle>

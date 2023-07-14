@@ -60,7 +60,7 @@ function Index() {
 
   //*Se encarga de los efectos en scroll
   useEffect(() => {
-    AOS.init({ duration: 2000 });
+    AOS.init({ duration: 500 });
   }, []);
   return (
     <>
@@ -232,14 +232,14 @@ function Index() {
               <div data-aos="fade-up">
                 <h3>Temas</h3>
                 <p>
-                Los temas a tocar dentro del cuestionario de autoevaluación son los siguientes:
+                  Los temas a tocar dentro del cuestionario de autoevaluación son los siguientes:
                 </p>
               </div>
               {/**Los data-aos son en realidad clases, por lo que agregar una "class" a la etiqueta Card causa conflicto, por esta razón, 
                      se colocó cada tarjeta en un div con las clases respectivas para el diseño responsivo
                     */}
               <div className="col-sm-12 col-md-3">
-                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="500">
+                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="100">
                   <FontAwesomeIcon id="iconCard" icon={faLightbulb} />
                   <Card.Body>
                     <Card.Title>Práctica reflexiva</Card.Title>
@@ -252,7 +252,7 @@ function Index() {
                 </Card>
               </div>
               <div className="col-sm-12 col-md-3">
-                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="1500">
+                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="200">
                   <FontAwesomeIcon id="iconCard" icon={faDesktop} />
                   <Card.Body>
                     <Card.Title>Aspectos Tecnológicos</Card.Title>
@@ -265,7 +265,7 @@ function Index() {
                 </Card>
               </div>
               <div className="col-sm-12 col-md-3">
-                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="2000">
+                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="300">
                   <FontAwesomeIcon id="iconCard" icon={faUserTie} />
                   <Card.Body>
                     <Card.Title>Profesionalización Docente</Card.Title>
@@ -273,7 +273,7 @@ function Index() {
                 </Card>
               </div>
               <div className="col-sm-12 col-md-3">
-                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="2500">
+                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="400">
                   <FontAwesomeIcon id="iconCard" icon={faGlobe} />
                   <Card.Body>
                     <Card.Title>Sobre la herramienta</Card.Title>

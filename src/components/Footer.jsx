@@ -97,22 +97,31 @@ function Footer() {
                     Universidad Tecnológica de Puebla &copy; {year} Todos los
                     derechos reservados | <a href="creditos.html">Créditos</a>{" "}
                     &nbsp;
-                    <a id="icon"
+                    <a
+                      className="icon"
+                      aria-label="facebook"
                       href="https://www.facebook.com/OficialUTP"
                       target="_blank"
                     >
-                      <FontAwesomeIcon className="icon" icon={faFacebook} />
+                      <FontAwesomeIcon icon={faFacebook} />
                       &nbsp;
                     </a>
-                    <a id="icon"
+                    <a
+                      aria-label="instagram"
+                      className="icon"
                       href="https://www.instagram.com/utpueblaoficial/?hl=es"
                       target="_blank"
                     >
-                      <FontAwesomeIcon className="icon" icon={faInstagram} />
+                      <FontAwesomeIcon icon={faInstagram} />
                       &nbsp;
                     </a>
-                    <a id="icon" href="https://twitter.com/OficialUTP" target="_blank">
-                      <FontAwesomeIcon className="icon" icon={faTwitter} />
+                    <a
+                      aria-label="twitter"
+                      className="icon"
+                      href="https://twitter.com/OficialUTP"
+                      target="_blank"
+                    >
+                      <FontAwesomeIcon icon={faTwitter} />
                       &nbsp;
                     </a>
                   </p>
