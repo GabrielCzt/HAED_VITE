@@ -1,48 +1,96 @@
 @import url("./Constantes.css");
 
-.graficas{
-    padding-top: 5%;
-    padding-bottom: 5%;
+.graficas div.row {
+  margin: 0;
 }
-.graficas .evContestadas{
-    display: grid;
-    place-items: center;
-    max-width: 100%;
-    width: 50%;
-    
+.graficas div.col {
+  margin: 0;
 }
-.graficas #menuOpciones{
-    margin-bottom: 2%;
-    margin-top: 5%;
+.graficas .menu {
+  background-color: var(--light-b-haed);
 }
-.graficas #head{
-    background-color: var(--haed);
-    color:white;
+.graficas .contenedorOpcionesMenu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  place-items: center;
 }
-.graficas #menu{
-    background-color:white;
+.graficas .opcionMenu {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.3vw;
+  padding-bottom: 1.3vw;
+  margin-bottom: 1vw;
+  font-size: x-large;
+  width: 25%;
+  border-radius: 5pt;
+  min-width: 5.8vw;
+  margin: 1vw auto 1vh auto;
+}
+.graficas .opcionMenu:hover {
+  background-color: var(--black);
+}
+.graficas .contenedorGraficas {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  display: flex;
+}
+.graficas .eachGrafica {
+  background-color: var(--non-white-haed);
+  margin-bottom: 20px !important;
+  list-style: none;
+  border-radius: 5pt;
+  padding: 5%;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
+}
+.graficas .eachGrafica .eachPregunta {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.graficas .evContestadas {
+  display: grid;
+  place-items: center;
+  max-width: 100%;
+  width: 50%;
+}
+.graficas #menuOpciones {
+  margin-bottom: 2%;
+  margin-top: 5%;
+}
+.graficas #head {
+  background-color: var(--haed);
+  color: white;
+}
+.graficas #menu {
+  background-color: white;
 }
 
-.graficas #opcion:hover{
-background-color: var(--light-haed);
-color: white;
+.graficas #opcion:hover {
+  background-color: var(--light-haed);
+  color: white;
 }
-.graficas #respuestas{
-    width: 15%;
+.graficas #respuestas {
+  width: 15%;
 }
 
 .graficas #volver {
-    padding: 1%;
-    background-color: var(--light-haed);
-    color: white;
-    border: none;
-    font-weight: bolder;
-    font-family: "Montserrat";
-    height: max-content;
-    border-radius: 5pt;
-    margin-bottom: 1%;
-  }
-  
-  .graficas #volver:hover {
-    background-color: var(--titulos);  
-  }
+  padding: 1%;
+  background-color: var(--light-haed);
+  color: white;
+  border: none;
+  font-weight: bolder;
+  font-family: "Montserrat";
+  height: max-content;
+  border-radius: 5pt;
+  margin-bottom: 1%;
+}
+
+.graficas #volver:hover {
+  background-color: var(--titulos);
+}

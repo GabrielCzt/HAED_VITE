@@ -3,8 +3,10 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 const SessionContext = createContext();
 import { useNavigate } from "react-router-dom";
+import { encrypt, encryptToken } from "../funciones/Cifrado";
 
 const SessionProvider = ({ children }) => {
+
   const navigate = new useNavigate();
   const cookie = new Cookies();
   const [loading, setLoading] = useState("");
@@ -47,7 +49,8 @@ const SessionProvider = ({ children }) => {
         if (response) {
           let respuesta = response.data;
           console.log(respuesta);
-          cookie.set("token", response.token, { path: "/" });
+          cookie.set("token", encryptToken(response.token), { path: "/" });
+          cookie.set("rol", encrypt(response.data.rol_id),{path:"/"});
           setTimeout(() => {
             if (respuesta.rol_id !== 3) {
               navigate("/Perfil");
@@ -76,7 +79,7 @@ const SessionProvider = ({ children }) => {
       });
   };
 
-  // Código para el registro
+  //! Código para el registro
 
   const [_nombres, set_Nombres] = useState("");
   const [_apellidos, set_Apellidos] = useState("");

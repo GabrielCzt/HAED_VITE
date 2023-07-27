@@ -2,14 +2,22 @@ import React, { useEffect, useState, useRef } from "react";
 import Titulo from "../components/BarraDeTitulo";
 import Cookies from "universal-cookie";
 import BarChart from "../components/BarChart";
-import "../estilos/Graficas.css"
+import "../estilos/Graficas.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChartColumn,
+  faCircleArrowLeft,
+  faCircleUser,
+  faFileInvoice,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { Chart } from "chart.js";
+import MenuAdmin from "../components/MenuAdmin";
+import { decryptToken } from "../funciones/Cifrado";
 
 const cookie = new Cookies();
 cookie.set("check", 1, { path: "/" });
@@ -51,8 +59,6 @@ function Graficas() {
     link.click();
   };
 
-
-
   // Obteniendo los nombres de los cuestionarios
 
   const cuestUrl = "http://api-haed.danielreyesepitacio.cloud/api/evaluaciones";
@@ -63,15 +69,16 @@ function Graficas() {
     const response = await fetch(cuestUrl);
     const apiResponse = await response.json();
     setName(apiResponse);
-    if (currentCuest === "") setCurrentCuest(apiResponse[0].titulo)
+    if (currentCuest === "") setCurrentCuest(apiResponse[0].titulo);
   };
   // Obteniendo el número total de evaluaciones contestadas
   const [estadisticas, setEstadisticas] = useState();
   const [estadisticasCuest, setEstadisticasCuest] = useState();
   const getEstadisticas = async () => {
     try {
-      const token = cookie.get("token");
-      const url = "http://api-haed.danielreyesepitacio.cloud/api/admin/estadisticas/evaluaciones-contestadas"
+      const token = decryptToken(cookie.get("token"));
+      const url =
+        "http://api-haed.danielreyesepitacio.cloud/api/admin/estadisticas/evaluaciones-contestadas";
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -84,16 +91,16 @@ function Graficas() {
         console.log(datos);
         setEstadisticas({
           labels: datos.evaluaciones.map((label) => label.titulo),
-          datasets: [{
-            label: "Cantidad de veces que se contestó",
-            data: datos.evaluaciones.map((dato) => dato.total),
-            backgroundColor: ["#042c2c", "#2c8f62", "#006d77"],
-            borderWidth: 2,
-            borderSkipped: false,
-          }]
-
+          datasets: [
+            {
+              label: "Cantidad de veces que se contestó",
+              data: datos.evaluaciones.map((dato) => dato.total),
+              backgroundColor: ["#042c2c", "#2c8f62", "#006d77"],
+              borderWidth: 2,
+              borderSkipped: false,
+            },
+          ],
         });
-
       } else {
         console.error("Error en la solicitud:", response.status);
       }
@@ -103,8 +110,10 @@ function Graficas() {
   };
   const getCuestEstadisticas = async () => {
     try {
-      const token = cookie.get("token");
-      const url = "http://api-haed.danielreyesepitacio.cloud/api/admin/estadisticas/respuestas/" + cookie.get("check")
+      const token = decryptToken(cookie.get("token"));
+      const url =
+        "http://api-haed.danielreyesepitacio.cloud/api/admin/estadisticas/respuestas/" +
+        cookie.get("check");
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -116,7 +125,6 @@ function Graficas() {
         const datos = await response.json();
         console.log(datos);
         setEstadisticasCuest(datos);
-
       } else {
         console.error("Error en la solicitud:", response.status);
       }
@@ -129,76 +137,112 @@ function Graficas() {
     fetchCuest();
     getCuestEstadisticas();
     console.log(estadisticas);
-  }, [])
-
-
+  }, []);
 
   return (
     <>
       <Titulo titulo="Estadisticas HAED" />
-      <div className="graficas" >
-        <div className="container" >
-          <Link to="../Opciones-administrador"><button id="volver">Regresar al perfil &nbsp;<FontAwesomeIcon icon={faCircleArrowLeft} /></button></Link>
-          <div className="row">
-            <div className="col-12">
-              <h5>Número de evaluaciones contestadas</h5><br />
-              <div className="col-sm-12 col-md-6">
-                {estadisticas ? <BarChart datos={estadisticas} /> : "Cargando"}
+      <div className="graficas">
+        <div className="row">
+          <MenuAdmin />
+          <div className="col contenedorGraficas">
+            <div className="container">
+              <div className="row eachGrafica">
+                <div className="col-12">
+                  <h5>Número de evaluaciones contestadas</h5>
+                  <br />
+                  <div className="col-sm-12 col-md-7">
+                    {estadisticas ? (
+                      <BarChart datos={estadisticas} />
+                    ) : (
+                      "Cargando"
+                    )}
+                  </div>
+                </div>
               </div>
+              <Dropdown id="menuOpciones">
+                <Dropdown.Toggle id="head">
+                  Seleccione un cuestionario
+                </Dropdown.Toggle>
+                <Dropdown.Menu id="menu">
+                  {!name ? (
+                    <Dropdown.ItemText id="opcion">
+                      Espere, cargando
+                    </Dropdown.ItemText>
+                  ) : (
+                    name.map((num) => {
+                      return (
+                        <>
+                          <Dropdown.Item
+                            id="opcion"
+                            onClick={() => {
+                              cookie.set("check", num.id, { path: "/" });
+                              fetchCuest();
+                              getCuestEstadisticas();
+                              setCurrentCuest(num.titulo);
+                            }}
+                          >
+                            {num.titulo}
+                          </Dropdown.Item>
+                        </>
+                      );
+                    })
+                  )}
+                </Dropdown.Menu>
+              </Dropdown>
+              <div>
+                <div ref={componentRef}>
+                  <h4>{currentCuest}</h4>
+                  <div>
+                    {!estadisticasCuest
+                      ? "Espere, cargando"
+                      : estadisticasCuest.map((num, idx) => {
+                          const respuestas = {
+                            labels: num.respuestas.map((ans) => ans.respuesta),
+                            datasets: [
+                              {
+                                label: "Número de respuestas",
+                                data: num.respuestas.map((ans) => ans.cantidad),
+                                backgroundColor: [
+                                  "#042c2c",
+                                  "#2c8f62",
+                                  "#006d77",
+                                ],
+                                borderWidth: 2,
+                                borderSkipped: false,
+                              },
+                            ],
+                          };
+                          return (
+                            <>
+                              <div className="row eachGrafica">
+                                <div className="col-6 eachPregunta">
+                                  <h6>{num.pregunta}</h6>
+                                </div>
+                                <div className="col-6 eachGrafico">
+                                  <BarChart
+                                    id="respuestas"
+                                    datos={respuestas}
+                                  />
+                                </div>
+                              </div>
+                            </>
+                          );
+                        })}
+                  </div>
+                </div>
+              </div>
+              <br />
+              <button onClick={downloadImage} id="volver">
+                Descargar como Imagen
+              </button>
+              &nbsp;
+              <button onClick={generatePdf} id="volver">
+                Generar PDF
+              </button>
             </div>
           </div>
-
-          <div className="row">
-            <Dropdown id="menuOpciones">
-              <Dropdown.Toggle id="head">Seleccione un cuestionario</Dropdown.Toggle>
-              <Dropdown.Menu id="menu">
-                {!name ? <Dropdown.ItemText id="opcion">Espere, cargando</Dropdown.ItemText> : name.map((num) => {
-                  return (
-                    <>
-                      <Dropdown.Item id="opcion" onClick={() => {
-                        cookie.set("check", num.id, { path: "/" });
-                        fetchCuest();
-                        getCuestEstadisticas();
-                        setCurrentCuest(num.titulo);
-                      }}>{num.titulo}</Dropdown.Item>
-                    </>
-                  )
-                })}
-              </Dropdown.Menu>
-            </Dropdown>
-            <div ref={componentRef}>
-              <h4>{currentCuest}</h4>
-
-              {!estadisticasCuest ? "Espere, cargando" : estadisticasCuest.map((num, idx) => {
-                const respuestas = {
-                  labels: num.respuestas.map((ans) => ans.respuesta),
-                  datasets: [{
-                    label: "Número de respuestas",
-                    data: num.respuestas.map((ans) => ans.cantidad),
-                    backgroundColor: ["#042c2c", "#2c8f62", "#006d77"],
-                    borderWidth: 2,
-                    borderSkipped: false,
-                  }]
-                }
-                return (
-                  <>
-                    <div className="row">
-                      <div className="col-12">
-                        <h6>{num.pregunta}</h6>
-                      </div>
-                      <div className="col-sm-12 col-md-6">
-                        <BarChart id="respuestas" datos={respuestas} />
-                      </div>
-                    </div>
-                    <div className="html2pdf__page-break"></div> {/* Salto de página */}
-                  </>)
-              })}
-            </div>
-          </div><br/>
-          <button onClick={downloadImage} id="volver">Descargar como Imagen</button>&nbsp;
-          <button onClick={generatePdf} id="volver">Generar PDF</button>
         </div>
-        
       </div>
     </>
   );

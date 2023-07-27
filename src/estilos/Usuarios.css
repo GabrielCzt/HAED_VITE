@@ -1,17 +1,54 @@
 @import url("../estilos//Constantes.css");
-
-.infoUsers{
-  padding-top: 5%;
-  padding-bottom: 5%;
+.infoUsers div.row{
+  margin: 0;
+}
+.infoUsers div.col{
+  margin: 0;
+}
+.infoUsers {  
   background-color: var(--white);
 }
+.infoUsers .menu{
 
-.infoUsers table{
-  background-color: var(--non-white-haed);  
+  background-color: var(--light-b-haed);
+  
+}
+.infoUsers .contenedorOpcionesMenu{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  place-items: center;
+  
+}
+.infoUsers .opcionMenu{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.3vw;
+  padding-bottom: 1.3vw;
+  margin-bottom: 1vw;
+  font-size: x-large;
+  width: 25%;
+  border-radius: 5pt;
+  min-width: 5.8vw;
+  margin: 1vw auto 1vh auto ;
+}
+.infoUsers .opcionMenu:hover{
+  background-color: var(--black);
+
+}
+.infoUsers table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+ width: 100%;
 }
 .infoUsers table th {
-  background-color: var(--haed);
-  color: white;
+  color: var(--light-b-haed);
+  font-weight: bold;
+  font-family: "Montserrat";
   padding-left: 1%;
   padding-top: 1%;
   padding-bottom: 1%;
@@ -22,13 +59,17 @@
   padding-left: 1%;
   padding-top: 1%;
   padding-bottom: 1%;
-  border-bottom: 1px solid var(--non-black-haed);
+  
   color: var(--black);
 }
-.infoUsers table tr:hover {
-  width: auto;
-  background-color: var(--blue);
-  color: black;
+.infoUsers table #tdID{
+  color: var(--haed);
+  font-weight: bold;
+}
+.infoUsers table tr {
+  background:linear-gradient(var(--white),var(--non-white-haed) );
+  margin-bottom: 5%;
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
 }
 .infoUsers table {
   width: 80%;
@@ -39,33 +80,7 @@
 .infoUsers .tableContainer {
   display: grid;
   place-items: center;
-  max-width: 100%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   overflow-x: auto;
 }
-.infoUsers #delete {
-  background-color: red;
-  color: white;
-  border-radius: 5pt;
-  padding: 5pt;
-}
-.infoUsers #delete:hover {
-  cursor: pointer;
-  background-color: darkred;
-  transition: 0.15s;
-  transform: scale(1.2);
-}
-
-.infoUsers #edit {
-  background-color: orange;
-  color: white;
-  border-radius: 5pt;
-  padding: 5pt;
-}
-.infoUsers #edit:hover {
-  cursor: pointer;
-  background-color: darkgoldenrod;
-  transition: 0.15s;
-  transform: scale(1.2);
-}
-
-

@@ -2,10 +2,46 @@
 
 .adminProfile {
   background-color: var(--white);
+
+
+}
+
+.adminProfile .adminProfileContainer{
   padding-top: 5%;
   padding-bottom: 5%;
 }
+.adminProfile div.row {
+  margin: 0;
+}
 
+.adminProfile .menu {
+  background-color: var(--light-b-haed);
+}
+.adminProfile .contenedorOpcionesMenu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  place-items: center;
+}
+.adminProfile .opcionMenu {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.3vw;
+  padding-bottom: 1.3vw;
+  margin-bottom: 1vw;
+  font-size: x-large;
+  width: 25%;
+  border-radius: 5pt;
+  min-width: 5.8vw;
+  margin: 1vw auto 1vh auto;
+}
+.adminProfile .opcionMenu:hover {
+  background-color: var(--black);
+}
 .adminProfile .card {
   background-color: var(--non-white-haed);
   color: var(--black);

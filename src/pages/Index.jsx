@@ -17,8 +17,10 @@ import Card from "react-bootstrap/Card";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-
+import Cookies from "universal-cookie";
+const cookie = new Cookies();
 function Index() {
+  
   //Funciones para mostrar/ocutar el contenido de las fichas de los cuerpos académicos
   const contenidoTIC = () => {
     let tics = document.getElementById("contenedorTIC");
@@ -60,7 +62,7 @@ function Index() {
 
   //*Se encarga de los efectos en scroll
   useEffect(() => {
-    AOS.init({ duration: 500 });
+    AOS.init({ duration: 2000 });
   }, []);
   return (
     <>
@@ -239,7 +241,7 @@ function Index() {
                      se colocó cada tarjeta en un div con las clases respectivas para el diseño responsivo
                     */}
               <div className="col-sm-12 col-md-3">
-                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="100">
+                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="500">
                   <FontAwesomeIcon id="iconCard" icon={faLightbulb} />
                   <Card.Body>
                     <Card.Title>Práctica reflexiva</Card.Title>
@@ -252,7 +254,7 @@ function Index() {
                 </Card>
               </div>
               <div className="col-sm-12 col-md-3">
-                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="200">
+                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="500">
                   <FontAwesomeIcon id="iconCard" icon={faDesktop} />
                   <Card.Body>
                     <Card.Title>Aspectos Tecnológicos</Card.Title>
@@ -265,7 +267,7 @@ function Index() {
                 </Card>
               </div>
               <div className="col-sm-12 col-md-3">
-                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="300">
+                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="800">
                   <FontAwesomeIcon id="iconCard" icon={faUserTie} />
                   <Card.Body>
                     <Card.Title>Profesionalización Docente</Card.Title>
@@ -273,7 +275,7 @@ function Index() {
                 </Card>
               </div>
               <div className="col-sm-12 col-md-3">
-                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="400">
+                <Card id="tarjeta" data-aos="zoom-in" data-aos-duration="1000">
                   <FontAwesomeIcon id="iconCard" icon={faGlobe} />
                   <Card.Body>
                     <Card.Title>Sobre la herramienta</Card.Title>

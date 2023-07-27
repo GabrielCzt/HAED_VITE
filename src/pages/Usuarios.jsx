@@ -1,28 +1,41 @@
 import React, { useContext, useEffect } from "react";
 import "../estilos/Pages.css";
 import "../estilos/Usuarios.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SessionContext from "../context/SessionContext";
 import Cookies from "universal-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChartColumn,
+  faCircleUser,
+  faFileInvoice,
+  faHandPaper,
+  faList,
+  faPaperclip,
+  faPencil,
+  faTrash,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 import fetchData from "../funciones/ObtenerInformación";
 import Swal from "sweetalert2";
 import Titulo from "../components/BarraDeTitulo";
+import MenuAdmin from "../components/MenuAdmin";
+import Cargando from "../components/Cargando";
+import { decryptToken } from "../funciones/Cifrado";
 
 const cookie = new Cookies();
 
 function Usuarios() {
   const navigate = new useNavigate();
-  const [info, setInfo] = useState([]);
+ const [info, setInfo] = useState(null);
   const [infoUser, setInfoUser] = useState([]);
   const [id, setId] = useState(null);
   const getUsers = async () => {
     try {
-      const token = cookie.get("token");
+      const token = decryptToken(cookie.get("token"));
       const url = "http://api-haed.danielreyesepitacio.cloud/api/admin/users";
       const response = await fetch(url, {
         method: "GET",
@@ -55,7 +68,7 @@ function Usuarios() {
     }).then((continuar) => {
       if (continuar.value) {
         try {
-          const token = cookie.get("token");
+          const token = decryptToken(cookie.get("token"));
           console.log(token);
           const url =
             "http://api-haed.danielreyesepitacio.cloud/api/admin/users/" +
@@ -67,23 +80,21 @@ function Usuarios() {
               "Content-Type": "application/json",
             },
           };
-          fetch(url, options).then((response) =>{
-            if(response.ok){
+          fetch(url, options).then((response) => {
+            if (response.ok) {
               window.location.reload();
-            }
-            else{
+            } else {
               Swal.fire({
                 text: "Algo salió mal",
                 icon: "error",
                 showCloseButton: true,
-              })
+              });
             }
-          } );
+          });
         } catch (error) {
           console.log(error);
         }
         getUsers();
-        
       }
     });
   };
@@ -102,61 +113,76 @@ function Usuarios() {
   }, []);
   return (
     <>
-      <Titulo titulo="Información de usuarios"/>
-      
+      <Titulo titulo="Información de usuarios" />
 
       <div className="infoUsers">
-        <div className="container">
-          <div className="tableContainer col-12">
-            <table>
-              <tr>
-                <th>Nombres</th>
-                <th>Matricula</th>
-                <th>Rol</th>
-                <th></th>
-                <th></th>
-              </tr>
+        <div className="row">
+          <MenuAdmin />
+          <div className="col">
+            <div className="tableContainer ">
               {!info ? (
-                <p>Algo salió mal</p>
+                <Cargando />
               ) : (
-                info.map((num, index) => {
-                  let rol = "Sin definir";
-                  if (num.rol_id == 1) {
-                    rol = "Docente";
-                  } else if (num.rol_id == 2) {
-                    rol = "Investigador";
-                  } else {
-                    rol = "Administrador";
-                  }
-                  return (
-                    <>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Nombres</th>
+                      <th>Matricula</th>
+                      <th>Rol</th>
+                      <th>Editar</th>
+                      <th>Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {!info ? (
                       <tr>
-                        <td>
-                          {num.nombres} {num.apellidos}
-                        </td>
-                        <td>{num.matricula}</td>
-                        <td>{rol}</td>
-                        <td>
-                          <FontAwesomeIcon onClick={()=>{
-                            navigate(`/Actualizar-usuario/${num.id}`) 
-                          }
-                          } id="edit" icon={faPencil} />
-                        </td>
-                        <td>
-                          <FontAwesomeIcon
-                            id="delete"
-                            onClick={() => {
-                              deleteUser(num.id);
-                            }}
-                            icon={faTrash}
-                          />
-                        </td>
+                        <td colSpan="5">Algo salió mal</td>
                       </tr>
-                    </>
-                  );
-                })
+                    ) : (
+                      info.map((num, index) => {
+                        let rol = "Sin definir";
+                        if (num.rol_id == 1) {
+                          rol = "Docente";
+                        } else if (num.rol_id == 2) {
+                          rol = "Investigador";
+                        } else {
+                          rol = "Administrador";
+                        }
+                        return (
+                          <tr key={index}>
+                            <td>
+                              {num.nombres} {num.apellidos}
+                            </td>
+                            <td id="tdID">{num.matricula}</td>
+                            <td>{rol}</td>
+                            <td>
+                              <button
+                                id="edit"
+                                onClick={() => {
+                                  navigate(`/Actualizar-usuario/${num.id}`);
+                                }}
+                              >
+                                <FontAwesomeIcon icon={faPencil} />
+                              </button>
+                            </td>
+                            <td>
+                              <button
+                                id="delete"
+                                onClick={() => {
+                                  deleteUser(num.id);
+                                }}
+                              >
+                                <FontAwesomeIcon icon={faTrash} />
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })
+                    )}
+                  </tbody>
+                </table>
               )}
-            </table>
+            </div>
           </div>
         </div>
       </div>

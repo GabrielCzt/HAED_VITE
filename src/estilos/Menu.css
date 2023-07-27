@@ -8,12 +8,12 @@
 .nonSession .display-6 {
   color: var(--black);
 }
-.menu {
+.menuEvaluacion {
   background-color: var(--white);
   padding-top: 5%;
   padding-bottom: 5%;
 }
-.menu h4 {
+.menuEvaluacion h4 {
   color: var(--black);
   -ms-word-break: break-all;
   word-break: break-all;
@@ -23,7 +23,7 @@
   -ms-hyphens: auto;
   hyphens: auto;
 }
-.menu ._button {
+.menuEvaluacion ._button {
   background: var(--white);
   color: var(--titulos);
   border-bottom: 2px solid var(--titulos);
@@ -40,12 +40,12 @@
   justify-content: space-between;
   margin-bottom: 1%;
 }
-.menu ._button:hover {
+.menuEvaluacion ._button:hover {
   color: #fff;
   text-decoration: underline;
   cursor: pointer;
 }
-.menu ._button::after {
+.menuEvaluacion ._button::after {
   content: "";
   background: var(--light-haed);
   background-image: url("https://i.pinimg.com/originals/f7/bc/10/f7bc1016a0a37843aa8fb14aab5f356f.jpg");
@@ -62,7 +62,7 @@
   transition: all 0.5s;
   text-decoration: underline;
 }
-.menu ._button:hover::after {
+.menuEvaluacion ._button:hover::after {
   text-decoration: underline;
   left: 0;
   right: 0;
@@ -73,7 +73,7 @@
   cursor: pointer;
 }
 
-.menu #pen {
+.menuEvaluacion #pen {
   color: var(--white);
   align-items: right;
 }

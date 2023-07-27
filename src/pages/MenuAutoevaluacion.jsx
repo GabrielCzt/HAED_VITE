@@ -7,16 +7,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "universal-cookie";
 import Titulo from "../components/BarraDeTitulo";
+import { decryptToken } from "../funciones/Cifrado";
 
 const cookie = new Cookies();
 
 function Menu() {
   // Obteniendo las autoevaluaciones disponibles
   const url = "http://api-haed.danielreyesepitacio.cloud/api/evaluaciones";
-
+  const token = decryptToken(cookie.get("token"))
   const [name, setName] = useState();
   const fetchApi = async () => {
-    const response = await fetch(url);
+    const response = await fetch(url,{
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
     const apiResponse = await response.json();
     setName(apiResponse);
   };
@@ -46,7 +53,7 @@ function Menu() {
       <Titulo titulo="Seleccionar cuestionario" />
       {/**Etiqueta separadora de estilos */}
       <div id="visible">
-        <div className="menu">
+        <div className="menuEvaluacion">
           <div className="container">
             <h4>
               Seleccione un cuestionario para continuar

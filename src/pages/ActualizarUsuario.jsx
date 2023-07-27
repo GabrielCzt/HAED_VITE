@@ -6,9 +6,21 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
+import MenuAdmin from "../components/MenuAdmin";
+import { decrypt, decryptToken } from "../funciones/Cifrado";
+import fetchData from "../funciones/ObtenerInformación";
 const cookie = new Cookies();
 
 function ActualizarUsuario() {
+  useEffect(() => {
+    const fetchDataAsync = async () => {
+      const data = await fetchData();
+      if (data.rol_id !== 3) {
+        navigate("/");
+      }
+    };
+    fetchDataAsync();
+  }, []);
   const navigate = new useNavigate();
   let params = useParams();
   const [info, setInfo] = useState([]);
@@ -48,46 +60,46 @@ function ActualizarUsuario() {
 
   const handleUpdate = async () => {
     try {
-      const token = cookie.get("token");
+      const token = decryptToken(cookie.get("token"));
       const url =
         "http://api-haed.danielreyesepitacio.cloud/api/admin/users/" +
         params.id;
       const parametros = new Map();
       if (nombre !== null && nombre !== "") {
-        parametros.set('nombres', nombre);
+        parametros.set("nombres", nombre);
       }
       if (apellidos !== null && apellidos !== "") {
-        parametros.set('apellidos', apellidos);
+        parametros.set("apellidos", apellidos);
       }
       if (email !== null && email !== "") {
-        parametros.set('email', email);
+        parametros.set("email", email);
       }
       if (_id !== null && _id !== "") {
-        parametros.set('matricula', _id);
+        parametros.set("matricula", _id);
       }
       if (edad !== null && edad !== "") {
-        parametros.set('edad', edad);
+        parametros.set("edad", edad);
       }
       if (sexo !== null && sexo !== "") {
-        parametros.set('sexo', sexo);    
+        parametros.set("sexo", sexo);
       }
       if (password !== null && password !== "") {
-        parametros.set('password', password);
+        parametros.set("password", password);
       }
       if (confirmation !== null && confirmation !== "") {
-        parametros.set('password_confirmation', confirmation);
+        parametros.set("password_confirmation", confirmation);
       }
-      console.log(JSON.stringify(Object.fromEntries(parametros)))
+      console.log(JSON.stringify(Object.fromEntries(parametros)));
       const response = await fetch(url, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(Object.fromEntries(parametros))
+        body: JSON.stringify(Object.fromEntries(parametros)),
       });
-      if(response.ok){
-        navigate("/Informacion-de-usuarios")
+      if (response.ok) {
+        navigate("/Informacion-de-usuarios");
       }
     } catch (error) {
       console.log(error);
@@ -96,7 +108,7 @@ function ActualizarUsuario() {
 
   const getUser = async () => {
     try {
-      const token = cookie.get("token");
+      const token = decryptToken(cookie.get("token"));
       const url =
         "http://api-haed.danielreyesepitacio.cloud/api/admin/users/" +
         params.id;
@@ -126,79 +138,86 @@ function ActualizarUsuario() {
       <Titulo titulo="Actualizar usuario" />
       {/* Etiqueta separadora de estilos */}
       <div className="userupdate">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-6 instrucciones">
-              <h5>Ingrese solamente los campos que desea actualizar</h5>
-            </div>
-            <div className="col-sm-12 col-md-6">
-              <form onSubmit={handleUpdate}>
-                <input
-                  onChange={changeNombres}
-                  type="text"
-                  placeholder={"Nombres: " + info.nombres}
-                />
-                <br />
-                <input
-                  onChange={changeApellidos}
-                  type="text"
-                  placeholder={"Apellidos: " + info.apellidos}
-                />
-                <br />
-                <input
-                  onChange={changeEmail}
-                  type="text"
-                  placeholder={"Email: " + info.email}
-                />
-                <br />
-                <input
-                  onChange={changeID}
-                  type="text"
-                  placeholder={"ID de docente: " + info.matricula}
-                />
-                <br />
-                {info.edad ? (
-                  <input
-                    onChange={changeEdad}
-                    type="text"
-                    placeholder={"Edad: " + info.edad}
-                  />
-                ) : (
-                  <input
-                    onChange={changeID}
-                    type="text"
-                    placeholder={"Edad:"}
-                  />
-                )}
-                <br />
-                {info.sexo ? (
-                  <input
-                    onChange={changeSexo}
-                    type="text"
-                    placeholder={"Sexo: " + info.sexo}
-                  />
-                ) : (
-                  <input
-                    onChange={changeSexo}
-                    type="text"
-                    placeholder={"Sexo:"}
-                  />
-                )}
-                <br />
-                <input
-                  onChange={changePassword}
-                  type="text"
-                  placeholder="Contraseña"
-                />
-                <br />
-                <input
-                  onChange={changeConfirmation}
-                  type="text"
-                  placeholder="Repetir contraseña"
-                />
-                <br />
-                <button id="enviar" type="submit">Actualizar</button>
-              </form>
+        <div className="row">
+          <MenuAdmin />
+          <div className="col containerUserUpdate">
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-12 col-md-6 instrucciones">
+                  <h5>Ingrese solamente los campos que desea actualizar</h5>
+                </div>
+                <div className="col-sm-12 col-md-6">
+                  <form onSubmit={handleUpdate}>
+                    <input
+                      onChange={changeNombres}
+                      type="text"
+                      placeholder={"Nombres: " + info.nombres}
+                    />
+                    <br />
+                    <input
+                      onChange={changeApellidos}
+                      type="text"
+                      placeholder={"Apellidos: " + info.apellidos}
+                    />
+                    <br />
+                    <input
+                      onChange={changeEmail}
+                      type="text"
+                      placeholder={"Email: " + info.email}
+                    />
+                    <br />
+                    <input
+                      onChange={changeID}
+                      type="text"
+                      placeholder={"ID de docente: " + info.matricula}
+                    />
+                    <br />
+                    {info.edad ? (
+                      <input
+                        onChange={changeEdad}
+                        type="text"
+                        placeholder={"Edad: " + info.edad}
+                      />
+                    ) : (
+                      <input
+                        onChange={changeID}
+                        type="text"
+                        placeholder={"Edad:"}
+                      />
+                    )}
+                    <br />
+                    {info.sexo ? (
+                      <input
+                        onChange={changeSexo}
+                        type="text"
+                        placeholder={"Sexo: " + info.sexo}
+                      />
+                    ) : (
+                      <input
+                        onChange={changeSexo}
+                        type="text"
+                        placeholder={"Sexo:"}
+                      />
+                    )}
+                    <br />
+                    <input
+                      onChange={changePassword}
+                      type="text"
+                      placeholder="Contraseña"
+                    />
+                    <br />
+                    <input
+                      onChange={changeConfirmation}
+                      type="text"
+                      placeholder="Repetir contraseña"
+                    />
+                    <br />
+                    <button id="enviar" type="submit">
+                      Actualizar
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>

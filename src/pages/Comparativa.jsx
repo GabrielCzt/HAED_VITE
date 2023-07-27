@@ -8,6 +8,7 @@ import Titulo from "../components/BarraDeTitulo";
 const cookie = new Cookies();
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { decryptToken } from "../funciones/Cifrado";
 
 function Intentos() {
   const navigate = new useNavigate();
@@ -22,7 +23,7 @@ function Intentos() {
       const url =
         "http://api-haed.danielreyesepitacio.cloud/api/users/evaluaciones/respuestas/" +
         intento;
-      const token = cookie.get("token");
+      const token = decryptToken(cookie.get("token"));
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -53,7 +54,7 @@ function Intentos() {
       try {
         const url =
           "http://api-haed.danielreyesepitacio.cloud/api/users/intentos";
-        const token = cookie.get("token");
+        const token = decryptToken(cookie.get("token"));
         const response = await fetch(url, {
           method: "GET",
           headers: {

@@ -1,10 +1,12 @@
 //IMPORTACIONES DE PAQUETES Y DEPENDENCIAS
 
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { SessionProvider } from "./context/SessionContext";
+import { Navigate } from "react-router-dom";
 
 //IMPORTANCIONES DE LAS PÁGINAS Y COMPONENTES
 
@@ -29,7 +31,18 @@ import ActualizarUsuario from "./pages/ActualizarUsuario";
 import MaterialDeApoyo from "./pages/MaterialDeApoyo";
 import BusquedaYoutube from "./pages/canalYoutube/BusquedaYoutube";
 import Graficas from "./pages/Graficas";
-
+import MenuAdminCuest from "./pages/administrarCuestionario/MenuAdminCuestionario";
+import SelectModifiCuestionario from "./pages/administrarCuestionario/SelectModifiCuestionario";
+import ModificarCuestionario from "./pages/administrarCuestionario/ModificarCuestionario";
+import ModificarPregunta from "./pages/administrarCuestionario/ModificarPregunta";
+import CrearCuestionario from "./pages/administrarCuestionario/CrearCuestionario";
+import CrearOpcion from "./pages/administrarCuestionario/CrearOpcion";
+import ModificarOpcion from "./pages/administrarCuestionario/ModificarOpcion";
+import fetchData from "./funciones/ObtenerInformación";
+import Cookies from "universal-cookie";
+import { decrypt } from "./funciones/Cifrado";
+import NotFound from "./pages/Error404";
+const cookie = new Cookies();
 //Sirve para que al cargar una página diferente se dirija al usuario a la parte superior
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -40,6 +53,15 @@ const ScrollToTop = () => {
 };
 
 function App() {
+  if (!cookie.get("rol")) {
+    cookie.set("rol", 0, { path: "/" });
+  }
+
+  const PrivateRoute = ({ component: Component }) => {
+    let rol = decrypt(cookie.get("rol"));
+    console.log(rol);
+    return rol === 3 ? <Component /> : <Navigate to="/" />;
+  };
   return (
     <>
       {/**Para que el sitio funcione correctamente, solo es necesario colocar la ruta encapsulada
@@ -51,36 +73,94 @@ function App() {
           <Header />
           <Navv />
           <Routes>
+            {/* Rutas publicas ======================================================================== */}
             <Route path="/" Component={Index} />
             <Route path="/Descubre" Component={Descubre} />
-            <Route path="/Seleccionar-cuestionario" Component={Menu} />
-            <Route path="/Autoevaluacion" Component={Cuestionario} />
             <Route path="/CanalYoutube/:numero" Component={CanalYT_Start} />
             <Route path="/Contacto" Component={Contacto} />
+            <Route path="/Busqueda/:palabra" Component={BusquedaYoutube} />
+
+            {/* Rutas SOLO sin logueo ================================================================ */}
             <Route path="/Iniciar-sesion" Component={Login} />
             <Route path="/Registrarse" Component={Sign} />
-            <Route path="/Perfil" Component={Perfil} />
+
+            {/* Rutas que requieren logueo =========================================================== */}
+            <Route path="/Seleccionar-cuestionario" Component={Menu} />
+            <Route path="/Autoevaluacion" Component={Cuestionario} />
             <Route path="/Informacion-Perfil" Component={InfoPerfil} />
+            <Route path="/Perfil" Component={Perfil} />
             <Route path="/Retroalimentacion" Component={Retroalimentacion} />
             <Route
               path="/Comparativa-de-retroalimentaciones"
               Component={Intentos}
             />
             <Route
-              path="/Opciones-administrador"
-              Component={PerfilAdministrador}
-            />
-            <Route path="/Informacion-de-usuarios" Component={Usuarios} />
-            <Route
-              path="/Actualizar-usuario/:id"
-              Component={ActualizarUsuario}
-            />
-            <Route
               path="/Material-de-apoyo/:origen/:retro/:link"
               Component={MaterialDeApoyo}
             />
-            <Route path="/Busqueda/:palabra" Component={BusquedaYoutube} />
-            <Route path="/Graficas" Component={Graficas} />
+
+            {/* Rutas de administrador ============================================================== */}
+            <Route
+              exact
+              path="/Opciones-administrador"
+              element={<PrivateRoute component={PerfilAdministrador} />}
+            />
+            <Route
+              exact
+              path="/Informacion-de-usuarios"
+              element={<PrivateRoute component={Usuarios} />}
+            />
+            <Route
+              exact
+              path="/Actualizar-usuario/:id"
+              element={<PrivateRoute component={ActualizarUsuario} />}
+            />
+
+            <Route
+              exact
+              path="/Graficas"
+              element={<PrivateRoute component={Graficas} />}
+            />
+            <Route
+              exact
+              path="/Administrar-cuestionarios"
+              element={<PrivateRoute component={MenuAdminCuest} />}
+            />
+            <Route
+              exact
+              path="/Administrar-cuestionarios/Modificar-cuestionario"
+              element={<PrivateRoute component={SelectModifiCuestionario} />}
+            />
+            <Route
+              exact
+              path="/Administrar-cuestionarios/Modificar-cuestionario/:id"
+              element={<PrivateRoute component={ModificarCuestionario} />}
+            />
+            <Route
+              exact
+              path="/Administrar-cuestionarios/Modificar-cuestionario/:id/:idpreg"
+              element={<PrivateRoute component={ModificarPregunta} />}
+            />
+            <Route
+              exact
+              path="/Administrar-cuestionarios/Modificar-cuestionario/Crear-opcion/:idpreg"
+              element={<PrivateRoute component={CrearOpcion} />}
+            />
+
+            <Route
+              exact
+              path="/Crear-cuestionario"
+              element={<PrivateRoute component={CrearCuestionario} />}
+            />
+            <Route
+              exact
+              path="/Administrar-cuestionarios/Modificar-cuestionario/Modificar-opcion/:idpreg/:idx"
+              element={<PrivateRoute component={ModificarOpcion} />}
+            />
+
+            {/* Error 404 Not Found ================================================================ */}
+
+            <Route path="*" Component={NotFound} />
           </Routes>
           <Footer />
         </SessionProvider>

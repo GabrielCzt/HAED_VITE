@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SessionContext from "../context/SessionContext";
 import Titulo from "../components/BarraDeTitulo";
+import { decryptToken } from "../funciones/Cifrado";
 
 const cookie = new Cookies();
 
@@ -26,9 +27,15 @@ function Cuestionario() {
     cookie.get("cuest") +
     "/all";
   const [cuest, setCuest] = useState();
-
+  const token = decryptToken(cookie.get("token"));
   const fetchApi = async () => {
-    const response = await fetch(url);
+    const response = await fetch(url,{
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
     const apiResponse = await response.json();
     console.log(apiResponse)
     setCuest(apiResponse);
@@ -58,7 +65,7 @@ function Cuestionario() {
       };
 
       console.log(params);
-      const token = cookie.get("token");
+      const token = decryptToken(cookie.get("token"));
       const headers = {
         headers: {
           Authorization: `Bearer ${token}`,

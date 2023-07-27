@@ -7,6 +7,7 @@ import { faHandPointRight } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import SessionContext from "../context/SessionContext";
 import Titulo from "../components/BarraDeTitulo";
+import { decryptToken } from "../funciones/Cifrado";
 
 const cookie = new Cookies();
 
@@ -26,7 +27,7 @@ function Retroalimentacion() {
         const url =
           "http://api-haed.danielreyesepitacio.cloud/api/users/evaluaciones/respuestas/" +
           intento;
-        const token = cookie.get("token");
+        const token = decryptToken(cookie.get("token"));
         const response = await fetch(url, {
           method: "GET",
           headers: {

@@ -1,0 +1,30 @@
+@import url("../estilos/Constantes.css");
+
+.NotFound{
+   
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+.NotFound .rowFound{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.NotFound button{
+    background-color: var(--light-haed);
+    color:white;
+    border:0;
+    border-radius: 5pt;
+    width: 25%;
+    height: 6vh;
+    margin-top: 5%;
+}
+
+.NotFound button:hover{
+    background-color: var(--haed);
+}

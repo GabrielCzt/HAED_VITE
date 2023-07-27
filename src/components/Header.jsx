@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import cambio from "../funciones/DarkTheme";
 import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { decryptToken } from "../funciones/Cifrado";
 
 const cookie = new Cookies();
 
@@ -27,7 +28,7 @@ function Header() {
   
   const fetchData = async () => {
     try {
-      const token = cookie.get("token");
+      const token = decryptToken(cookie.get("token"));
       const url = "http://api-haed.danielreyesepitacio.cloud/api/users/info";
       const response = await fetch(url, {
         method: "GET",
@@ -92,6 +93,8 @@ function Header() {
       cookie.remove("cuest", { path: "/" });
       cookie.remove("token", { path: "/" });
       cookie.remove("intento", { path: "/" });
+      cookie.remove("rol", { path: "/" });
+      cookie.remove("check", { path: "/" });
       navigate("/Iniciar-sesion");
     }
     setOp1("Iniciar Sesión");

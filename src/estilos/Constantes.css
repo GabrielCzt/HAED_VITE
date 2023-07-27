@@ -1,5 +1,5 @@
 :root {
-  --haed: #006d77;
+  --haed: #01626b;
   --titulos: #042c2c;
   --light-b-haed: #004757;
   --light-haed: #185f3f;
@@ -45,4 +45,40 @@ h6 {
 p {
   font-size: clamp(1em, 1.3vw, 1.1em) !important;
   font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif !important;
+}
+
+* .loaderContainer{
+  display: grid;
+  place-items: center;
+  text-align: center;
+  
+  
+}
+  .menu {
+  background-color: var(--light-b-haed);
+}
+.menu .contenedorOpcionesMenu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  place-items: center;
+}
+.menu   .opcionMenu {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.3vw;
+  padding-bottom: 1.3vw;
+  margin-bottom: 1vw;
+  font-size: x-large;
+  width: 25%;
+  border-radius: 5pt;
+  min-width: 5.8vw;
+  margin: 1vw auto 1vh auto;
+}
+.menu  .opcionMenu:hover {
+  background-color: var(--black);
 }

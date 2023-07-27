@@ -7,7 +7,11 @@ import "../estilos/MaterialDeApoyo.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { decryptToken } from "../funciones/Cifrado";
+
 const cookie = new Cookies();
+
+
 function MaterialDeApoyo() {
   let parametros = useParams();
   let origen = parametros.origen;
@@ -34,7 +38,7 @@ function MaterialDeApoyo() {
         const url =
           "http://api-haed.danielreyesepitacio.cloud/api/users/evaluaciones/respuestas/" +
           intento;
-        const token = cookie.get("token");
+        const token = decryptToken(cookie.get("token"));
         const response = await fetch(url, {
           method: "GET",
           headers: {

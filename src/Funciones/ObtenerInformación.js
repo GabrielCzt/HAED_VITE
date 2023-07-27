@@ -1,10 +1,12 @@
 import Cookies from "universal-cookie";
+import { decrypt, decryptToken } from "./Cifrado";
 
 const cookie = new Cookies();
 
 const fetchData = async () => {
   try {
-    const token = cookie.get("token");
+    const token = decryptToken(cookie.get("token"));
+
     const url = "http://api-haed.danielreyesepitacio.cloud/api/users/info";
     const response = await fetch(url, {
       method: "GET",

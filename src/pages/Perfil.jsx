@@ -17,6 +17,7 @@ import {
 import { useState } from "react";
 import fetchData from "../funciones/ObtenerInformación";
 import Titulo from "../components/BarraDeTitulo";
+import { decrypt } from "../funciones/Cifrado";
 
 const cookie = new Cookies();
 
@@ -32,9 +33,7 @@ function Perfil() {
       const data = await fetchData();
       console.log(data);
       setInfo(data);
-      if (data.rol_id == 3) {
-        navigate("../Opciones-administrador");
-      }
+
     };
     fetchDataAsync();
   }, []);

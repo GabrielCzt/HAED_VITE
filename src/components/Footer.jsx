@@ -51,7 +51,7 @@ function Footer() {
                       <Link to="/CanalYoutube">Canal de Youtube</Link>
                     </li>
                     <li>
-                      <Link to="Contacto">Contacto</Link>
+                      <Link to="/Contacto">Contacto</Link>
                     </li>
                   </ul>
                 </div>
@@ -61,10 +61,10 @@ function Footer() {
                 <h5>Explorar</h5>
                 <ul>
                   <li>
-                    <a href="">Cookies</a>
+                    <a href="https://www.facebook.com/OficialUTP">Cookies</a>
                   </li>
                   <li>
-                    <a href="">Políticas de privacidad</a>
+                    <a href="https://www.facebook.com/OficialUTP">Políticas de privacidad</a>
                   </li>
                 </ul>
               </div>

@@ -1,0 +1,510 @@
+@import url("./Constantes.css");
+/** Estilos generales */
+* #edit {
+  border-radius: 5pt;
+  width: 2.5vw;
+  min-width: 30px;
+  min-height: 30px;
+
+  height: 2.5vw;
+  background-color: orange;
+  color: white;
+  border: none;
+}
+* #edit:hover {
+  transition: 0.2s;
+  border-radius: 10pt;
+  background-color: darkorange;
+  transform: scale(1.2);
+}
+* #smallSuccess {
+  border-radius: 5pt;
+  width: 2.5vw;
+  min-width: 30px;
+  min-height: 30px;
+
+  height: 2.5vw;
+  background-color: green;
+  color: white;
+  border: none;
+}
+* #smallSuccess:hover {
+  transition: 0.2s;
+  border-radius: 10pt;
+  background-color: darkgreen;
+  transform: scale(1.2);
+}
+* #success {
+  border-radius: 5pt;
+  width: 40%;
+  background-color: green;
+  border: 0;
+  color: white;
+  height: 6vh;
+}
+* #success:hover {
+  background-color: darkgreen;
+  transform: scale(1.03);
+  transition: 0.2s;
+  border-radius: 10pt;
+}
+* #delete {
+  min-width: 30px;
+  min-height: 30px;
+  width: 2.5vw;
+  height: 2.5vw;
+  border-radius: 5pt;
+  background-color: red;
+  color: white;
+  border: 0;
+}
+* #delete:hover {
+  border-radius: 10pt;
+  transition: 0.2s;
+  background-color: darkred;
+  transform: scale(1.2);
+}
+/** Estilos para el menu de administrar cuestionarios */
+
+.MenuACuest div.row {
+  margin: 0;
+}
+
+.MenuACuest .menu {
+  background-color: var(--light-b-haed);
+}
+.MenuACuest .contenedorOpcionesMenu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  place-items: center;
+}
+.MenuACuest .opcionMenu {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.3vw;
+  padding-bottom: 1.3vw;
+  margin-bottom: 1vw;
+  font-size: x-large;
+  width: 25%;
+  border-radius: 5pt;
+  min-width: 5.8vw;
+  margin: 1vw auto 1vh auto;
+}
+.MenuACuest .opcionMenu:hover {
+  background-color: var(--black);
+}
+
+.MenuACuest .optContainer {
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
+.MenuACuest #opcion {
+  display: inline-block;
+  height: 100%;
+  font-size: 3vh;
+  border: none;
+  border-radius: 5pt;
+  background: linear-gradient(180deg, #006d77, #02554f);
+  color: white;
+  padding: 6%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: 90%;
+  text-decoration: none;
+  font-family: "Montserrat";
+  justify-content: space-between;
+}
+.MenuACuest #opcion:hover {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.MenuACuest #opcion::after {
+  content: "";
+  background: linear-gradient(0deg, #006d77, #012e2b);
+  background-blend-mode: multiply;
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: -100%;
+  right: 100%;
+  bottom: 0;
+  top: 0;
+}
+.MenuACuest #opcion:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  cursor: pointer;
+}
+
+/** Estilos para la opcion de SELECCIONAR QUE CUESTIONARIO MODIFICAR */
+
+.selectModifiCuest .modificarContainer{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.selectModifiCuest div.row {
+  margin: 0;
+}
+
+.selectModifiCuest .menu {
+  background-color: var(--light-b-haed);
+}
+.selectModifiCuest .contenedorOpcionesMenu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  place-items: center;
+}
+.selectModifiCuest .opcionMenu {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.3vw;
+  padding-bottom: 1.3vw;
+  margin-bottom: 1vw;
+  font-size: x-large;
+  width: 25%;
+  border-radius: 5pt;
+  min-width: 5.8vw;
+  margin: 1vw auto 1vh auto;
+}
+.selectModifiCuest .opcionMenu:hover {
+  background-color: var(--black);
+}
+.selectModifiCuest li {
+  background-color: var(--non-white-haed);
+  margin: 0;
+  margin-bottom: 2%;
+  list-style: none;
+  border-radius: 5pt;
+  padding: 5%;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
+}
+.selectModifiCuest .options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.selectModifiCuest .options #link {
+  width: fit-content;
+}
+
+* .loader {
+  color: #ffffff;
+  font-size: 90px;
+  text-indent: -9999em;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin: 72px auto;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+  animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+}
+@-webkit-keyframes load6 {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+@keyframes load6 {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+@-webkit-keyframes round {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes round {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/** Estilos para la pantalla de modificacion de cuestionario */
+
+
+.modiCuest .modiCuestContainer {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.modiCuest div.row {
+  margin: 0;
+}
+
+.modiCuest .menu {
+  background-color: var(--light-b-haed);
+}
+.modiCuest .contenedorOpcionesMenu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  place-items: center;
+}
+.modiCuest .opcionMenu {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.3vw;
+  padding-bottom: 1.3vw;
+  margin-bottom: 1vw;
+  font-size: x-large;
+  width: 25%;
+  border-radius: 5pt;
+  min-width: 5.8vw;
+  margin: 1vw auto 1vh auto;
+}
+.modiCuest .opcionMenu:hover {
+  background-color: var(--black);
+}
+.modiCuest input {
+  width: 100%;
+  height: 6vh;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: 0;
+  border-bottom: solid 1px var(--gray-haed);
+  border-radius: 5pt;
+}
+.modiCuest li {
+  background-color: var(--non-white-haed);
+  margin: 0;
+  margin-bottom: 2%;
+  list-style: none;
+  border-radius: 5pt;
+  padding: 5%;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
+}
+
+/** Estilos para modificar una pregunta */
+.modiPregunta div.row{
+  margin: 0;
+}
+.modiPregunta .containerModiPregunta{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.modiPregunta input {
+  width: 100%;
+  
+}
+.modiPregunta li {
+  background-color: var(--non-white-haed);
+  margin: 0;
+  margin-bottom: 2%;
+  list-style: none;
+  border-radius: 5pt;
+  padding: 5%;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
+}
+
+.modiPregunta .loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite
+}
+.modiPregunta .loader::before , .loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite ;
+}
+.modiPregunta .loader::after{
+  border-color: #FF3D00;
+  animation: prixClipFix 2s linear infinite , rotate 0.5s linear infinite reverse;
+  inset: 6px;
+}
+
+@keyframes rotate {
+  0%   {transform: rotate(0deg)}
+  100%   {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+}
+/** Estilos para crear cuestionario */
+
+.crearCuest .crearContainer{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.crearCuest  div.row {
+  margin: 0;
+}
+
+.crearCuest  .menu {
+  background-color: var(--light-b-haed);
+}
+.crearCuest .contenedorOpcionesMenu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  place-items: center;
+}
+.crearCuest  .opcionMenu {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.3vw;
+  padding-bottom: 1.3vw;
+  margin-bottom: 1vw;
+  font-size: x-large;
+  width: 25%;
+  border-radius: 5pt;
+  min-width: 5.8vw;
+  margin: 1vw auto 1vh auto;
+}
+.crearCuest .opcionMenu:hover {
+  background-color: var(--black);
+}
+.crearCuest li {
+  background-color: var(--non-white-haed);
+  margin: 0;
+  margin-bottom: 2%;
+  list-style: none;
+  border-radius: 5pt;
+  padding: 5%;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
+}
+
+/** Estilos para crear una opción  */
+.createOpt div.row {
+  margin: 0;
+}
+
+.createOpt .containerCreateOpt{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.createOpt .element {
+  background-color: var(--non-white-haed);
+  margin: 0;
+  margin-bottom: 2%;
+  list-style: none;
+  border-radius: 5pt;
+  padding: 5%;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
+}
+.createOpt textarea{
+  width: 100%;
+}
+.createOpt ul .links{
+  list-style:circle;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-bottom: 0 !important;
+  box-shadow: 0;
+}
+
+
+/* *Estilos para modificar una opción */
+.modificarOpcion div.row{
+  margin: 0;
+}
+.modificarOpcion .containerModificarO{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.modificarOpcion input{
+  width: 100%;
+}
+.modificarOpcion .element {
+  background-color: var(--non-white-haed);
+  margin: 0;
+  margin-bottom: 2%;
+  list-style: none;
+  border-radius: 5pt;
+  padding: 5%;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.774);
+}
+.modificarOpcion textarea{
+  width: 100%;
+}
+.modificarOpcion ul{
+  padding: 0;
+  margin: 0;
+}
+.modificarOpcion li{
+  list-style:none;
+}

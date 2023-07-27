@@ -1,7 +1,6 @@
 import React, { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import axios from "axios";
 import Cookies from "universal-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
@@ -26,17 +25,15 @@ function Login() {
     loading,
   } = useContext(SessionContext);
   const navigate = useNavigate();
-  {
-    /*//Estado para ocultar contraseña*/
-  }
+  
+    //Estado para ocultar contraseña
+    
+  
   const [ojos, setOjos] = useState(faEye);
-  {
-    /*verificacion de credenciales*/
-  }
-
-  {
-    /*Referencia para colocar cursor en input 'email'*/
-  }
+  
+    //verificacion de credenciales
+    //Referencia para colocar cursor en input 'email'
+  
   const userRef = useRef();
   useEffect(() => {
     userRef.current.focus();
@@ -50,9 +47,9 @@ function Login() {
     document.getElementById("myName").value = "";
   }, []);
 
-  {
-    /*Muestra y oculta la contraseña del input 'password' */
-  }
+  
+    //*Muestra y oculta la contraseña del input 'password' 
+  
   const SeePassword = () => {
     let pass = document.getElementById("myPassword");
     if (pass.type === "password") {
