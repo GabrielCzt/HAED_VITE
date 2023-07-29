@@ -124,7 +124,7 @@ const SessionProvider = ({ children }) => {
     if (validarCadenas(_nombres)) {
       if (validarCadenas(_apellidos)) {
         if (validarMatricula(_matricula)) {
-          if (validarPassword(_password)) {
+          if (validarPassword(_password) && _password.length>5) {
             if (_password === _confirmation) {
               setLoading(true);
               const params = {
@@ -159,7 +159,8 @@ const SessionProvider = ({ children }) => {
                     .then((response) => {
                       let respuesta = response.data;
                       console.log(respuesta);
-                      cookie.set("token", response.token, { path: "/" });
+                      cookie.set("token", encryptToken(response.token), { path: "/" });
+                      cookie.set("rol", encrypt(response.data.rol_id),{path:"/"});
                       setTimeout(() => {
                         if (respuesta.rol_id !== 3) {
                           navigate("/Perfil");
@@ -190,7 +191,7 @@ const SessionProvider = ({ children }) => {
           } else {
             setLoading(false);
             setError(
-              "Su contraseña debe contener al menos una mayuscula, una minuscula y un caracter especial"
+              "Su contraseña debe contener al menos 6 caracteres, una mayuscula, una minuscula y un caracter especial"
             );
             document.getElementById("password").focus();
           }

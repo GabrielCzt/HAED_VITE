@@ -57,7 +57,7 @@ function CanalYT_Start() {
             ? "Esta página no existe"
             : contenido[pagina].map((num, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <div className="row">
                       {/**Las clases de order, establecen que elemento quedará arriba cuando se adapte la
                        * pantalla a vista de celular
@@ -65,10 +65,9 @@ function CanalYT_Start() {
                       <div className="col-sm-12 col-md-4 order-2 order-sm-2 order-md-1">
                         <div className="Ratio Ratio-16x9">
                           <iframe
-                            allowfullscreen="true"
+                            allowFullScreen={true}
                             src={num.url}
-                            title={num.titulo}
-                            frameborder="0"
+                            title={num.titulo}                           
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                           ></iframe>
                         </div>
@@ -80,7 +79,7 @@ function CanalYT_Start() {
                       </div>
                       <hr />
                     </div>
-                  </>
+                  </div>
                 );
               })}
           <div>

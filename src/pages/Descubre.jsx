@@ -1,5 +1,4 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
 import "../estilos/Descubre.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../estilos/Pages.css";

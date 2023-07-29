@@ -1,5 +1,5 @@
 import Cookies from "universal-cookie";
-import { decrypt, decryptToken } from "./Cifrado";
+import { decryptToken } from "./Cifrado";
 
 const cookie = new Cookies();
 

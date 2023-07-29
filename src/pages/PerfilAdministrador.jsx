@@ -1,30 +1,22 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../estilos/Pages.css";
 import "../estilos/PerfilAdministrador.css";
-import { Link, useNavigate } from "react-router-dom";
-import SessionContext from "../context/SessionContext";
+import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import fetchData from "../funciones/ObtenerInformación";
 import Titulo from "../components/BarraDeTitulo";
-import {
-  faChartColumn,
-  faCircleUser,
-  faFileInvoice,
-  faUsers,
-} from "@fortawesome/free-solid-svg-icons";
 import MenuAdmin from "../components/MenuAdmin";
 import Cargando from "../components/Cargando";
 
-const cookie = new Cookies();
+
 
 function PerfilAdministrador() {
   const navigate = new useNavigate();
   const [info, setInfo] = useState(null);
   useEffect(() => {
+    // ^ Obtenemos los datos del administrador ===============================================================
     const fetchDataAsync = async () => {
       const data = await fetchData();
       console.log(data);
@@ -39,7 +31,7 @@ function PerfilAdministrador() {
     <>
       <Titulo titulo="Opciones de administrador" />
 
-      {/* Etiqueta separadora de estilo s*/}
+      {/* Etiqueta separadora de estilos ========================================================== */}
       <div className="adminProfile">
         <div className="row">
           <MenuAdmin />
@@ -49,11 +41,11 @@ function PerfilAdministrador() {
                 <Cargando />
               ) : (
                 <div className="row">
-                  {/* Tarjeta de datos del usuario */}
+                  {/* Tarjeta de datos del usuario ==================================================== */}
                   <div className="col-lg-4">
                     <div className="profile-card-4 z-depth-3">
                       <div className="card">
-                        {/* Imagen de tarjeta */}
+                        {/* Imagen de tarjeta ========================================================= */}
                         <div className="card-body text-center bg-success rounded-top">
                           <div className="user-box">
                             <button
@@ -72,11 +64,11 @@ function PerfilAdministrador() {
                             Universidad Tecnológica de Puebla
                           </h5>
                         </div>
-                        {/* Cuerpo de la tarjeta  */}
+                        {/* Cuerpo de la tarjeta ======================================================  */}
                         <div className="card-body">
-                          {/* Lista de elementos  */}
+                          {/* Lista de elementos ======================================================  */}
                           <ul className="list-group shadow-none">
-                            {/* Elemento */}
+                            {/* Elemento ===============================================================*/}
                             <li className="list-group-item">
                               <div className="list-icon">
                                 <i className="fa fa-envelope"></i>
@@ -88,7 +80,7 @@ function PerfilAdministrador() {
                                 <small>Nombre</small>
                               </div>
                             </li>
-                            {/* Elemento */}
+                            {/* Elemento =============================================================== */}
                             <li className="list-group-item">
                               <div className="list-icon">
                                 <i className="fa fa-globe"></i>
@@ -106,17 +98,15 @@ function PerfilAdministrador() {
 
                   <div className="col-lg-8">
                     <div className="card z-depth-3">
-                      {/* Contenido de la tarjeta */}
+                      {/* Contenido de la tarjeta ==================================================== */}
                       <div className="card-body">
-                        {/* Indica el apartado de contenido  */}
 
-                        {/* Cuerpo y Formulario de envio */}
                         <div className="tab-content p-3">
-                          {/* Panel de datos */}
+                          {/* Panel de datos =========================================================*/}
                           <div className="tab-pane active  show" id="edita">
-                            {/* Input y evento de formulario */}
-                            <form onSubmit={" "}>
-                              {/* Separador de input  */}
+        
+                          
+                              {/* Separador de datos ================================================  */}
                               <div className="form-group row">
                                 <label className="col-lg-3 ">
                                   <b>Correo Electronico</b>
@@ -125,7 +115,7 @@ function PerfilAdministrador() {
                                   <p>{info.email}</p>
                                 </div>
                               </div>
-                              {/* Separador de input  */}
+                              {/* Separador de datos=================================================  */}
                               <div className="form-group row">
                                 <label className="col-lg-3 ">
                                   <b>Centro de trabajo</b>
@@ -134,7 +124,7 @@ function PerfilAdministrador() {
                                   <p>{info.centro_trabajo}</p>
                                 </div>
                               </div>
-                              {/* Separador de input  */}
+                              {/* Separador de datos =================================================  */}
                               <div className="form-group row">
                                 <label className="col-lg-3 col-form-label form-control-label">
                                   <b>Edad</b>
@@ -143,7 +133,7 @@ function PerfilAdministrador() {
                                   <p>{info.edad}</p>
                                 </div>
                               </div>
-                            </form>
+                            
                           </div>
                         </div>
                       </div>

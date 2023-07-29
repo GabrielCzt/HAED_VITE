@@ -1,4 +1,3 @@
-import React from "react";
 import CryptoJS from "crypto-js";
 const KEY = "p@T7QwLc$FCL9Lzp2o";
 const encrypt = (number) => {

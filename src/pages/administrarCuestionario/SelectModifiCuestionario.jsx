@@ -3,23 +3,15 @@ import Titulo from "../../components/BarraDeTitulo";
 import { getEvaluaciones } from "../../funciones/AdministrarCuestionario";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChartColumn,
-  faCircleUser,
-  faClose,
-  faFileInvoice,
-  faPencil,
-  faUsers,
-} from "@fortawesome/free-solid-svg-icons";
+import { faClose, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { deleteEvaluacion } from "../../funciones/AdministrarCuestionario";
 import Swal from "sweetalert2";
 import MenuAdmin from "../../components/MenuAdmin";
 
-import "../../estilos/Constantes.css"
+import "../../estilos/Constantes.css";
 import Cargando from "../../components/Cargando";
 
 import fetchData from "../../funciones/ObtenerInformación";
-
 
 function SelectModifiCuestionario() {
   useEffect(() => {
@@ -86,7 +78,7 @@ function SelectModifiCuestionario() {
           <div className="col modificarContainer">
             <div className="container">
               {!menuEvaluaciones ? (
-                <Cargando/>
+                <Cargando />
               ) : (
                 menuEvaluaciones.map((ev, idx) => {
                   return (

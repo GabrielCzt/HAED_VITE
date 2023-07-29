@@ -24,6 +24,7 @@ function Intentos() {
         "http://api-haed.danielreyesepitacio.cloud/api/users/evaluaciones/respuestas/" +
         intento;
       const token = decryptToken(cookie.get("token"));
+      console.log(token)
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -73,6 +74,7 @@ function Intentos() {
           const lastUrl =
             "http://api-haed.danielreyesepitacio.cloud/api/users/evaluaciones/respuestas/" +
             numeroMayor;
+            console.log(numeroMayor)
           const lastResponse = await fetch(lastUrl, {
             method: "GET",
             headers: {

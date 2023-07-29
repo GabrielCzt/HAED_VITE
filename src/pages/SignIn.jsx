@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import "../estilos/Login.css"; //Se reciclaron los estilos de la página Login, pues son exactamente los mismos
+import "../estilos/Login.css"; //?Se reciclaron los estilos de la página Login, pues son exactamente los mismos
 import "../estilos/Pages.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Spinner } from "react-bootstrap";
@@ -15,6 +15,8 @@ import Titulo from "../components/BarraDeTitulo";
 const cookie = new Cookies();
 
 function Sign() {
+
+  // ^Usamos nuestro proveedor de contexto ================================================================
   const {
     _email,
     _password,
@@ -32,17 +34,12 @@ function Sign() {
     _matricula,
     _confirmation,
   } = useContext(SessionContext);
-  //Código para la redirección validada por sesión
+  
   const navigate = new useNavigate();
 
-  {
-    /*//Estado para mostrar contraseña*/
-  }
+  // ^Codigo para mostrar u ocultar contraseña ==========================================================
   const [ojos, setOjos] = useState(faEye);
 
-  {
-    /*Muestra y oculta contraseña del input 'password' */
-  }
   const SeePassword = () => {
     let pass = document.getElementById("password");
     let pass2 = document.getElementById("confirmation");
@@ -57,6 +54,7 @@ function Sign() {
     }
   };
 
+  // ^Inicializamos los valores en "" =====================================================================
   useEffect(() => {
     if (cookie.get("token")) {
       navigate("/Perfil");
@@ -69,16 +67,16 @@ function Sign() {
     document.getElementById("confirmation").value = "";
   }, []);
 
-  //Código para el registro
+  
 
   return (
     <>
       <Titulo titulo="Registrarse" />
-      {/**Etiqueta separadora de estilos */}
+      
       <div className="log">
         <div className="container" id="log_sign">
           <div className="row">
-            {/**Cuadro de la izquierda para iniciar sesión */}
+            {/**Cuadro de la izquierda para iniciar sesión =============================================*/}
 
             <div className="col-sm-12 col-md-6 sign">
               <div className="row">
@@ -93,7 +91,7 @@ function Sign() {
                 </Link>
               </div>
             </div>
-            {/**Formulario para registro */}
+            {/**Formulario para registro ================================================================ */}
             <div className="col-sm-12 col-md-6 login">
               <h2>Bienvenido</h2>
               <h4>Vamos a crear una nueva cuenta</h4>

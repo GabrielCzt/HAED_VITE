@@ -5,14 +5,6 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import "../../estilos/AdministrarCuestionarios.css";
-import {
-  faChartColumn,
-  faCircleUser,
-  faFileInvoice,
-  faUsers,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 import MenuAdmin from "../../components/MenuAdmin";
 import { useEffect } from "react";
 import fetchData from "../../funciones/ObtenerInformación";

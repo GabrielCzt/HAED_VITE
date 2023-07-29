@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import Titulo from "../components/BarraDeTitulo";
 import { useNavigate } from "react-router-dom";
@@ -99,7 +99,7 @@ function MaterialDeApoyo() {
               <iframe
               id="video"
               allowfullscreen="true"
-              src={"https://"+toPrintR.url+"?rel=0&modestbranding=1&showinfo=0"}
+              src={toPrintR.url+"?rel=0&modestbranding=1&showinfo=0"}
               title="Material de apoyo"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

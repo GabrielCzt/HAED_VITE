@@ -66,7 +66,14 @@ function Graficas() {
   const [name, setName] = useState();
   const [currentCuest, setCurrentCuest] = useState("");
   const fetchCuest = async () => {
-    const response = await fetch(cuestUrl);
+    const token = decryptToken(cookie.get("token"))
+    const response = await fetch(cuestUrl,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const apiResponse = await response.json();
     setName(apiResponse);
     if (currentCuest === "") setCurrentCuest(apiResponse[0].titulo);

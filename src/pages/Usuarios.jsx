@@ -1,24 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../estilos/Pages.css";
 import "../estilos/Usuarios.css";
-import { Link, useNavigate } from "react-router-dom";
-import SessionContext from "../context/SessionContext";
+import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChartColumn,
-  faCircleUser,
-  faFileInvoice,
-  faHandPaper,
-  faList,
-  faPaperclip,
-  faPencil,
-  faTrash,
-  faUsers,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import fetchData from "../funciones/ObtenerInformación";
 import Swal from "sweetalert2";
 import Titulo from "../components/BarraDeTitulo";
@@ -30,11 +18,13 @@ const cookie = new Cookies();
 
 function Usuarios() {
   const navigate = new useNavigate();
- const [info, setInfo] = useState(null);
-  const [infoUser, setInfoUser] = useState([]);
-  const [id, setId] = useState(null);
+  const [info, setInfo] = useState(null);
+
+
+  // ^ Obtenemos la lista completa de usuarios ==================================================
   const getUsers = async () => {
     try {
+      //~ Desencriptamos el token ================================================================
       const token = decryptToken(cookie.get("token"));
       const url = "http://api-haed.danielreyesepitacio.cloud/api/admin/users";
       const response = await fetch(url, {
@@ -55,8 +45,10 @@ function Usuarios() {
       console.error("Error en la solicitud:", error);
     }
   };
-  //  Funcion para eliminar un usuario
+
+  //^Función para eliminar a un usuario de la lista ======================================================
   const deleteUser = async (identificador) => {
+    //~Debemos asegurarnos que el usuario realmente quiere eliminar un elemento===========================
     Swal.fire({
       text: "Esta acción no es reversible. ¿Desea continuar?",
       icon: "warning",
@@ -80,6 +72,7 @@ function Usuarios() {
               "Content-Type": "application/json",
             },
           };
+          // ~Realizamos la solicitud a la api =======================================================
           fetch(url, options).then((response) => {
             if (response.ok) {
               window.location.reload();
@@ -98,12 +91,13 @@ function Usuarios() {
       }
     });
   };
+
+  //^Comprobación de permisos para la página ==========================================================
   useEffect(() => {
     console.log(cookie.get("token"));
     const fetchDataAsync = async () => {
       const data = await fetchData();
       console.log(data);
-      setInfoUser(data);
       if (data.rol_id !== 3) {
         navigate("../Perfil");
       }
@@ -117,9 +111,12 @@ function Usuarios() {
 
       <div className="infoUsers">
         <div className="row">
-          <MenuAdmin />
+          {/* Menú del administrador ===================================================================== */}
+          <MenuAdmin /> 
           <div className="col">
             <div className="tableContainer ">
+
+              {/* Validamos que los datos del usuario se carguen antes de mostrar la tabla =============== */}
               {!info ? (
                 <Cargando />
               ) : (
@@ -155,6 +152,7 @@ function Usuarios() {
                             </td>
                             <td id="tdID">{num.matricula}</td>
                             <td>{rol}</td>
+                            {/* Botones para las acciones que puede realizar a cada usuario ============= */}
                             <td>
                               <button
                                 id="edit"

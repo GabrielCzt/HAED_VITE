@@ -4,7 +4,6 @@ import { faLocationDot, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { faContactCard } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import emailjs from "@emailjs/browser";
-
 import "../estilos/Contacto.css";
 import "../estilos/Pages.css";
 import Titulo from "../components/BarraDeTitulo";

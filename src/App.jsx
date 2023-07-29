@@ -1,7 +1,6 @@
 //IMPORTACIONES DE PAQUETES Y DEPENDENCIAS
 
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -22,7 +21,6 @@ import Contacto from "./pages/Contacto";
 import Login from "./pages/Login";
 import Sign from "./pages/SignIn";
 import Perfil from "./pages/Perfil";
-import InfoPerfil from "./pages/InfoPerfil";
 import Retroalimentacion from "./pages/Retroalimentacion";
 import Intentos from "./pages/Comparativa";
 import PerfilAdministrador from "./pages/PerfilAdministrador";
@@ -38,10 +36,11 @@ import ModificarPregunta from "./pages/administrarCuestionario/ModificarPregunta
 import CrearCuestionario from "./pages/administrarCuestionario/CrearCuestionario";
 import CrearOpcion from "./pages/administrarCuestionario/CrearOpcion";
 import ModificarOpcion from "./pages/administrarCuestionario/ModificarOpcion";
-import fetchData from "./funciones/ObtenerInformación";
 import Cookies from "universal-cookie";
 import { decrypt } from "./funciones/Cifrado";
 import NotFound from "./pages/Error404";
+import ActualizarInformacion from "./pages/ActualizarInformación";
+
 const cookie = new Cookies();
 //Sirve para que al cargar una página diferente se dirija al usuario a la parte superior
 const ScrollToTop = () => {
@@ -61,6 +60,10 @@ function App() {
     let rol = decrypt(cookie.get("rol"));
     console.log(rol);
     return rol === 3 ? <Component /> : <Navigate to="/" />;
+  };
+  const LoggedteRoute = ({ component: Component }) => {
+    
+    return cookie.get("token")? <Component /> : <Navigate to="/" />;
   };
   return (
     <>
@@ -85,19 +88,43 @@ function App() {
             <Route path="/Registrarse" Component={Sign} />
 
             {/* Rutas que requieren logueo =========================================================== */}
-            <Route path="/Seleccionar-cuestionario" Component={Menu} />
-            <Route path="/Autoevaluacion" Component={Cuestionario} />
-            <Route path="/Informacion-Perfil" Component={InfoPerfil} />
-            <Route path="/Perfil" Component={Perfil} />
-            <Route path="/Retroalimentacion" Component={Retroalimentacion} />
+            <Route 
+            exact
+            path="/Actualizar-información"
+            Component={ActualizarInformacion}
+            />
             <Route
+              exact
+              path="/Seleccionar-cuestionario"
+              Component={Menu} 
+            />
+            <Route
+              exact
+              path="/Autoevaluacion"
+              element={<LoggedteRoute component={Cuestionario} />}
+            />
+            
+            <Route
+              exact
+              path="/Perfil"
+              element={<LoggedteRoute component={Perfil} />}
+            />
+            <Route
+              exact
+              path="/Retroalimentacion"
+              element={<LoggedteRoute component={Retroalimentacion} />}
+            />
+           <Route
+              exact
               path="/Comparativa-de-retroalimentaciones"
-              Component={Intentos}
+              element={<LoggedteRoute component={Intentos} />}
             />
             <Route
+              exact
               path="/Material-de-apoyo/:origen/:retro/:link"
-              Component={MaterialDeApoyo}
+              element={<LoggedteRoute component={MaterialDeApoyo} />}
             />
+            
 
             {/* Rutas de administrador ============================================================== */}
             <Route

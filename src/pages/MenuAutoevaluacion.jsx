@@ -8,29 +8,32 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "universal-cookie";
 import Titulo from "../components/BarraDeTitulo";
 import { decryptToken } from "../funciones/Cifrado";
+import Cargando from "../components/Cargando";
 
 const cookie = new Cookies();
 
 function Menu() {
-  // Obteniendo las autoevaluaciones disponibles
+  //^ Obteniendo las autoevaluaciones disponibles ========================================================
   const url = "http://api-haed.danielreyesepitacio.cloud/api/evaluaciones";
-  const token = decryptToken(cookie.get("token"))
   const [name, setName] = useState();
   const fetchApi = async () => {
-    const response = await fetch(url,{
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
-    const apiResponse = await response.json();
-    setName(apiResponse);
+    if (cookie.get("token")) {
+      const token = decryptToken(cookie.get("token"));
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const apiResponse = await response.json();
+      setName(apiResponse);
+    }
   };
   useEffect(() => {
     fetchApi();
   }, []);
-  // Estableciendo la visibilidad del menú según la sesión
+  //^ Estableciendo la visibilidad del menú según la sesión ===============================================
   useEffect(() => {
     document.getElementById("visible").style.visibility = "visible";
     document.getElementById("visible").style.display = "unset";
@@ -44,25 +47,23 @@ function Menu() {
     }
   }, []);
   const navigate = new useNavigate();
-  // Funcion para recargar la página
+  //^ Funcion para recargar la página=====================================================================
   const reload = () => {
     window.location.reload();
   };
   return (
     <>
       <Titulo titulo="Seleccionar cuestionario" />
-      {/**Etiqueta separadora de estilos */}
+      {/**Etiqueta separadora de estilos ===============================================================*/}
       <div id="visible">
         <div className="menuEvaluacion">
           <div className="container">
-            <h4>
-              Seleccione un cuestionario para continuar
-            </h4>
+            <h4>Seleccione un cuestionario para continuar</h4>
             <hr />
             {/* Se mapea la cantidad de cuestionarios para generar tantos botones como sea neceario */}
             {!name ? (
               <>
-                <p>Algo salió mal</p>
+                <Cargando />
                 <button id="toLogIn" onClick={reload}>
                   Clic aquí para reintentar
                 </button>
@@ -70,8 +71,8 @@ function Menu() {
             ) : (
               name.map((num, index) => {
                 return (
-                  // No se usa la etiqueta Link para evitar conflictos al usar onCLick, en cambio
-                  // se agrega una etiqueta h5 con funcionalidad onClick y useNavigate
+                  //^ No se usa la etiqueta Link para evitar conflictos al usar onCLick, en cambio
+                  //^ se agrega una etiqueta h5 con funcionalidad onClick y useNavigate
                   <h5
                     className="_button"
                     onClick={() => {
@@ -90,6 +91,7 @@ function Menu() {
           </div>
         </div>
       </div>
+      {/* Por si el usuario no está logueado ============================================================ */}
       <div className="nonSession">
         <div id="redirect">
           <div className="container">

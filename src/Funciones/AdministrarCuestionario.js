@@ -1,12 +1,12 @@
 import Cookies from "universal-cookie";
 import { decryptToken } from "./Cifrado";
 const cookie = new Cookies();
-const token = decryptToken(cookie.get("token"));
+
+
 //* Operaciones get
 const getEvaluaciones = async () => {
-
-  console.log(token);
   try {
+    const token = decryptToken(cookie.get("token"))
     const url =
       "http://api-haed.danielreyesepitacio.cloud/api/admin/evaluaciones";
     const response = await fetch(url, {
@@ -29,9 +29,8 @@ const getEvaluaciones = async () => {
 export { getEvaluaciones };
 
 const getEvaluacion = async (id) => {
-  
-  console.log(token);
   try {
+    const token = decryptToken(cookie.get("token"));
     const url =
       "http://api-haed.danielreyesepitacio.cloud/api/evaluaciones/" +
       id +
@@ -57,7 +56,7 @@ export { getEvaluacion };
 
 const getPregunta = async (id) => {
   try {
-    
+    const token = decryptToken(cookie.get("token"));
     const url =
       "http://api-haed.danielreyesepitacio.cloud/api/admin/preguntas/" + id;
 
@@ -82,8 +81,9 @@ export { getPregunta };
 
 const getOpciones = async () => {
   try {
+    const token = decryptToken(cookie.get("token"));
     const url = "http://api-haed.danielreyesepitacio.cloud/api/admin/opciones";
-   
+
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -106,8 +106,8 @@ export { getOpciones };
 //* Operaciones put
 
 const putEvaluacion = async (id, titulo, desc) => {
-  
   try {
+    const token = decryptToken(cookie.get("token"));
     const url =
       "http://api-haed.danielreyesepitacio.cloud/api/admin/evaluaciones/" + id;
     const params = {
@@ -131,9 +131,10 @@ export { putEvaluacion };
 
 const putPregunta = async (id, evId, pregunta) => {
   try {
+    const token = decryptToken(cookie.get("token"));
     const url =
       "http://api-haed.danielreyesepitacio.cloud/api/admin/preguntas/" + id;
-    
+
     const params = {
       evaluacion_id: evId,
       pregunta: pregunta,
@@ -153,37 +154,45 @@ const putPregunta = async (id, evId, pregunta) => {
 };
 export { putPregunta };
 
-const putOpcion = async (idpreg, opcion, nuevaOpcion, retroalimentacion_, links) => {
+const putOpcion = async (
+  idpreg,
+  opcion,
+  nuevaOpcion,
+  retroalimentacion_,
+  links
+) => {
   try {
-    const url = "http://api-haed.danielreyesepitacio.cloud/api/admin/opciones/" +
-    idpreg +
-    "/" +
-    opcion;
-    console.log(url)
-    
-    console.log("Esto se está pasando :"  + nuevaOpcion)
+    const token = decryptToken(cookie.get("token"));
+    const url =
+      "http://api-haed.danielreyesepitacio.cloud/api/admin/opciones/" +
+      idpreg +
+      "/" +
+      opcion;
+    console.log(url);
 
-    const params = {}
-    if(nuevaOpcion!==""){
-      params.opcion  = nuevaOpcion
+    console.log("Esto se está pasando :" + nuevaOpcion);
+
+    const params = {};
+    if (nuevaOpcion !== "") {
+      params.opcion = nuevaOpcion;
     }
-    if(retroalimentacion_!==""){
-      params.feedback = retroalimentacion_
+    if (retroalimentacion_ !== "") {
+      params.feedback = retroalimentacion_;
     }
-    if(links){
+    if (links) {
       params.links = links;
     }
-    console.log(params)
-    const response = await fetch(url,{
+    console.log(params);
+    const response = await fetch(url, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(params),
-    })
-    console.log("respuesta de la funcion : " + response.status)
-    return response.status
+    });
+    console.log("respuesta de la funcion : " + response.status);
+    return response.status;
   } catch (error) {
     return error;
   }
@@ -194,13 +203,15 @@ export { putOpcion };
 
 const postEvaluacion = async (_titulo, _descripcion) => {
   try {
-    
+    const token = decryptToken(cookie.get("token"));
     const url =
       "http://api-haed.danielreyesepitacio.cloud/api/admin/evaluaciones";
     const params = {
       titulo: _titulo,
       descripcion: _descripcion,
     };
+    console.log(params);
+    console.log(token)
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -219,8 +230,9 @@ export { postEvaluacion };
 
 const postPregunta = async (id, pregunta) => {
   try {
+    const token = decryptToken(cookie.get("token"));
     const url = "http://api-haed.danielreyesepitacio.cloud/api/admin/preguntas";
-    
+
     const params = {
       evaluacion_id: id,
       pregunta: pregunta,
@@ -242,15 +254,16 @@ export { postPregunta };
 
 const postOpcion = async (idPreg, opcion_, retroalimentacion_, links) => {
   try {
+    const token = decryptToken(cookie.get("token"));
     const url = "http://api-haed.danielreyesepitacio.cloud/api/admin/opciones";
-   console.log(token)
+    console.log(token);
     const params = {
       pregunta_id: idPreg,
       opcion: opcion_,
       feedback: retroalimentacion_,
       links: links,
     };
-    console.log(params)
+    console.log(params);
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -259,7 +272,7 @@ const postOpcion = async (idPreg, opcion_, retroalimentacion_, links) => {
       },
       body: JSON.stringify(params),
     });
-    console.log("respuesta de la funcion : " + response.status)
+    console.log("respuesta de la funcion : " + response.status);
     return response.status;
   } catch (error) {
     return error;
@@ -271,7 +284,7 @@ export { postOpcion };
 
 const deleteEvaluacion = async (id) => {
   try {
-    
+    const token = decryptToken(cookie.get("token"));
     const url =
       "http://api-haed.danielreyesepitacio.cloud/api/admin/evaluaciones/" + id;
     const response = await fetch(url, {
@@ -291,9 +304,10 @@ export { deleteEvaluacion };
 
 const deletePregunta = async (id) => {
   try {
+    const token = decryptToken(cookie.get("token"));
     const url =
       "http://api-haed.danielreyesepitacio.cloud/api/admin/preguntas/" + id;
-    
+
     const response = await fetch(url, {
       method: "DELETE",
       headers: {
@@ -310,12 +324,13 @@ export { deletePregunta };
 
 const deleteOpcion = async (idpreg, opcion) => {
   try {
+    const token = decryptToken(cookie.get("token"));
     const url =
       "http://api-haed.danielreyesepitacio.cloud/api/admin/opciones/" +
       idpreg +
       "/" +
       opcion;
-   
+
     const response = await fetch(url, {
       method: "DELETE",
       headers: {

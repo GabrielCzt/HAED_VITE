@@ -2,7 +2,7 @@ import React from "react";
 import Titulo from "../../components/BarraDeTitulo";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartColumn, faCircleUser, faFileInvoice, faPencil, faPlusCircle, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faPencil, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import "../../estilos/AdministrarCuestionarios.css";
 import MenuAdmin from "../../components/MenuAdmin";
 import { useEffect } from "react";

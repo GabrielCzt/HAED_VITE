@@ -53,6 +53,7 @@ function CrearOpcion() {
   const addLink = () => {
     Swal.fire({
       title: "Ingrese la URL",
+      text: "La URL debe empezar por https:// y terminar en un dominio (.com, .mx, etc.), los links de YouTube deben ser especiales para incrustar",
       input: "text",
       inputAttributes: {
         autocapitalize: "off",
@@ -62,8 +63,40 @@ function CrearOpcion() {
       cancelButtonText: "Cancelar",
       showLoaderOnConfirm: true,
       preConfirm: async (link) => {
-        setLinks((prevLinks) => [...prevLinks, link]);
-        console.log(links);
+        const regex = /^https:\/\//;
+        const regexHtp = /^http:\/\//;
+        const regexYT = /youtube/i; 
+        const regexEmbed = /embed/i; 
+        if (regex.test(link) || regexHtp.test(link)) {
+          if (regexYT.test(link)) {
+            if (regexEmbed.test(link)) {
+              setLinks((prevLinks) => [...prevLinks, link]);
+              console.log(links);
+            } else {
+              Swal.fire({
+                title: "Advertencia",
+                text: "Los links de YouTube deben ser de incrustación, un link INCORRECTO sería : https://www.youtube.com/watch?v=ju7iZi87s6g, el mismo link CORRECTO debería verse así : https://www.youtube.com/embed/ju7iZi87s6g, para más información consulte el manual de usuario",
+                icon: "warning",
+                showCloseButton: true,
+                focusConfirm: false,
+                confirmButtonText: "Ok",
+              });
+            }
+          }
+          else{
+            setLinks((prevLinks) => [...prevLinks, link]);
+              console.log(links);
+          }
+        } else {
+          Swal.fire({
+            title: "Advertencia",
+            text: "Parece que no ha ingresado un link valido, recuerde: debe iniciar con https:// y terminar con un dominio (.com, .mx, etc)",
+            icon: "warning",
+            showCloseButton: true,
+            focusConfirm: false,
+            confirmButtonText: "Ok",
+          });
+        }
       },
       allowOutsideClick: () => !Swal.isLoading(),
     });

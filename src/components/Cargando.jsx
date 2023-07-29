@@ -16,7 +16,7 @@ function Cargando() {
           wrapperStyle=""
           visible={true}
         />
-        <h4>
+        <h4 className="mt-3">
           <b>Cargando...</b>
         </h4>{" "}
         <br />
